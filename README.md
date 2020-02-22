@@ -19,6 +19,6 @@ Things you may want to cover:
 
 * Services (job queues, cache servers, search engines, etc.)
 
-テストとしてREADMEの内容をこの一行だけ書き換えました。
+テストとしてREADMEの内容をこの一行だけ書き換えました。２回目
 
 * ...
