@@ -44,7 +44,7 @@ Things you may want to cover:
 |text|text|null: false|
 
 ### Association
-- has_many :users
+- belongs_to :users
 
 ## User
 |Column|Type|Options|
@@ -134,7 +134,6 @@ Things you may want to cover:
 |category|string|null: false, index|
 |user_id|reference|null: false, foreign_key: true|
 |price|integer|null: false|
-|image|integer|null: false|
 |explanation|text||
 |brand|string||
 |condition|string|null: false|
@@ -162,13 +161,11 @@ Things you may want to cover:
 ## Category
 |Column|Type|Options|
 | ------------ | ------------ | ------------ |
-|item_id|integer|null: false, foreign_key: true|
-|big_category|string|null: false|
-|middle_category|string|null: false|
-|small_category|string|null: false|
+|category_name|string|null: false|
+|ancestry|string||
 
 ### Association
-- belongs_to item
+- has_many :items
 
 ## Address
 |Column|Type|Options|
@@ -181,3 +178,12 @@ Things you may want to cover:
 
 ### Association
 - belongs_to :user
+
+## Item_image
+|Column|Type|Options|
+| ------------ | ------------ | ------------ |
+|item_id|integer|null: false, foreign_key: true|
+|item_image|string|null: false|
+
+### Association
+- belongs_to :item
