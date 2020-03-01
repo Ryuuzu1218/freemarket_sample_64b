@@ -16,7 +16,7 @@
 |text|text|null: false|
 
 ### Association
-- belongs_to :users
+- belongs_to :user
 
 ## User
 |Column|Type|Options|
@@ -42,7 +42,7 @@
 - has_many :informations
 - has_many :items
 - has_many :comments
-- has_many :transactions, through user_transactions
+- has_many :transactions, through: :user_transactions
 - has_many :user_transactions
 - has_many :messages
 - has_one :address
@@ -80,7 +80,7 @@
 ### Association
 - has_many :messages
 - belongs_to :item
-- has_many :users, through :user_transaction
+- has_many :users, through: :user_transaction
 - has_many :user_transactions
 
 
