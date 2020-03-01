@@ -3,7 +3,7 @@
 |Column|Type|Options|
 |------------|------------|------------|
 |user|reference|null: false, foreign_key: true|
-|costomer_id|references|null: false, foreign_key: true|
+|costomer|references|null: false, foreign_key: true|
 |card|reference|null: false, foreign_key: true|
 
 ### Association
@@ -37,15 +37,15 @@
 |point|integer|null: false|
 
 ### Association
-- has_many :evaluations
-- has_one :credit_card
-- has_many :informations
+- has_many :evaluations, dependent: :destroy
+- has_one :credit_card, dependent: :destroy
+- has_many :informations, dependent: :destroy
 - has_many :items
 - has_many :comments
 - has_many :transactions, through: :user_transactions
 - has_many :user_transactions
 - has_many :messages
-- has_one :address
+- has_one :address, dependent: :destroy
 
 ## Message
 |Column|Type|Options|
@@ -111,10 +111,10 @@
 |sending_days|integer|null: false|
 
 ### Association
-- has_many :evaluation
-- has_many :item_images
+- has_many :evaluation, dependent: :destroy
+- has_many :item_images, dependent: :destroy
 - belongs_to :transaction
-- has_many :comments
+- has_many :comments, dependent: :destroy
 - belongs_to :user
 - belongs_to :category
 
