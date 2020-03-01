@@ -1,46 +1,18 @@
-<<<<<<< Updated upstream
-# README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-テストとしてREADMEの内容をこの一行だけ書き換えました。
-
-* ...
-=======
->>>>>>> Stashed changes
 # DB設計
 ## Credit card
 |Column|Type|Options|
 |------------|------------|------------|
-|user_id|references|null: false, foreign_key: true|
+|user|reference|null: false, foreign_key: true|
 |costomer_id|references|null: false, foreign_key: true|
-|card_id|references |null: false, foreign_key: true|
+|card|reference|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :user
 
-
 ## Information
 |Column|Type|Options|
 |------------|------------|------------|
-|user_id|references|null: false, foreign_key: true|
+|user|reference|null: false, foreign_key: true|
 |text|text|null: false|
 
 ### Association
@@ -78,20 +50,19 @@ Things you may want to cover:
 ## Message
 |Column|Type|Options|
 | ------------ | ------------ | ------------ |
-|user_id|reference|null: false, foreign_key: true|
+|user|reference|null: false, foreign_key: true|
 |body|text|null: false|
-|transaction_id|reference|null: false, foreign_key: true|
+|transaction|reference|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :user
 - belongs_to :transaction
 
-
 ## Comment
 |Column|Type|Options|
 | ------------ | ------------ | ------------ |
-|item_id|reference|null: false, foreign_key: true|
-|user_id|reference|null: false, foreign_key: true|
+|item|reference|null: false, foreign_key: true|
+|user|reference|null: false, foreign_key: true|
 |text|text|null: false|
 
 ### Association
@@ -102,8 +73,8 @@ Things you may want to cover:
 |Column|Type|Options|
 | ------------ | ------------ | ------------ |
 |status|string|null: false|
-|item_id|reference|null: false, foreign_key: true|
-|user_id|reference|null: false, foreign_key: true|
+|item|reference|null: false, foreign_key: true|
+|user|reference|null: false, foreign_key: true|
 |total_fee|integer|null: false|
 
 ### Association
@@ -119,20 +90,18 @@ Things you may want to cover:
 |good|integer|null: false|
 |normal|integer|null: false|
 |bad|integer|null: false|
-|user_id|reference|null: false, foreign_key: true|
-
+|user|reference|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :user
-
 
 ## Item
 |Column|Type|Options|
 | ------------ | ------------ | ------------ |
 |name|string|null: false, index|
 |likes|integer|null: false|
-|category|string|null: false, index|
-|user_id|reference|null: false, foreign_key: true|
+|category|reference|null: false, foreign_key: true|
+|user|reference|null: false, foreign_key: true|
 |price|integer|null: false|
 |explanation|text||
 |brand|string||
@@ -147,12 +116,13 @@ Things you may want to cover:
 - belongs_to :transaction
 - has_many :comments
 - belongs_to :user
+- belongs_to :category
 
 ## User_transaction
 |Column|Type|Options|
 | ------------ | ------------ | ------------ |
-|user_id|references|null: false, foreign_key: true|
-|transaction_id|references|null: false, foreign_key: true|
+|user|reference|null: false, foreign_key: true|
+|transaction|reference|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :user
@@ -161,7 +131,7 @@ Things you may want to cover:
 ## Category
 |Column|Type|Options|
 | ------------ | ------------ | ------------ |
-|category_name|string|null: false|
+|name|string|null: false|
 |ancestry|string||
 
 ### Association
@@ -174,7 +144,7 @@ Things you may want to cover:
 |city|string|null: false|
 |town|string|null: false|
 |building|string||
-|user_id|integer|null: false, foreign_key: true|
+|user|reference|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :user
@@ -182,8 +152,8 @@ Things you may want to cover:
 ## Item_image
 |Column|Type|Options|
 | ------------ | ------------ | ------------ |
-|item_id|integer|null: false, foreign_key: true|
-|item_image|string|null: false|
+|item|reference|null: false, foreign_key: true|
+|image|string|null: false|
 
 ### Association
 - belongs_to :item
