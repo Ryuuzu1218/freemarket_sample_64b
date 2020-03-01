@@ -1,27 +1,159 @@
-<<<<<<< Updated upstream
-# README
+# DB設計
+## Credit card
+|Column|Type|Options|
+|------------|------------|------------|
+|user|reference|null: false, foreign_key: true|
+|costomer|references|null: false, foreign_key: true|
+|card|reference|null: false, foreign_key: true|
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### Association
+- belongs_to :user
 
-Things you may want to cover:
+## Information
+|Column|Type|Options|
+|------------|------------|------------|
+|user|reference|null: false, foreign_key: true|
+|text|text|null: false|
 
-* Ruby version
+### Association
+- belongs_to :user
 
-* System dependencies
+## User
+|Column|Type|Options|
+|------------|------------|------------|
+|nickname|string|null: false, unique: true, index|
+|first_name|string|null: false|
+|last_name|string|null: false|
+|first_name_kana|string|null: false
+|last_name_kana|string|null: false
+|birthday|date|null: false|
+|postal_code|integer|null: false|
+|payment|string|null: false|
+|email|string|null: false|
+|phone|integer|null: false, foreign_key: true|
+|password|string|null: false|
+|money|integer|null: false|
+|image|string|null: false|
+|point|integer|null: false|
 
-* Configuration
+### Association
+- has_many :evaluations, dependent: :destroy
+- has_one :credit_card, dependent: :destroy
+- has_many :informations, dependent: :destroy
+- has_many :items
+- has_many :comments
+- has_many :transactions, through: :user_transactions
+- has_many :user_transactions
+- has_many :messages
+- has_one :address, dependent: :destroy
 
-* Database creation
+## Message
+|Column|Type|Options|
+| ------------ | ------------ | ------------ |
+|user|reference|null: false, foreign_key: true|
+|body|text|null: false|
+|transaction|reference|null: false, foreign_key: true|
 
-* Database initialization
+### Association
+- belongs_to :user
+- belongs_to :transaction
 
-* How to run the test suite
+## Comment
+|Column|Type|Options|
+| ------------ | ------------ | ------------ |
+|item|reference|null: false, foreign_key: true|
+|user|reference|null: false, foreign_key: true|
+|text|text|null: false|
 
-* Services (job queues, cache servers, search engines, etc.)
+### Association
+- belongs_to :user
+- belongs_to :item
 
-テストとしてREADMEの内容をこの一行だけ書き換えました。
+## Transaction
+|Column|Type|Options|
+| ------------ | ------------ | ------------ |
+|status|string|null: false|
+|item|reference|null: false, foreign_key: true|
+|user|reference|null: false, foreign_key: true|
+|total_fee|integer|null: false|
 
-* ...
-=======
->>>>>>> Stashed changes
+### Association
+- has_many :messages
+- belongs_to :item
+- has_many :users, through: :user_transaction
+- has_many :user_transactions
+
+
+## Evaluation
+|Column|Type|Options|
+| ------------ | ------------ | ------------ |
+|good|integer|null: false|
+|normal|integer|null: false|
+|bad|integer|null: false|
+|user|reference|null: false, foreign_key: true|
+
+### Association
+- belongs_to :user
+
+## Item
+|Column|Type|Options|
+| ------------ | ------------ | ------------ |
+|name|string|null: false, index|
+|likes|integer|null: false|
+|category|reference|null: false, foreign_key: true|
+|user|reference|null: false, foreign_key: true|
+|price|integer|null: false|
+|explanation|text||
+|brand|string||
+|condition|string|null: false|
+|delivery_charge|string|null: false|
+|shipping_origin|string|null: false|
+|sending_days|integer|null: false|
+
+### Association
+- has_many :evaluation, dependent: :destroy
+- has_many :item_images, dependent: :destroy
+- belongs_to :transaction
+- has_many :comments, dependent: :destroy
+- belongs_to :user
+- belongs_to :category
+
+## User_transaction
+|Column|Type|Options|
+| ------------ | ------------ | ------------ |
+|user|reference|null: false, foreign_key: true|
+|transaction|reference|null: false, foreign_key: true|
+
+### Association
+- belongs_to :user
+- belongs_to :transaction
+
+## Category
+|Column|Type|Options|
+| ------------ | ------------ | ------------ |
+|name|string|null: false|
+|ancestry|string||
+
+### Association
+- has_many :items
+
+## Address
+|Column|Type|Options|
+| ------------ | ------------ | ------------ |
+|prefecture|string|null: false|
+|city|string|null: false|
+|town|string|null: false|
+|building|string||
+|user|reference|null: false, foreign_key: true|
+
+### Association
+- belongs_to :user
+
+## Item_image
+|Column|Type|Options|
+| ------------ | ------------ | ------------ |
+|item|reference|null: false, foreign_key: true|
+|image|string|null: false|
+
+### Association
+- belongs_to :item
