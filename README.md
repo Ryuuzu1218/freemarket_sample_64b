@@ -52,8 +52,8 @@ Things you may want to cover:
 |nickname|string|null: false, unique: true, index|
 |first_name|string|null: false|
 |last_name|string|null: false|
-|first_name_ruby|string|null: false
-|last_name_ruby|string|null: false
+|first_name_kana|string|null: false
+|last_name_kana|string|null: false
 |birthday|date|null: false|
 |postal_code|integer|null: false|
 |payment|string|null: false|
