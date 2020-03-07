@@ -6,7 +6,7 @@ lock '3.12.0'
 set :application, 'freemarket_sample_64b'
 
 # secrets.yml用のシンボリックリンクを追加
-#set :linked_files, %w{ config/secrets.yml }
+# set :linked_files, %w{ config/secrets.yml }
 
 
 # どのリポジトリからアプリをpullするかを指定する
