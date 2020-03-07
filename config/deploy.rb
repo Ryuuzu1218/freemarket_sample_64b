@@ -5,6 +5,10 @@ lock '3.11.2'
 # Capistranoのログの表示に利用する
 set :application, 'freemarket_sample_64b'
 
+# secrets.yml用のシンボリックリンクを追加
+set :linked_files, %w{ config/secrets.yml }
+
+
 # どのリポジトリからアプリをpullするかを指定する
 set :repo_url,  'git@github.com:Ryuuzu1218/freemarket_sample_64b.git'
 
