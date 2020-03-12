@@ -1,1 +1,94 @@
-最初に表示される画面
+.toppage_contents
+  .top-visual
+    .top-visual__image
+    .top-visual__content
+      %h2.top-visual__content__title
+        "人生を変えるフリマアプリ"
+      %p.top-visual__content__subtitle
+        "フリマはだれでもかんたんに出品・購入できる"
+        %br
+        "フリマアプリです"
+      .top-visual__content__btn
+        = link_to image_tag("imagename", class:"apple-btn dlbtn"), '#'
+        = link_to image_tag("imagename", class:"google-btn dlbtn"), '#'
+  
+  .top-introduction
+    %h2.top-introduction__title
+      "FURIMAが選ばれる３つの理由"
+    %ul.top-introduction__lists
+      %li.top-introduction__list
+        .top-introducion__list__picture
+          %span
+            "1"
+          = image_tag "imagename", class: top-introduction__list__picture
+        %h3.top-introducion__list__title
+          %span
+            "３分"
+          "ですぐに出品"
+        %p.top-introducion__list__explanation
+          "スマホで入力するだけで簡単に出品できる"
+        %h2.top-introduction__title
+      
+      %li.top-introduction__list
+        .top-introducion__list__picture
+          %span
+            "2"
+          = image_tag "imagename", class: top-introduction__list__picture
+        %h3.top-introducion__list__title
+          %span
+            "シンプル"
+          "で使いやすい"
+        %p.top-introducion__list__explanation
+          ”めんどくさい入力は必要なく、検索も購入もスムーズ!
+
+      %li.top-introduction__list
+        .top-introducion__list__picture
+          %span
+            "3"
+          = image_tag "imagename", class: top-introduction__list__picture
+        %h3.top-introducion__list__title
+          "手数料"
+          %span
+            "業界最安"
+        %p.top-introducion__list__explanation
+          "最大3%でお得に出品&購入!"
+  .top-membership
+    .top-membership__body
+      %h2.top-membership__body__title
+      %p.top-membership__body__text
+      .top-membership__body__btn
+        = link_to image_tag("imagename", class:"apple-btn dlbtn"), '#'
+        = link_to image_tag("imagename", class:"google-btn dlbtn"), '#'
+    = image_tag "imagename", class: top-membership__picture
+  .top-characterristic
+    .top-characteristic__title
+    .top-characteristic__lists
+      .top-characteristic__lists__list
+        = image_tag "imagename", class: top-characteristic__lists__list__picture
+        .top-characteristic__lists__list__title
+        .top-characteristic__lists__list__text
+
+      .top-characteristic__lists__list
+        = image_tag "imagename", class: top-characteristic__lists__list__picture
+        .top-characteristic__lists__list__title
+        .top-characteristic__lists__list__text
+
+      .top-characteristic__lists__list
+        = image_tag "imagename", class: top-characteristic__lists__list__picture
+        .top-characteristic__lists__list__title
+        .top-characteristic__lists__list__text
+  -# top-pickupsはまだhaml書いてない
+  .top-pickups 
+    .pickup
+      %h
+.top-banner
+  = image_tag "imagename", class: top-banner__picture
+  .top-banner__body
+    %h2.top-banner__body__title
+      "だれでもかんたん、人生を変えるフリマアプリ"
+    %p.top-banner__body__text
+      ”今すぐ無料ダウンロード!"
+    .top-banner__body__icon
+      = link_to image_tag("imagename", class:"apple-btn dlbtn"), '#'
+      = link_to image_tag("imagename", class:"google-btn dlbtn"), '#'
+= link_to image_tag("icon/icon_camera.png", class:exhibition), '#'
