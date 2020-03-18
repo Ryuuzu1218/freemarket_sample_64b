@@ -1,1 +1,113 @@
-ここが商品出品のページ
+.wrapper-item
+ .ex
+  =form_with local: true  do |exh|
+   .ex__image
+    .ex__image--title
+     .ex__image--title--exp
+      画像
+     .ex__image--title--must.must
+      必須
+    .ex__image--photo
+     画像は１０枚まで
+    .ex__image--upload
+     =exh.label :image ,class:'label' do
+      .ex__image--upload--area
+       =exh.file_field :image, class: 'none'
+       =icon('fa','camera')
+       クリックして写真をアップロード
+   .ex__intro
+    .ex__intro__name
+     .ex__intro__name--exp
+      商品名
+     .ex__intro__name--must.must
+      必須
+    .ex__intro__exp
+     =exh.text_field :name,class:'text-form',placeholder:'商品名を入力してください'
+    .ex__intro__exp--exp
+     說明
+     .ex__intro__exp--must.must
+      必須
+    .ex__intro__duce
+     =exh.text_field :explanation,class:'text-duce',placeholder:'商品の說明を入力してください'
+    .ex__intro__strcount
+     0/1,000
+   .ex__detail
+    .ex__detail--first
+     商品詳細
+    .ex__detail__category
+     .ex__detail__category--in
+      カテゴリを選択してください
+     .ex__detail__category--must.must
+      必須
+    .ex__detail__category--select
+     %select 
+    .ex__detail__brand
+     .ex__detail__brand--in
+      ブランドを選択してください
+     .ex__detail__brand--free.free
+      任意
+    .ex__detail__brand--select
+     =exh.text_field :brand,class:'text-form',placeholder:'ブランド名を入力してください'
+    .ex__detail__status
+     .ex__detail__status--in
+      状態を選んでください
+     .ex__detail__status--must.must
+      必須
+    .ex__detail__status--select
+     %select
+   .ex__deliver
+    .ex__deliver--first
+     配送について
+    .ex__deliver__fee
+     .ex__deliver__fee--in
+      配送料の負担
+     .ex__deliver__fee--must.must
+      必須
+    .ex__deliver__fee--select
+     %select
+    .ex__deliver__land
+     .ex__deliver__land--in
+      配送先
+     .ex__deliver__land--must.must
+      必須
+    .ex__deliver__land--select
+     %select
+    .ex__deliver__date
+     .ex__deliver__date--in
+      日数
+     .ex__deliver__date--must.must
+      必須
+    .ex__deliver__date--select
+     %select
+   .ex__price
+    .ex__price--in
+     価格　(¥100~¥100,000)
+    .ex__price__money
+     .ex__price__money__left
+      .ex__price__money__left--string
+       値段
+      .ex__price__money__left--must.must
+       必須
+     .ex__price__money--pay
+      .ex__price__money--pay--mark
+       ¥
+      .ex__price__money--pay--form
+       =exh.text_field :title,class:'text-money',placeholder:'商品名を入力してください'
+    .ex__price__fee
+     .ex__price__fee--string
+      手数料
+     .ex__price__fee--real-fee
+      ここに手数料を表示
+    .ex__price__benefit
+     .ex__price__benefit--in
+      あなたの利益
+     .ex__price__benefit--mouke
+      ここに利益金額を表示
+   .ex__go
+    .ex__go__menu
+     .ex__go__menu--done
+      %button.gobutton 出品する
+     .ex__go__menu--back
+      =link_to 'トップページへ',items_path 
+
+
