@@ -1,1 +1,64 @@
-ここが商品詳細のページ
+ここにヘッダーくっつける
+.wrapper-item
+ .de
+  .de__name
+   ここに商品名
+  .de__image
+   ここに写真
+  .de__image-list
+   .de__image-list__box
+    .de__image-list__box--img
+     写真１
+    .de__image-list__box--img
+     写真２
+    .de__image-list__box--img
+     写真３
+  .de__price
+   .de__price--price
+    値段
+   .de__price__money
+    .de__price__money--tax
+     (税込み)
+    .de__price__money--deliver
+     送料込み
+  .de__parchase
+   %button.gobuy
+    =link_to '',"#"
+    購入画面へ
+  .de__exp
+   ここに商品説明
+  .de__table
+   %table.table
+    %tbody
+     %tr
+      %th 出品者
+      %td ここに出品者
+     %tr
+      %th カテゴリー
+      %td カテゴリを表示。複数ある場合も考慮に
+     %tr
+      %th ブランド
+      %td ブランドを表示。複数（以下略）
+     %tr
+      %th サイズ
+      %td サイズを表示
+     %tr
+      %th 状態
+      %td 状態を表示
+     %tr
+      %th 負担
+      %td 着払い？送料込み？
+     %tr
+      %th 地域
+      %td どこから出品？
+     %tr
+      %th 目安
+      %td 何日でつく？
+ .comment
+  =form_with local: true  do |comment|
+   .comment__form
+    =comment.text_field :title,class:'text-introduce',placeholder:'商品の說明を入力してください'
+   .comment__caution
+    マナーを守ってください!
+   .comment__go
+    =comment.submit 'コメントする',class: 'commentbutton'
