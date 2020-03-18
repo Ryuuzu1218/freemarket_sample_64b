@@ -1,8 +1,119 @@
 .header {
   padding: 0 60px;
-  max-width: 1040px;
-  width: 100%;
-  min-height: 82px;
-  margin: 0 auto;
-  padding: 15px 0 0;
+  
+  &__body {
+    max-width: 1040px;
+    width: 100%;
+    min-height: 82px;
+    margin: 0 auto;
+    padding: 15px 0 0;
+
+    &__main {
+      position: relative;
+      display: flex;
+      align-items: center;
+
+      &__icon-area {
+        padding-bottom: 10px;
+        margin-right: 30px;
+        border-radius: 4px;
+        
+        &__icon {
+          width: 140px;
+          display: block;
+        }
+      }
+
+      &__search {
+        margin-left: auto;
+        width: 100%;
+
+        &__form {
+          width: 100%;
+          display: flex;
+          margin-bottom: 5px;
+
+          &__input {
+            width: calc(100% - 26px);
+            height: 36px;
+            padding: 0 0 0 5px;
+          }
+          &__submit {
+            width: 36px;
+            background-color: #3ccace;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            
+            &__btn {
+              display: none;
+            }
+            &__image {
+              height: 20px;
+              width: 20px;
+            }
+          }
+        }
+      }
+    }
+  
+    &__nav {
+      font-size: 14px;
+      display: flex;
+      margin-bottom: 10px;
+
+      .nav-left {
+        position: relative;
+        display: flex;
+
+        &__content {
+          display: flex;
+          line-height: 38px;
+          padding: 0 0 0 16px;
+
+          a {
+            color: #333;
+            text-decoration: none;
+            line-height: 32px;
+            padding-right: 30px;
+          }
+
+          a:hover {
+            color: orange;
+          }
+
+          &--category {
+            text-decoration: none;
+            padding: 0;
+          }
+        }
+
+      }
+
+      .nav-right {
+        margin-left: auto;
+        display: flex;
+
+        &__content {
+          color: #333;
+          line-height: 38px;
+          padding: 0 0 0 16px;
+
+          a {
+            color: #333;
+            line-height: 38px;
+            text-decoration: none;
+          }
+          &--login {
+
+          }
+
+          &--new {
+
+          }
+        }
+      }
+    }
+  }
 }
+
