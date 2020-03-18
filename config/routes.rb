@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  root "items#edit"
 resources :items
 resources :users do
   collection do
