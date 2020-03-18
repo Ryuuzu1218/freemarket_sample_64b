@@ -1,0 +1,52 @@
+.main
+ .main__header
+  .main__header__mid
+   .main__header__mid__logo
+    = image_tag '',class: "main__header__mid__logo"
+
+    .main__header__mid__bar
+     %ul.main__header__mid__bar__ul
+      %li.main__header__mid__bar__ul__l1
+       会員情報
+       .main__header__mid__bar__ul__l1__statu1
+      %li.main__header__mid__bar__ul__l2
+       電話番号認証
+       .main__header__mid__bar__ul__l2__statu2
+      %li.main__header__mid__bar__ul__l3
+       完了
+       .main__header__mid__bar__ul__l3__statu3
+
+.content
+ .content-phone
+  .content-phone__number 電話番号の確認
+  = form_for "#" do |f|
+ .content-form
+  .conrent-form__1
+    携帯番号の確認
+  = f.text_field :phone, type: "test", placeholder:"携帯電話の番号を入力", class: "content-form__1__text"
+ .content-form__info
+  本人確認のため、携帯電話のSMS(ショートメッセージサービス)を利用して認証を行います。
+ .content-form__btn
+  = f.submit "SMSを送信する", class: "content-form__btn__red"
+ .content-form__pre
+  ＊電話番号は本人確認や不正利用防止のために利用します。他のユーザーに公開されることはありません。
+ .content-form__text
+  = link_to "電話番号の確認が必要な理由", "#", class: "content-form__text__rea"
+
+.footer
+ .footer__center
+  %ul.menu
+   %li
+   = link_to "プライバシーポリシー","#"
+   %li
+   = link_to "メルカリ利用規約","#"
+   %li
+   = link_to "特定商取引に関する表記","#"
+  .footer__center__logo
+   =link_to image_tag("#", class:"footer__center__logo--red")
+  %p.inc
+   ©︎Mercari,Inc.
+
+
+    
+   
