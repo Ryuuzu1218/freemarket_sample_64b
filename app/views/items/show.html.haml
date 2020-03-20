@@ -1,4 +1,4 @@
-ここにヘッダーくっつける
+= render 'header'
 .wrapper-item
  .de
   .de__name
@@ -38,7 +38,7 @@
       %td カテゴリを表示。複数ある場合も考慮に
      %tr
       %th ブランド
-      %td ブランドを表示。複数（以下略）
+      %td ブランドを表示。複数ある場合も考慮
      %tr
       %th サイズ
       %td サイズを表示
@@ -54,6 +54,9 @@
      %tr
       %th 目安
       %td 何日でつく？
+  .de__good
+   %button.de__good--button いいね！
+
  .comment
   =form_with local: true  do |comment|
    .comment__form
@@ -62,3 +65,4 @@
     マナーを守ってください!
    .comment__go
     =comment.submit 'コメントする',class: 'commentbutton'
+= render 'footer'

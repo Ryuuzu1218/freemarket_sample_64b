@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root "items#edit"
   devise_for :users
 resources :items
 resources :users do

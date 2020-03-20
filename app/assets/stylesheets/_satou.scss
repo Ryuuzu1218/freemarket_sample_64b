@@ -1,5 +1,6 @@
 .wrapper-item{
   background-color: #EEEEEE;
+  padding: 20px 0;
 }
 .ex{
   background-color: white;
@@ -155,7 +156,7 @@
 .de{
   background-color: white;
   width: 700px;
-  margin: 24px 40px 40px;
+  padding-top:20px;
   margin:0 auto 20px;
   font-size: 14px;
   &__name{
@@ -206,6 +207,14 @@
     border-collapse: collapse;
     padding-bottom: 30px;
   }
+  &__good--button{
+    width: 120px;
+    height: 35px;
+    border-radius: 15px;
+    border-color: #3CCACE;
+    font-size: 15px;
+    margin: 0 70px 20px;
+  }
 }
 
 .comment{
@@ -224,6 +233,7 @@
   }
   &__go{
     margin: 0 175px;
+    padding-bottom: 20px;
   }
 }
 
