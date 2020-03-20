@@ -6,7 +6,40 @@
   align-items: center;
   background-image: url("pict/bg-mainVisual-pict_pc.jpg");
   background-size: cover;
+  background-repeat: no-repeat;
   background-position:top center;
+  position: relative;
+
+
+  &__content {
+    width: 100%;
+    margin: 0 auto;
+    padding: 35px 0 0 0;
+
+    &__title {
+      text-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+      font-size: 60px;
+      line-height: 1.2;
+      color: #fff;
+    }
+
+    &__subtitle {
+      text-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+      font-size: 18px;
+      color: #fff;
+      line-height: 1.77778;
+      margin: 16px 0 0 0;
+    }
+
+    &__btn {
+      display: flex;
+      margin: 24px 0 0 0;
+
+      a {
+        margin-right: 10px;
+      }
+    }
+  }
 }
 
 .top-introduction {
@@ -20,6 +53,17 @@
     margin-bottom: 25px;
     padding-bottom: 15px;
     position: relative;
+  }
+
+  &__title:after {
+    content: "";
+    width: 70px;
+    height: 4px;
+    background-color: #3ccace;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
   }
 
   &__lists {
@@ -61,7 +105,14 @@
         }
       }
       &__title {
+        font-weight: bold;
+        font-size: 24px;
+        line-height: 50px;
+        margin: 0 0 0 2px;
 
+        span {
+          color: #3ccace;
+        }
       }
       &__explanation {
 
@@ -80,11 +131,15 @@
 
   &__body {
     color: white;
-    text-shadow: hoff voff blur #000;
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
     text-align-last: left;
     max-width: 1040px;
     width: 100%;
     margin: 0 auto;
+
+    &__title {
+      
+    }
   }
 }
 .top-characteristic {
@@ -93,4 +148,74 @@
 
 .top-pickups {
 
+}
+
+.top-banner {
+  background-image: url("pict/bg-appBanner-pict.jpg");
+  padding: 100px 40px;
+  position: relative;
+  background-size: cover;
+  background-position: center;
+
+  &__body {
+    color: #fff;
+    text-align: center;
+
+    &__title {
+      text-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+      font-size: 24px;
+      font-weight: bold;
+      line-height: 1.4;
+    }
+
+    &__text {
+      font-size: 35px;
+      text-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+    }
+
+    &__icon {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      margin: 20px 0 auto;
+
+      a {
+        margin-right: 10px;
+      }
+    }
+  }
+}
+
+.exhibition {
+
+  &__btn {
+    width: 120px;
+    background-color: #3ccace;
+    text-align: center;
+    border-radius: 4%;
+    bottom: 32px;
+    right: 32px;
+    position: fixed;
+    padding: 15px;
+
+    &__text {
+      color: white;
+      display: block;
+      font-size: 18px;
+      text-decoration: none;
+      margin-bottom: 5px;
+    }
+
+    &__image {
+      width: 60%;
+    }
+  }
+}
+
+.apple-btn {
+  width: 180px;
+}
+
+.google-btn {
+  width: 180px;
 }
