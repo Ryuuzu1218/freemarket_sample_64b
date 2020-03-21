@@ -1,3 +1,4 @@
+= render 'header'
 .wrapper-item
  .ex
   =form_with local: true  do |exh|
@@ -109,5 +110,5 @@
       %button.gobutton 出品する
      .ex__go__menu--back
       =link_to 'トップページへ',items_path 
-
+= render 'footer'
 

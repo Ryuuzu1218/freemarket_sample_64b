@@ -1,16 +1,44 @@
-.single-main
-  .login
-    .login__head-inner
-      %p アカウントをお持ちでない方はこちら
-      =link_to "新規会員登録", class: "btn-registration"
-    .login__form-inner
-      =link_to "Facebookでログイン","#", class: "btn-facebook"
-      =link_to "Googleでログイン", "#", class: "btn-google"
-      = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-        .field
-          = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "メールアドレス"
-        .field
-          = f.password_field :password, autocomplete: "current-password", placeholder: "パスワード"
-        .actions
-          = f.submit "ログイン", class: "btn-summit"
-        =link_to "パスワードをお忘れの方", new_password_path(resource_name), class: "forget-password"
+.main-sign
+  %header.header
+    .header__logo
+      = link_to image_tag("logo/logo.png", height: '50', width: '185', class: "header__logo--red"), root_path
+
+  .single-main
+    .login
+      .login__head-inner
+        %p
+          アカウントをお持ちでない方はこちら
+        = link_to "" do
+          新規会員登録
+      .login__form__inner
+        = link_to "#", class: "login__form__inner__btn login__form__inner__btn--facebook" do
+          = icon('fab', 'facebook-square', class:'icon')
+          Facebookでログイン
+        = link_to "#", class: "login__form__inner__btn login__form__inner__btn--google" do
+          = icon('fab', 'google', class:'icon')
+          Googleでログイン
+      .login__form__bottom
+        = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+          = f.email_field :email, placeholder: "メールアドレス", class: 'login__form__bottom__field'
+          = f.password_field :password, placeholder: "パスワード", class: 'login__form__bottom__field'
+          .login__form__bottom__robot
+            私はロボットではありません
+          .login__form__bottom__login
+            = f.submit "ログイン", class: "login__form__bottom__login"
+        .login__form__bottom__password
+          = link_to new_password_path(resource_name), class: "login__form__bottom__password" do
+            パスワードお忘れの方
+
+  .user-footer
+    .user-footer__center
+      %ul.menu
+        %li
+          = link_to "プライバシーポリシー", "#"
+        %li
+          = link_to "フリマ利用規約", "#"
+        %li
+          = link_to "特定商取引に関する表記", "#"
+      .user-footer__center__logo
+        = link_to image_tag("logo/logo.png", width:"40%", height:"40%",class:"footer__center__logo--red") ,"#"
+      %p.inc
+        ©︎ FURIMA.inc
