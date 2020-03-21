@@ -1,80 +1,33 @@
-.main
- .main__header
-  .main__header__mid
-   .main__header__mid__logo
-   = link_to image_tag '',class: "main__header__mid__logo__image"
+.main-sign
+  %header.header
+    .header__logo
+      = link_to image_tag("logo/logo.png", height: '50', width: '185', class:"header__logo--red"), root_path
 
-   .main__header__mid__bar
-    %ul.main__header__mid__bar__ul
-     %li.main__header__mid__bar__ul__l1
-      会員情報
-      .main__header__mid__bar__ul__l1__statu1
-     %li.main__header__mid__bar__ul__l2
-      電話番号認証
-      .main__header__mid__bar__ul__l2__statu2
-     %li.main__header__mid__bar__ul__l3
-      完了
-      .main__header__mid__bar__ul__l3__statu3
+  .new
+    .new__box 新規会員登録
+    .new__box__1
+      .new__box__1__2
+        = link_to "#", class: "new__box__1__2__btn new__box__1__2__btn--mail" do
+          = icon('far', 'envelope', class:'icon')
+          メールアドレスで登録する
+        = link_to "#", class: "new__box__1__2__btn new__box__1__2__btn--facebook" do
+          = icon('fab', 'facebook-square', class:'icon')
+          Facebookで登録する
+        = link_to "#", class: "new__box__1__2__btn new__box__1__2__btn--google" do
+          = icon('fab', 'google', class:'icon')
+          Googleで登録する
+  
 
-
- .main__top
-  .main__top__member-register
-   .main__top__member-register__1
-    %h2 会員情報登録入力
-  .main__top__form
-   = form_for "#" do |f|
-    .main__top__form__content
-     = f.label :"ニックネーム"
-     %span.main__top__form__content__field__reqire 必須
-     = f.text_field :nickname, class: "main__top__content__field__text-box", placeholder: "例)キャンプ太郎"
-    .main__top__form__content
-     = f.label :"メールアドレス"
-     %span.main__top__form__content__field__reqire 必須
-     = f.email_field :email, class: "main__top__content__field__text-box", placeholder: "例)XXX@gmail.com"
-    .main__top__form__content
-     = f.label :"パスワード"
-     %span.main__top__form__content__field__reqire 必須
-     = f.password_field class: "main__top__content__field__text-box", placeholder: "7文字以上の半角英数字"
-
-    .main__top__form__content__field__box
-     .main__top__form__content__field__box__name
-      = f.label :"お名前(全角)"
-      %span.main__top__form__content__field__reqire 必須
-      = f.text_field :first_name, class: "main__top__content__field__text-box", placeholder: "例)栄"
-     .main__top__form__content__field__box__lastname
-      = f.text_field :first_name, class: "main__top__content__field__text-box", placeholder: "例)太郎"
-    .main__top__form__content__field__box
-     .main__top__form__content__name__kana
-      = f.label :"お名前カナ(全角)"
-      %span.main__top__form__content__field__reqire 必須
-      = f.text_field :first_name, class: "main__top__content__field__text-box", placeholder: "例)サカエ"
-     .main__top__form__content__name__last_name__kana
-      = f.text_field :first_name, class: "main__top__content__field__text-box", placeholder: "例)タロウ"
-    .main__top__form__content__birthday
-     = f.label :"生年月日"
-     %span.main__top__form__content__field__reqire 必須
-     != sprintf(f.date_select(:birthday, prefix: 'birthday',with_css_classes:'XXXX', prompt:"--",user_month_numbers:true, start_year:Time.now.year, end_year:1900, date_separator:'%s'),'年','月')+'日'
-   
-    .main__top__form__content__field__text
-     %p.main__top__form__content__field__text--1 ＊本人情報は正しく入力してください。会員登録後、修正するにはお時間をいただく場合があります。
-    .main__top__form__content__field__text--2
-     「次に進む」のボタンを押すことにより、利用規約に同意したものとみなします
-    %a{ href: "#URL", class: "main__top__content__field__text--2--a"}利用規約
-    .main__top__form__content__field__actions
-    %a{ href: "#URL", class: "main__top__content__field__actions--a"}次に進む
-    .main__top__form__content__field__bottom
-    .main__top__form__content__field__bottom-2
-
-.footer
- .footer__center
-  %ul.menu
-   %li
-   = link_to "プライバシーポリシー","#"
-   %li
-   = link_to "メルカリ利用規約","#"
-   %li
-   = link_to "特定商取引に関する表記","#"
-  .footer__center__logo
-   = link_to image_tag '',class: "footer__center__logo--red"
-   %p.inc
-    ©︎ Mercari,Inc.
+  .user-footer
+    .user-footer__center
+      %ul.menu
+        %li
+          = link_to "プライバシーポリシー", "#"
+        %li
+          = link_to "フリマ利用規約", "#"
+        %li
+          = link_to "特定商取引に関する表記", "#"
+      .user-footer__center__logo
+        = link_to image_tag("logo/logo.png", width:"40%", height:"40%",class:"footer__center__logo--red2") ,"#"
+      %p.inc
+        ©︎ FURIMA.inc
