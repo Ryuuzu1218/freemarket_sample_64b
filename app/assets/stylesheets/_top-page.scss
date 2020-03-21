@@ -10,7 +10,6 @@
   background-position:top center;
   position: relative;
 
-
   &__content {
     width: 100%;
     margin: 0 auto;
@@ -112,9 +111,6 @@
         span {
           color: #3ccace;
         }
-      }
-      &__explanation {
-
       }
     }
   }
@@ -232,6 +228,8 @@
   &__subtitle {
     text-align: center;
     font-weight: bold;
+    font-size: 24px;
+    color: #3ccace;
   }
 
   &__lists {
@@ -245,36 +243,9 @@
       display: inline-block;
       &__link {
         display: inline-block;
-
+        text-decoration: none;
         &__body {
-          background-color: #white;
-          color: #333;
-          padding: 16px;
-    
-          &__name {
-            line-height: 1.5;
-            font-size: 16px;
-            text-align: left;
-          }
-
-          &__explanation {
-            font-size: 16px;
-
-            ul {
-              display: flex;
-              align-items: center;
-              justify-content: space-between;
-
-            }
-          }
-    &__list {
-      width: 220px;
-      display: inline-block;
-      &__link {
-        display: inline-block;
-
-        &__body {
-          background-color: #white;
+          background-color: white;
           color: #333;
           padding: 16px;
     
@@ -297,8 +268,6 @@
         }
       }
     }
-
-   
   }
 }
 
@@ -339,7 +308,6 @@
 }
 
 .exhibition {
-
   &__btn {
     width: 120px;
     background-color: #3ccace;
@@ -370,9 +338,4 @@
 
 .google-btn {
   width: 180px;
-}
-
-.fa-star {
-  display: inline-block;
-
 }
