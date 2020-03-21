@@ -5,17 +5,10 @@
     height: 130px;
     &__logo{
       height: 30%;
-      width: 15%;
       margin: auto;
       &--red{
         margin: 30px auto;
       }
-      // margin: 0 auto;
-      // text-align: center;
-      // height: 50px;
-      // line-height: 160px;
-      // vertical-align: middle;
-      // width: 200px;
     }
   }
   .single-main{
@@ -131,7 +124,6 @@
 
   .user-footer{
     background-color: #EEEEEE;
-    padding: 0 0;
     &__center{
       width: 450px;
       height: 220px;
