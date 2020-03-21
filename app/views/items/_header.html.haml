@@ -2,7 +2,7 @@
   .header__body
     .header__body__main
       .header__body__main__icon-area
-        = link_to image_tag("logo/logo.png", class: "header__body__main__icon-area__icon"), '#'
+        = link_to image_tag("logo/logo.png", class: "header__body__main__icon-area__icon"), root_path
       .header__body__main__search
         = form_with(url: "#", local: true, method: :get, class: "header__body__main__search__form") do |f|
           = f.text_field :keyword, placeholder: "キーワードから探す", class: "header__body__main__search__form__input"
@@ -17,6 +17,6 @@
           = link_to "ブランド", "#", class: "header-link"
       %ul.nav-right
         %li.nav-right__content.nav-right__content--login
-          = link_to "ログイン", "#", class: "header-link"
+          = link_to "ログイン", new_user_session_path, class: "header-link"
         %li.nav-right__content.nav-right__content--new
-          = link_to "新規会員登録", "#", class: "header-link"
+          = link_to "新規会員登録", new_user_registration_path, class: "header-link"
