@@ -87,7 +87,28 @@
   }
 }
 
-
+.user-footer{
+  background-color: #EEEEEE;
+  &__center{
+    width: 450px;
+    height: 220px;
+    margin: 0 auto;
+    padding: 40px 0 0;
+    text-align: center;
+    .menu{
+      display: flex;
+      justify-content: space-around;
+      a{
+        font-size: 12px;
+        color: black;
+        text-decoration: none;
+      }
+  }
+  &__logo{
+    margin: 40px auto 0;
+  }
+  .inc{
+    font-size: 13px;
       color: black;
     }
   }
