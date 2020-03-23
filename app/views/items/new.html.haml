@@ -93,7 +93,7 @@
       .ex__price__money--pay--mark
        ¥
       .ex__price__money--pay--form
-       =exh.text_field :title,class:'text-money',placeholder:'商品名を入力してください'
+       =exh.text_field :title,class:'text-money',placeholder:'希望金額を入力してください'
     .ex__price__fee
      .ex__price__fee--string
       手数料
@@ -109,6 +109,6 @@
      .ex__go__menu--done
       %button.gobutton 出品する
      .ex__go__menu--back
-      =link_to 'トップページへ',items_path 
+      =link_to 'トップページへ',items_path
 = render 'footer'
 
