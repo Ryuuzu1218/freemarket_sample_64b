@@ -15,8 +15,10 @@
         %span.must 必須
       .card-form__select
         .card-form__select__left
-          = f.select :month, ['01', '02', '03', '04'] 
+          = f.select :month, ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12']
+          = 
         .card-form__select__right
+
     .card-form
       .card-form__title
         = f.label :card_number, "セキュリティコード"
