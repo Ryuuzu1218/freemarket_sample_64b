@@ -1,2 +1,28 @@
-%h1 Card#new
-%p Find me in app/views/card/new.html.haml
+.card-content
+  %h2.card-content__title
+    クレジットカード情報入力
+  = form_with(url: "#", local: true, method: :get, class: "card-content__form") do |f|
+    .card-form
+      .card-form__title
+        = f.label :card_number, "カード番号" 
+        %span.must 必須
+      = f.text_field :card_number, placeholder: "半角数字のみ"
+    %ul.card-icon-lists
+      %li
+    .card-form
+      .card-form__title
+        = f.label :card_number, "有効期限"
+        %span.must 必須
+      .card-form__select
+        .card-form__select__left
+          = f.select :month, ['01', '02', '03', '04'] 
+        .card-form__select__right
+    .card-form
+      .card-form__title
+        = f.label :card_number, "セキュリティコード"
+        %span.must 必須
+      = f.text_field :card_number, placeholder: "カード背面４桁もしくは３桁の番号"
+        
+    = f.submit "追加する"
+
+
