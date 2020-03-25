@@ -325,6 +325,7 @@
       margin: 0 auto;
     }
   }
+
 }
 
 
@@ -389,6 +390,7 @@
   width: 620px;
   font-size: 16px;
   border-radius: 5px;
+
 }
 .label{
   width: 620px;
@@ -442,4 +444,17 @@ td{
   font-size:18px;
   color:white;
   border-radius: 8px;
+}
+.arround_red{
+  border-color: red;
+    }
+.bemust{
+  color:red;
+}
+.over{
+  color:red;
+}
+.select{
+height: 48px;
+width: 100%;
 }

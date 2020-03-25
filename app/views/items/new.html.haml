@@ -23,13 +23,13 @@
      .ex__intro__name--must.must
       必須
     .ex__intro__exp
-     =exh.text_field :name,class:'text-form',placeholder:'商品名を入力してください'
+     =exh.text_field :name,class:'text-form forms',placeholder:'商品名を入力してください'
     .ex__intro__exp--exp
      說明
      .ex__intro__exp--must.must
       必須
     .ex__intro__duce
-     =exh.text_field :explanation,class:'text-duce',placeholder:'商品の說明を入力してください'
+     =exh.text_area :explanation,class:'text-duce forms',placeholder:'商品の說明を入力してください'
     .ex__intro__strcount
      0/1,000
    .ex__detail
@@ -40,14 +40,22 @@
       カテゴリを選択してください
      .ex__detail__category--must.must
       必須
-    .ex__detail__category--select
-     %select{name: "category"}
-      %option{value: "選択肢1"} 選択肢のサンプル1
-      %option{value: "選択肢2"} 選択肢のサンプル2
-      %option{value: "選択肢3"} 選択肢のサンプル3
-      %option{value: "選択肢4"} 選択肢のサンプル4
-      %option{value: "選択肢5"} 選択肢のサンプル5
-
+    .ex__detail__category--select.select
+     %select{name: "category",class:'select'}
+      %option{value: "初期"} 選択してください
+      %option{value: "レディース"} レディース
+      %option{value: "メンズ"} メンズ
+      %option{value: "ベビー"} ベビー・キッズ
+      %option{value: "インテリア"} インテリア・住まい・小物
+      %option{value: "本"} 本・音楽・ゲーム
+      %option{value: "おもちゃ"} おもちゃ・ホビー・グッズ
+      %option{value: "コスメ"} コスメ・香水・美容
+      %option{value: "家電"} 家電・スマホ・カメラ
+      %option{value: "スポーツ"} スポーツ・レジャー
+      %option{value: "ハンドメイド"} ハンドメイド
+      %option{value: "チケット"} チケット
+      %option{value: "自動車"} 自動車・オートバイ
+      %option{value: "その他"} その他
     .ex__detail__brand
      .ex__detail__brand--in
       ブランドを選択してください
@@ -61,7 +69,14 @@
      .ex__detail__status--must.must
       必須
     .ex__detail__status--select
-     %select
+     %select{name: "status",class:'select'}
+      %option{value: "初期"}選択してください 
+      %option{value: "新品"} 新品、未使用
+      %option{value: "未使用に近い"} 未使用に近い
+      %option{value: "目立った傷なし"} やや傷や汚れあり
+      %option{value: "やや傷あり"} やや傷や汚れあり
+      %option{value: "傷汚れあり"} 傷や汚れあり
+      %option{value: "汚い"} 全体的に状態が悪い
    .ex__deliver
     .ex__deliver--first
      配送について
@@ -71,24 +86,80 @@
      .ex__deliver__fee--must.must
       必須
     .ex__deliver__fee--select
-     %select
+     %select{name: "fee",class:'select'}
+      %option{value: "初期"} 選択してください
+      %option{value: "送料込"} 送料込み（出品者負担）
+      %option{value: "着払い"} 着払い（購入者負担）
     .ex__deliver__land
      .ex__deliver__land--in
       配送先
      .ex__deliver__land--must.must
       必須
     .ex__deliver__land--select
-     %select
+     %select{name: "land",class:'select'}
+      %option{value: "初期"}選択してください 
+      %option{value: "北海道"} 北海道
+      %option{value: "青森"} 青森県
+      %option{value: "岩手"} 岩手県
+      %option{value: "宮城"} 宮城県
+      %option{value: "秋田"} 秋田県
+      %option{value: "山形"} 山形県
+      %option{value: "福島"} 福島県
+      %option{value: "茨城"} 茨城県
+      %option{value: "栃木"} 栃木県
+      %option{value: "群馬"} 群馬県
+      %option{value: "埼玉"} 埼玉県
+      %option{value: "千葉"} 千葉県
+      %option{value: "東京"} 東京都
+      %option{value: "神奈川"} 神奈川県
+      %option{value: "新潟"} 新潟県
+      %option{value: "富山"} 富山県
+      %option{value: "石川"} 石川県
+      %option{value: "福井"} 福井県
+      %option{value: "山梨"} 山梨県
+      %option{value: "長野"} 長野県
+      %option{value: "岐阜"} 岐阜県
+      %option{value: "静岡"} 静岡県
+      %option{value: "愛知"} 愛知県
+      %option{value: "三重"} 三重県
+      %option{value: "滋賀"} 滋賀県
+      %option{value: "京都"} 京都府
+      %option{value: "大阪"} 大阪府
+      %option{value: "兵庫"} 兵庫県
+      %option{value: "奈良"} 奈良県
+      %option{value: "和歌山"} 和歌山県
+      %option{value: "鳥取"} 鳥取県
+      %option{value: "島根"} 島根県
+      %option{value: "岡山"} 岡山県
+      %option{value: "広島"} 広島県
+      %option{value: "山口"} 山口県
+      %option{value: "徳島"} 徳島県
+      %option{value: "香川"} 香川県
+      %option{value: "愛媛"} 愛媛県
+      %option{value: "高知"} 高知県
+      %option{value: "福岡"} 福岡県
+      %option{value: "佐賀"} 佐賀県
+      %option{value: "長崎"} 長崎県
+      %option{value: "熊本"} 熊本県
+      %option{value: "大分"} 大分県
+      %option{value: "宮崎"} 宮崎県
+      %option{value: "鹿児島"} 鹿児島県
+      %option{value: "沖縄"} 沖縄県
+      %option{value: "未定"} 未定
     .ex__deliver__date
      .ex__deliver__date--in
       日数
      .ex__deliver__date--must.must
       必須
     .ex__deliver__date--select
-     %select
+     %select{name: "date",class:'select'}
+      %option{value: "初期"}選択してください 
+      %option{value: "1~2日"} 1~2日で発送
+      %option{value: "2~3日"} 2~3日で発送
+      %option{value: "4~7日"} 4~7日で発送
    .ex__price
     .ex__price--in
-     価格　(¥100~¥100,000)
+     価格　(¥300~¥10,000,000)
     .ex__price__money
      .ex__price__money__left
       .ex__price__money__left--string
@@ -99,7 +170,7 @@
       .ex__price__money--pay--mark
        ¥
       .ex__price__money--pay--form
-       =exh.text_field :title,class:'text-money',placeholder:'希望金額を入力してください'
+       =exh.text_field :title,class:'text-money money_form',placeholder:'希望金額を入力してください',type:"number"
     .ex__price__fee
      .ex__price__fee--string
       手数料
