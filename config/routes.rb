@@ -1,12 +1,7 @@
 Rails.application.routes.draw do
-  root "items#index"
   devise_for :users
   root 'items#index'
 resources :items
-resources :users do
-  collection do
-    get '_new2'
-    get '_new3'
-    end
-  end
+resources :users 
+resources :card, only: [:new, :show]
 end

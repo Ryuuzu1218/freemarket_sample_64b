@@ -41,7 +41,13 @@
      .ex__detail__category--must.must
       必須
     .ex__detail__category--select
-     %select 
+     %select{name: "category"}
+      %option{value: "選択肢1"} 選択肢のサンプル1
+      %option{value: "選択肢2"} 選択肢のサンプル2
+      %option{value: "選択肢3"} 選択肢のサンプル3
+      %option{value: "選択肢4"} 選択肢のサンプル4
+      %option{value: "選択肢5"} 選択肢のサンプル5
+
     .ex__detail__brand
      .ex__detail__brand--in
       ブランドを選択してください
@@ -93,7 +99,7 @@
       .ex__price__money--pay--mark
        ¥
       .ex__price__money--pay--form
-       =exh.text_field :title,class:'text-money',placeholder:'商品名を入力してください'
+       =exh.text_field :title,class:'text-money',placeholder:'希望金額を入力してください'
     .ex__price__fee
      .ex__price__fee--string
       手数料
@@ -109,6 +115,6 @@
      .ex__go__menu--done
       %button.gobutton 出品する
      .ex__go__menu--back
-      =link_to 'トップページへ',items_path 
+      =link_to 'トップページへ',items_path
 = render 'footer'
 
