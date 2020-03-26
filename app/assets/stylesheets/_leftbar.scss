@@ -1,0 +1,33 @@
+.mypage-main-conent{
+  background-color: #f5f5f5;
+  padding-left: 7rem;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  .left-content{
+    width: 280px;
+    margin: 0 40px 0 0;
+    &__menu{
+      margin: 0;
+      padding: 0;
+      background-repeat: no-repeat;
+      &__list{
+        display: block;
+        list-style: none;
+        &--item{
+          position: relative;
+          display: flex;
+          padding: 16px;
+          background: white;
+          font-size: 14px;
+          color: black;
+          text-decoration: none;
+          margin-bottom: 1px;
+        }
+        &__bar{
+          margin: 40px 0 5px;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+}
