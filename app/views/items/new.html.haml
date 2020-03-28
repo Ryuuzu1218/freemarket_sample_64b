@@ -13,8 +13,9 @@
     .ex__image--upload
      =exh.label :image ,class:'label' do
       .ex__image--upload--area
-       =exh.file_field :image, class: 'none'
-       =icon('fa','camera')
+       =exh.fields_for :item_images do |i|
+        =exh.file_field :image, class: 'none'
+        =icon('fa','camera')
        クリックして写真をアップロード
    .ex__intro
     .ex__intro__name

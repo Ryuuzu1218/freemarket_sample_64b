@@ -104,7 +104,7 @@ $(document).on('turbolinks:load', function() {
       }
     }
   });
-
+//金額を入力すると手数料と利益が自動計算される。
   $('input.money_form').on('keyup',function()
   {var money=$(".money_form").val()
    var fee=Math.floor(money*0.1)
@@ -117,7 +117,7 @@ $(document).on('turbolinks:load', function() {
   $(".text-duce").on("keyup", function() {
     //紹介文フォームでキーが打ち込まれたら紹介文の文字数をcountに設定。
   var count = $(this).val().replace(/\n/g, "改行").length;
-    文字数の所をフォームの文字数に変換する
+    //文字数の所をフォームの文字数に変換する
   $(".ex__intro__strcount").text(count + "/1,000");
   //1000文字超えたらエラーが出る。
   if (count > 1000) {
