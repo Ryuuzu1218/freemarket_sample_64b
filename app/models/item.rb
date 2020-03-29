@@ -7,9 +7,3 @@ class Item < ApplicationRecord
 # belongs_to :user
 # belongs_to :category
 end
-# =exh.label :image ,class:'label' do
-#   =exh.fields_for :item_images do |i|
-#    .ex__image--upload--area
-#     =i.file_field :image, class: 'none'
-#     =icon('fa','camera')
-#     クリックして写真をアップロード

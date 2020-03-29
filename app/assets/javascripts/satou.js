@@ -156,4 +156,65 @@ $(document).on('turbolinks:load', function() {
   })
 
 
+  //画像投稿で画像を入れたら次のフォームが出現する
+  const buildFileField = (index)=> {
+    const html = `<div data-index="${index}" class="js-file_group">
+                    <input class="js-file" type="file"
+                    name="product[images_attributes][${index}][src]"
+                    id="product_images_attributes_${index}_src"><br>
+                    <div class="js-remove">削除</div>
+                  </div>`;
+    return html;}
+    const buildImg = (index, url)=> {
+      const html = `<img data-index="${index}" image="${url}" width="100px" height="100px">`;
+      return html;}
+  // file_fieldのnameに動的なindexをつける為の配列
+  let fileIndex = [1,2,3,4,5,6,7,8,9,10];
+  // 既に使われているindexを除外
+  lastIndex = $('.js-file_group:last').data('index');
+  fileIndex.splice(0, lastIndex);
+  $('.hidden-destroy').hide();
+  $('#image-box').on('change', '.js-file', function(e) {
+    const targetIndex = $(this).parent().data('index');
+    // ファイルのブラウザ上でのURLを取得する
+    const file = e.target.files[0];
+    const blobUrl = window.URL.createObjectURL(file);
+    // 該当indexを持つimgタグがあれば取得して変数imgに入れる(画像変更の処理)
+    if (img = $(`img[data-index="${targetIndex}"]`)[0]) {
+      img.setAttribute('src', blobUrl);
+    } else {  // 新規画像追加の処理
+      $('#previews').append(buildImg(targetIndex, blobUrl));
+    // fileIndexの先頭の数字を使ってinputを作る
+    $('#image-box').append(buildFileField(fileIndex[0]));
+    fileIndex.shift();
+    // 末尾の数に1足した数を追加する
+    fileIndex.push(fileIndex[fileIndex.length - 1] + 1)}
+  });
+
+  $('#image-box').on('click', '.js-remove', function() {
+    const targetIndex = $(this).parent().data('index')
+    // 該当indexを振られているチェックボックスを取得する
+    const hiddenCheck = $(`input[data-index="${targetIndex}"].hidden-destroy`);
+    // もしチェックボックスが存在すればチェックを入れる
+    if (hiddenCheck) hiddenCheck.prop('checked', true);
+    $(this).parent().remove();
+    // 画像入力欄が0個にならないようにしておく
+    if ($('.js-file').length == 0) $('#image-box').append(buildFileField(fileIndex[0]));
+    $(`img[data-index="${targetIndex}"]`).remove();
+  });
 });
+
+    // .ex__image--upload#previews
+    //  -if @product.persisted?
+    // - @product.item_images.each_with_index do |image, i|
+    //  = image_tag image.image.url, data: { index: i }, width: "100", height: '100'
+    // .ex__image--upload#image-box
+    //  =exh.fields_for :item_images do |img|
+    //   .js-file_group{"data-index": "#{img.index}"}
+    //    = img.file_field :image, class: 'js-file'
+    //    %span.js-remove 削除
+    //   -if @item.persisted?
+    //    = img.check_box :_destroy, data:{ index: img.index }, class: 'hidden-destroy'
+    //   -if @item.persisted?
+    //    .js-file_group{"data-index" => "#{@item.item_images.count}"}
+    //    = file_field_tag :src, name: "product[images_attributes][#{@item.item_images.count}][image]", class: 'js-file'
