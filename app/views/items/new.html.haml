@@ -10,7 +10,10 @@
       必須
     .ex__image--photo
      画像は１０枚まで
-     
+    .ex__image--upload#previews
+     - if @item.persisted?
+      - @item.images.each_with_index do |image, i|
+       = image_tag image.src.url, data: { index: i }, width: "100", height: '100'
     .ex__image--upload#image-box
      =exh.fields_for :item_images do |img|
       .js-file_group{"data-index": "#{img.index}"}
@@ -20,7 +23,7 @@
        = img.check_box :_destroy, data:{ index: img.index }, class: 'hidden-destroy'
       -if @item.persisted?
        .js-file_group{"data-index" => "#{@item.item_images.count}"}
-       = file_field_tag :src, name: "product[images_attributes][#{@item.item_images.count}][image]", class: 'js-file'
+       = file_field_tag :image, name: "product[images_attributes][#{@item.item_images.count}][image]", class: 'js-file'
     -#  =exh.label :image ,class:'label' do
     -#   =exh.fields_for :item_images do |i|
     -#    .ex__image--upload--area
