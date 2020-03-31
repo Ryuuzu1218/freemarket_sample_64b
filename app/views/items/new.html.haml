@@ -24,12 +24,6 @@
       -if @item.persisted?
        .js-file_group{"data-index" => "#{@item.item_images.count}"}
        = file_field_tag :image, name: "product[images_attributes][#{@item.item_images.count}][image]", class: 'js-file'
-    -#  =exh.label :image ,class:'label' do
-    -#   =exh.fields_for :item_images do |i|
-    -#    .ex__image--upload--area
-    -#     =i.file_field :image
-    -#     =icon('fa','camera')
-    -#     クリックして写真をアップロード
    .ex__intro
     .ex__intro__name
      .ex__intro__name--exp

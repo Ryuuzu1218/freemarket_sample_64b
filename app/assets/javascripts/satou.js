@@ -205,17 +205,3 @@ $(document).on('turbolinks:load', function() {
   });
 });
 
-    // .ex__image--upload#previews
-    //  -if @product.persisted?
-    // - @product.item_images.each_with_index do |image, i|
-    //  = image_tag image.image.url, data: { index: i }, width: "100", height: '100'
-    // .ex__image--upload#image-box
-    //  =exh.fields_for :item_images do |img|
-    //   .js-file_group{"data-index": "#{img.index}"}
-    //    = img.file_field :image, class: 'js-file'
-    //    %span.js-remove 削除
-    //   -if @item.persisted?
-    //    = img.check_box :_destroy, data:{ index: img.index }, class: 'hidden-destroy'
-    //   -if @item.persisted?
-    //    .js-file_group{"data-index" => "#{@item.item_images.count}"}
-    //    = file_field_tag :src, name: "product[images_attributes][#{@item.item_images.count}][image]", class: 'js-file'
