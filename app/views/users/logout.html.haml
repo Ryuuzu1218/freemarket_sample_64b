@@ -1,13 +1,16 @@
 = render "items/header"
-.logout
-  .logout__content
-    .logout__content__1
-      .logout__content__1__inner
-        %form.logout__single--container
-          .logout__single--content
-            = link_to "ログアウト", root_path, class: "logout__single--content--btn"
-
-= render "users/leftbar"
+= render "users/breadcrumb"
+.mypage-main-conent
+  .mypage-main-index
+    = render "users/leftbar"
+  .right-content
+    .logout
+      .logout__content
+        .logout__content__1
+          .logout__content__1__inner
+            %form.logout__single--container
+              .logout__single--content
+                = link_to "ログアウト", root_path, class: "logout__single--content--btn"
 = render "items/banner"
 = render "items/exhibition-btn"
 = render "items/footer"
