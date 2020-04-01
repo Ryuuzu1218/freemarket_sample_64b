@@ -1,0 +1,25 @@
+.top-item-list {
+  background-color: #f8f8f8;
+  width: 100%;
+  .top-item-container {
+    padding: 42px 0 100px;
+    width: 780px;
+    margin: 0 auto;
+
+    &__title {
+      font-size: 22px;
+      line-height: 1.5;
+      font-weight: bold;
+    }
+
+    &__contents {
+      width: 100%;
+      .top-items--login {
+        display: flex;
+        flex-wrap: wrap;
+        height: 650px;
+        justify-content: space-between;
+      }
+    }
+  }
+}
