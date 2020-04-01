@@ -1,9 +1,20 @@
-.top-item-container
-  .top-teim-container__list
-    .top-item-container__list__title
+.top-item-list
+  .top-item-container
+    %h2.top-item-container__title
       レディース新着アイテム
-    .top-item-container__list__contents
+    .top-item-container__contents
       %ul.top-items.top-items--login
+        = render 'top-item'
+        = render 'top-item'
+        = render 'top-item'
+        = render 'top-item'
+        = render 'top-item'
+        = render 'top-item'
+    %h2.top-item-container__title
+      メンズ新着アイテム
+    .top-item-container__contents
+      %ul.top-items.top-items--login
+        = render 'top-item'
         = render 'top-item'
         = render 'top-item'
         = render 'top-item'
