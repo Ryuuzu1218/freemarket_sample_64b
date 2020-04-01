@@ -104,7 +104,7 @@ $(document).on('turbolinks:load', function() {
       }
     }
   });
-
+//金額を入力すると手数料と利益が自動計算される。
   $('input.money_form').on('keyup',function()
   {var money=$(".money_form").val()
    var fee=Math.floor(money*0.1)
@@ -117,7 +117,7 @@ $(document).on('turbolinks:load', function() {
   $(".text-duce").on("keyup", function() {
     //紹介文フォームでキーが打ち込まれたら紹介文の文字数をcountに設定。
   var count = $(this).val().replace(/\n/g, "改行").length;
-    文字数の所をフォームの文字数に変換する
+    //文字数の所をフォームの文字数に変換する
   $(".ex__intro__strcount").text(count + "/1,000");
   //1000文字超えたらエラーが出る。
   if (count > 1000) {
@@ -156,4 +156,52 @@ $(document).on('turbolinks:load', function() {
   })
 
 
+  //画像投稿で画像を入れたら次のフォームが出現する
+  const buildFileField = (index)=> {
+    const html = `<div data-index="${index}" class="js-file_group">
+                    <input class="js-file" type="file"
+                    name="item[item_images_attributes][${index}][image]"
+                    id="item_images_attributes_${index}_image">
+                    <span class="js-remove">削除</span>
+                  </div>`;
+    return html;}
+    const buildImg = (index, url)=> {
+      const html = `<img data-index="${index}" src="${url}" width="100px" height="100px">
+      <span class="js-remove">削除</span>`;
+      return html;}
+  // file_fieldのnameに動的なindexをつける為の配列
+  let fileIndex = [1,2,3,4,5,6,7,8,9,10];
+  // 既に使われているindexを除外
+  lastIndex = $('.js-file_group:last').data('index');
+  fileIndex.splice(0, lastIndex);
+  $('.hidden-destroy').hide();
+  $('#image-box').on('change', '.js-file', function(e) {
+    const targetIndex = $(this).parent().data('index');
+    // ファイルのブラウザ上でのURLを取得する
+    const file = e.target.files[0];
+    const blobUrl = window.URL.createObjectURL(file);
+    // 該当indexを持つimgタグがあれば取得して変数imgに入れる(画像変更の処理)
+    if (img = $(`img[data-index="${targetIndex}"]`)[0]) {
+      img.setAttribute('src', blobUrl);
+    } else {  // 新規画像追加の処理
+      $('#previews').append(buildImg(targetIndex, blobUrl));
+    // fileIndexの先頭の数字を使ってinputを作る
+    $('#image-box').append(buildFileField(fileIndex[0]));
+    fileIndex.shift();
+    // 末尾の数に1足した数を追加する
+    fileIndex.push(fileIndex[fileIndex.length - 1] + 1)}
+  });
+
+  $('#image-box').on('click', '.js-remove', function() {
+    const targetIndex = $(this).parent().data('index')
+    // 該当indexを振られているチェックボックスを取得する
+    const hiddenCheck = $(`input[data-index="${targetIndex}"].hidden-destroy`);
+    // もしチェックボックスが存在すればチェックを入れる
+    if (hiddenCheck) hiddenCheck.prop('checked', true);
+    $(this).parent().remove();
+    // 画像入力欄が0個にならないようにしておく
+    if ($('.js-file').length == 0) $('#image-box').append(buildFileField(fileIndex[0]));
+    $(`img[data-index="${targetIndex}"]`).remove();
+  });
 });
+
