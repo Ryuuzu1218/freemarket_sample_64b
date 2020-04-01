@@ -1,7 +1,7 @@
 = render 'header'
 .wrapper-item
  .ex
-  =form_with local: true  do |exh|
+  =form_with model:@item, url:items_path, local: true  do |exh|
    .ex__image
     .ex__image--title
      .ex__image--title--exp
@@ -10,12 +10,20 @@
       必須
     .ex__image--photo
      画像は１０枚まで
-    .ex__image--upload
-     =exh.label :image ,class:'label' do
-      .ex__image--upload--area
-       =exh.file_field :image, class: 'none'
-       =icon('fa','camera')
-       クリックして写真をアップロード
+    .ex__image--upload#previews
+     - if @item.persisted?
+      - @item.images.each_with_index do |image, i|
+       = image_tag image.src.url, data: { index: i }, width: "100", height: '100'
+    .ex__image--upload#image-box
+     =exh.fields_for :item_images do |img|
+      .js-file_group{"data-index": "#{img.index}"}
+       = img.file_field :image, class: 'js-file'
+       %span.js-remove 削除
+      -if @item.persisted?
+       = img.check_box :_destroy, data:{ index: img.index }, class: 'hidden-destroy'
+      -if @item.persisted?
+       .js-file_group{"data-index" => "#{@item.item_images.count}"}
+       = file_field_tag :image, name: "product[images_attributes][#{@item.item_images.count}][image]", class: 'js-file'
    .ex__intro
     .ex__intro__name
      .ex__intro__name--exp
@@ -170,7 +178,7 @@
       .ex__price__money--pay--mark
        ¥
       .ex__price__money--pay--form
-       =exh.text_field :title,class:'text-money money_form',placeholder:'希望金額を入力してください',type:"number"
+       =exh.text_field :price,class:'text-money money_form',placeholder:'希望金額を入力してください',type:"number"
     .ex__price__fee
      .ex__price__fee--string
       手数料
@@ -184,8 +192,7 @@
    .ex__go
     .ex__go__menu
      .ex__go__menu--done
-      %button.gobutton 出品する
+      =exh.submit "出品する",class:"gobutton"
      .ex__go__menu--back
       =link_to 'トップページへ',items_path
 = render 'footer'
-
