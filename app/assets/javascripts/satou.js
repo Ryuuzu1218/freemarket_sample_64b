@@ -104,7 +104,8 @@ $(document).on('turbolinks:load', function() {
       }
     }
   });
-//金額を入力すると手数料と利益が自動計算される。
+
+  //金額を入力すると手数料と利益が自動計算される。
   $('input.money_form').on('keyup',function()
   {var money=$(".money_form").val()
    var fee=Math.floor(money*0.1)
@@ -203,5 +204,8 @@ $(document).on('turbolinks:load', function() {
     if ($('.js-file').length == 0) $('#image-box').append(buildFileField(fileIndex[0]));
     $(`img[data-index="${targetIndex}"]`).remove();
   });
+
+  //カテゴリ１を選択したらカテゴリ２のフォームが出現する。
+  
 });
 
