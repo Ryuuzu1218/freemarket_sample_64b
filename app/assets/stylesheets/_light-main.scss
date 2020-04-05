@@ -1,0 +1,165 @@
+.right-main{
+  margin: 0 auto;
+  width: 720px;
+  height: 100%;
+  #back-image{
+    background-image: image-url("pict/watercolor_00083.jpg");
+    height: 200px;
+  }
+  .in-main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  &__block{
+    height: 200px;
+    background-color: #eee;
+    .user-icon{
+      border-radius: 50px;
+    }
+    &__user-name{
+      padding-top: 8px;
+      font-weight: bold;
+      font-size: 14px;
+      text-align: center;
+    }
+    &__user-about{
+      padding-top: 8px; 
+      text-align: center;
+      font-size: 14px;
+    }
+    &__review{
+      display: inline-block;
+      padding: 5px;
+      font-size: 14px;
+    }
+    &__exhibit{
+      display: inline-block;
+      padding: 5px;
+      font-size: 14px;
+    }
+    &__1{
+      height: 80px;
+      display: flex;
+      justify-content: center;
+      font-weight: bold;
+      background: white;
+      &__tab-heads{
+        display: flex;
+        text-align: left;
+        list-style: none;
+        height: 80px;
+        width: 720px;
+        background: white;
+      }
+      li{
+        list-style: none;
+        text-align: center;
+      }
+      &__active{
+        background-color: white;
+        width: 360px;
+        text-align: center;
+        padding: 30px;
+        height: 80px;
+      }
+      &__todo{
+        float: right;
+        width: 360px;
+        text-align: center;
+        padding: 30px;
+        background-color: #cccc;
+        height: 80px;
+      }
+    }
+    &--bar{
+      padding-top: 50px;
+      height: 600px;
+    }
+    &__object{
+      align-items: center;
+      margin-top: 1px;
+      &__link-box{
+        display: flex;
+        margin-bottom: 1px;
+        padding: 16px;
+        background: white;
+        height: 80px;
+        &__img{
+        }
+        &__body{
+          display: block;
+          &--text{
+            font-size: 14px;
+          }
+          &--time{
+            display: flex;
+            font-size: 14px;
+            &--date{
+              padding: 6px;
+            }
+          }
+          i{
+            text-align: center;
+            padding: 10px;
+        }
+      }
+        &__content{
+          background: #eee;
+          padding: 10px;
+          width: 500px;
+          text-align: center;
+          margin: auto;
+          height: 50px;
+          &__chart{
+            text-align: center;
+          }
+        }
+      }
+    }
+
+
+    &__2{
+      height: 70px;
+      display: flex;
+      font-weight: bold;
+      background: white;
+      margin-bottom: 1px;
+      &__bar{
+        display: block;
+        padding: 22px 11px;
+        font-size: 16px;
+      }
+      &__tab-heads{
+        display: flex;
+        text-align: left;
+        list-style: none;
+        height: 80px;
+        width: 720px;
+        background: white;
+        &__transaction{
+          background-color: white;
+          width: 360px;
+          text-align: center;
+          padding: 30px;
+        }
+        &__past{
+          float: right;
+          width: 360px;
+          text-align: center;
+          padding: 30px;
+          background-color: #cccc;
+        }
+      }
+      li{
+        list-style: none;
+      }
+      &__none{
+        height: 300px;
+        width: 720px;
+        background: white;
+      }
+    }
+  }
+}
