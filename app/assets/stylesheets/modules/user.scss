@@ -84,6 +84,16 @@
         }
       }
     }
+    &__3{
+      height: 50%;
+      width: 50%;
+      background-color: white;
+      margin: auto;
+      text-align: center;
+      &--message{
+        padding: 20px 0 0;
+      }
+    }
   }
 }
 
