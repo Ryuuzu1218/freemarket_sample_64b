@@ -159,6 +159,16 @@
         height: 300px;
         width: 720px;
         background: white;
+        &--list {
+          background-image: image-url("logo/logo.png");
+          background-repeat: no-repeat;
+          color: #ccc;
+          padding: 160px 0 60px;
+          background-position: center 40px;
+          background-size: 40%;
+          text-align: center;
+          font-size: 16px;
+        }
       }
     }
   }
