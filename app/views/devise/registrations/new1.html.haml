@@ -35,6 +35,10 @@
               %span.main__top__form__1__content__reqire 必須
               = f.password_field :password, class: "main__top__form__1__content__text-box", placeholder: "7文字以上の半角英数字"
             .main__top__form__1__content
+              = f.label :"パスワード(確認)"
+              %span.main__top__form__1__content__reqire 必須
+              = f.password_field :password, class: "main__top__form__1__content__text-box", placeholder: "7文字以上の半角英数字"
+            .main__top__form__1__content
               .main__top__form__1__content__box-name
                 = f.label :"お名前(全角)"
                 %span.main__top__form__1__content__reqire 必須
