@@ -1,52 +1,80 @@
 .main
- .main__header
-  .main__header__mid
-   .main__header__mid__logo
-    = image_tag '',class: "main__header__mid__logo"
+  .main__header
+    .main__header__logo
+      = link_to image_tag('logo/logo.png', height: '50px', width: '175px', class: "main__header__logo__image")
+    .main__header__bar
+      %ul.main__header__bar__ul
+        %li.main__header__bar__ul__l1
+          会員情報
+          .main__header__bar__ul__l1__statu1
+        %li.main__header__bar__ul__l2
+          住所登録
+          .main__header__bar__ul__l2__statu2
+        %li.main__header__bar__ul__l3
+          完了
+          .main__header__bar__ul__l3__statu3
 
-    .main__header__mid__bar
-     %ul.main__header__mid__bar__ul
-      %li.main__header__mid__bar__ul__l1
-       会員情報
-       .main__header__mid__bar__ul__l1__statu1
-      %li.main__header__mid__bar__ul__l2
-       電話番号認証
-       .main__header__mid__bar__ul__l2__statu2
-      %li.main__header__mid__bar__ul__l3
-       完了
-       .main__header__mid__bar__ul__l3__statu3
+  .main__top
+    .main__top__member-register
+      .main__top__member-register__1
+        %h2 住所入力
+      .main__top__form
+        .main__top__form__1
+          = form_for "#" do |f|
+            .main__top__form__1__content
+              .main__top__form__1__content__box-name
+                = f.label :"お名前"
+                %span.main__top__form__1__content__reqire 必須
+                = f.text_field :first_name, class: "main__top__form__1__content__text-box--1", placeholder: "例)栄"
+              .main__top__form__1__content__box-name__last
+                = f.text_field :last_name, class: "main__top__form__1__content__text-box--2", placeholder: "例)太郎"
+            .main__top__form__1__content
+              .main__top__form__1__content__box-name
+                = f.label :"お名前(カナ)"
+                %span.main__top__form__1__content__reqire 必須
+                = f.text_field :first_name, class: "main__top__form__1__content__text-box--1", placeholder: "例)サカエ"
+              .main__top__form__1__content__box-name__last
+                = f.text_field :last_name, class: "main__top__form__1__content__text-box--2", placeholder: "例)タロウ"
 
-.content
- .content-phone
-  .content-phone__number 電話番号の確認
-  = form_for "#" do |f|
- .content-form
-  .conrent-form__1
-    携帯番号の確認
-  = f.text_field :phone, type: "test", placeholder:"携帯電話の番号を入力", class: "content-form__1__text"
- .content-form__info
-  本人確認のため、携帯電話のSMS(ショートメッセージサービス)を利用して認証を行います。
- .content-form__btn
-  = f.submit "SMSを送信する", class: "content-form__btn__red"
- .content-form__pre
-  ＊電話番号は本人確認や不正利用防止のために利用します。他のユーザーに公開されることはありません。
- .content-form__text
-  = link_to "電話番号の確認が必要な理由", "#", class: "content-form__text__rea"
+            .main__top__form__1__content
+              %span.main__top__form__1__content__reqire 必須
+              = f.email_field :email, class: "main__top__form__1__content__text-box", placeholder: "例)XXX@gmail.com"
+            .main__top__form__1__content
+              = f.label :"市区町村"
+              %span.main__top__form__1__content__reqire 必須
+              = f.password_field :password, class: "main__top__form__1__content__text-box", placeholder: "例)名古屋市西区"
+            .main__top__form__1__content
+              = f.label :"番地"
+              %span.main__top__form__1__content__reqire 必須
+              = f.password_field :password, class: "main__top__form__1__content__text-box", placeholder: "例)3-2"
+            .main__top__form__1__content
+              = f.label :"建物名"
+              %span.main__top__form__1__content__reqire 任意
+              = f.password_field :password, class: "main__top__form__1__content__text-box", placeholder: "例)サカエビル3F"
+            .main__top__form__1__content
+              = f.label :"電話番号"
+              %span.main__top__form__1__content__reqire 必須
+              = f.password_field :password, class: "main__top__form__1__content__text-box", placeholder: "例)09012345678"
+            -# .main__top__form__1__content
+            -#   .main__top__form__1__content__box-name
+            -#     = f.label :"お名前(全角)"
+            -#     %span.main__top__form__1__content__reqire 必須
+            -#     = f.text_field :first_name, class: "main__top__form__1__content__text-box--1", placeholder: "例)栄"
+            -#   .main__top__form__1__content__box-name__last
+            -#     = f.text_field :last_name, class: "main__top__form__1__content__text-box--2", placeholder: "例)太郎"
 
-.footer
- .footer__center
-  %ul.menu
-   %li
-   = link_to "プライバシーポリシー","#"
-   %li
-   = link_to "メルカリ利用規約","#"
-   %li
-   = link_to "特定商取引に関する表記","#"
-  .footer__center__logo
-   =link_to image_tag("#", class:"footer__center__logo--red")
-  %p.inc
-   ©︎Mercari,Inc.
-
-
+.user-footer
+  .user-footer__center
+    %ul.menu
+      %li
+        = link_to "プライバシーポリシー", "#"
+      %li
+        = link_to "フリマ利用規約", "#"
+      %li
+        = link_to "特定商取引に関する表記", "#"
+    .user-footer__center__logo
+      = link_to image_tag("logo/logo.png", width:"40%", height:"40%",class:"footer__center__logo--red2") ,"#"
+    %p.inc
+      ©︎ FURIMA.inc
     
    
