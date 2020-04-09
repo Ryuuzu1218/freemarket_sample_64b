@@ -37,6 +37,10 @@
                 = f.text_field :last_name_kana, class: "main__top__form__1__content__text-box--2", placeholder: "例)タロウ"
 
             .main__top__form__1__content
+              = f.label :"郵便番号"
+              %span.main__top__form__1__content__reqire 必須
+              = f.text_field :prefecture, class: "main__top__form__1__content__text-box", placeholder: "例)4600008"
+            .main__top__form__1__content
               = f.label :"都道府県"
               %span.main__top__form__1__content__reqire 必須
               = f.email_field :prefecture, class: "main__top__form__1__content__text-box", placeholder: "例)愛知県"
