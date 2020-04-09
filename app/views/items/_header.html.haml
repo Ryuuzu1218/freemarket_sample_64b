@@ -16,9 +16,10 @@
         %li.nav-left__content
           = link_to "ブランド", "#", class: "header-link"
       %ul.nav-right
-        %if user_signed_in?
-          // マイページボタンなど
-        %else
+        - if user_signed_in?
+          %li.nav-right__content.nav-right__content--logoff
+            = link_to "マイページ", '#', class: "header-link"
+        - else
           %li.nav-right__content.nav-right__content--login
             = link_to "ログイン", new_user_session_path, class: "header-link"
           %li.nav-right__content.nav-right__content--new
