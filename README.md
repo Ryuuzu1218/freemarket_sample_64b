@@ -27,14 +27,11 @@
 |first_name_kana|string|null: false
 |last_name_kana|string|null: false
 |birthday|date|null: false|
-|postal_code|integer|null: false|
-|payment|string|null: false|
 |email|string|null: false|
-|phone|integer|null: false, foreign_key: true|
 |password|string|null: false|
-|money|integer|null: false|
-|image|string|null: false|
-|point|integer|null: false|
+|money|integer|default: 0|
+|image|string||
+|point|integer|default: 0|
 
 ### Association
 - has_many :evaluations, dependent: :destroy
@@ -140,10 +137,12 @@
 ## Address
 |Column|Type|Options|
 | ------------ | ------------ | ------------ |
+|postal_code|integer|null: false|
 |prefecture|string|null: false|
 |city|string|null: false|
 |town|string|null: false|
 |building|string||
+|phone|integer|
 |user|reference|null: false, foreign_key: true|
 
 ### Association
