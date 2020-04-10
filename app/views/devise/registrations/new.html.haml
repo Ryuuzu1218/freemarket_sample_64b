@@ -20,38 +20,38 @@
       .main__top__member-register__1
         %h2 会員情報入力
       .main__top__form
-        .main__top__form__1
+        .main__top__form__1#form-name
           = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
             .main__top__form__1__content
               = f.label :nickname, "ニックネーム"
               %span.main__top__form__1__content__reqire 必須
-              = f.text_field :nickname, class: "main__top__form__1__content__text-box", placeholder: "例)キャンプ太郎"
+              = f.text_field :nickname, class: "main__top__form__1__content__text-box validate[required]", placeholder: "例)キャンプ太郎"
             .main__top__form__1__content
               = f.label :"メールアドレス"
               %span.main__top__form__1__content__reqire 必須
-              = f.email_field :email, class: "main__top__form__1__content__text-box", placeholder: "例)XXX@gmail.com"
+              = f.email_field :email, class: "main__top__form__1__content__text-box validate[required]", placeholder: "例)XXX@gmail.com"
             .main__top__form__1__content
               = f.label :"パスワード"
               %span.main__top__form__1__content__reqire 必須
-              = f.password_field :password, class: "main__top__form__1__content__text-box", placeholder: "7文字以上の半角英数字"
+              = f.password_field :password, class: "main__top__form__1__content__text-box validate[required]", placeholder: "7文字以上の半角英数字"
             .main__top__form__1__content
               = f.label :"パスワード(確認)"
               %span.main__top__form__1__content__reqire 必須
-              = f.password_field :password_confirmation, class: "main__top__form__1__content__text-box", placeholder: "7文字以上の半角英数字"
+              = f.password_field :password_confirmation, class: "main__top__form__1__content__text-box validate[required]", placeholder: "7文字以上の半角英数字"
             .main__top__form__1__content
               .main__top__form__1__content__box-name
                 = f.label :"お名前(全角)"
                 %span.main__top__form__1__content__reqire 必須
               .main__top__form__1__content__box-name__last
-                = f.text_field :first_name, class: "main__top__form__1__content__text-box--1", placeholder: "例)栄"
-                = f.text_field :last_name, class: "main__top__form__1__content__text-box--2", placeholder: "例)太郎"
+                = f.text_field :first_name, class: "main__top__form__1__content__text-box--1 validate[required]", placeholder: "例)栄"
+                = f.text_field :last_name, class: "main__top__form__1__content__text-box--2 validate[required]", placeholder: "例)太郎"
             .main__top__form__1__content
               .main__top__form__1__content__name-kana
                 = f.label :"お名前カナ(全角)"
                 %span.main__top__form__1__content__reqire 必須
               .main__top__form__1__content__name-kana__kata
-                = f.text_field :first_name_kana, class: "main__top__form__1__content__text-box--1", placeholder: "例)サカエ"
-                = f.text_field :last_name_kana, class: "main__top__form__1__content__text-box--2", placeholder: "例)タロウ"
+                = f.text_field :first_name_kana, class: "main__top__form__1__content__text-box--1 validate[required]", placeholder: "例)サカエ"
+                = f.text_field :last_name_kana, class: "main__top__form__1__content__text-box--2 validate[required]", placeholder: "例)タロウ"
             .main__top__form__1__content
               .main__top__form__1__content__birthday
                 = f.label :"生年月日"

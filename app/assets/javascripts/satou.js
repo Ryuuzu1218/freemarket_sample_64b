@@ -41,7 +41,7 @@ $(document).on('turbolinks:load', function() {
   {
     let error;
     let value = $(this).val();
-    if(value == "初期")
+    if(value == "")
     {
       error = true;
     }
@@ -204,7 +204,9 @@ $(document).on('turbolinks:load', function() {
     if ($('.js-file').length == 0) $('#image-box').append(buildFileField(fileIndex[0]));
     $(`img[data-index="${targetIndex}"]`).remove();
   });
-
+  $(document).ready(function () {
+    $("#form-name").validationEngine();
+  });
   //カテゴリ１を選択したらカテゴリ２のフォームが出現する。
   
 });
