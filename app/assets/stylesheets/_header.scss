@@ -100,16 +100,23 @@
           padding: 0 0 0 16px;
 
           a {
+            display: block;
             color: #333;
             line-height: 38px;
             text-decoration: none;
           }
-          &--login {
 
-          }
+          .mypage-link {
+            display: flex;
+            justify-content: left;
+            align-items: center;
 
-          &--new {
-
+            &__image{
+              border-radius: 50px;
+              width: 40px;
+              height: 40px;
+              margin-right: 5px;
+            }
           }
         }
       }
