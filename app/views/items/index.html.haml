@@ -1,5 +1,8 @@
 = render 'header'
-= render 'item-list' 
+- if user_signed_in?
+  = render 'item-list' 
+- else 
+  = render 'toppage'
 = render 'banner'
 = render 'exhibition-btn'
 = render 'footer'
