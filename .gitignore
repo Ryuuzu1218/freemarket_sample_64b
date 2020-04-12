@@ -28,3 +28,6 @@
 git rm --cached /secrets.yml
 public/uploads/*
 app/viewsのコピー/*
+
+# APIキーはgithubにアップしない
+/.env
