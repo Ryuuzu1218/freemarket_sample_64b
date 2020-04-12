@@ -106,6 +106,7 @@
 |delivery_charge|string|null: false|
 |shipping_origin|string|null: false|
 |sending_days|integer|null: false|
+|transaction_status|integer|null: false|
 
 ### Association
 - has_many :evaluation, dependent: :destroy
