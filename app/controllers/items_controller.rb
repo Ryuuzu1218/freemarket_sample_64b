@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
   def index
     @parents = Category.all.where(ancestry:nil).order("id ASC").limit(13)
+    @items = Item.includes(:item_images).order('created_at DESC').limit(6).where.not(transaction_status: 0).where(transaction_status: 1)
   end
 
   def new
@@ -20,6 +21,7 @@ end
 
 
   def show
+    @item = Item.find(params[:id])
   end
 
   def edit
