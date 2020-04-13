@@ -21,9 +21,9 @@ class User < ApplicationRecord
 
   # 氏名、ふりがなは全角で入力すること
   # 全角カタカナ、ひらがな、漢字
-  validates :first_name, :last_name, { with: /\A[ぁ-んァ-ン一-龥]/ }
+  validates :first_name, :last_name, format: { with: /\A[ぁ-んァ-ン一-龥]/ }
   # 全角カタカナ
-  validates :first_name_kana, :last_name_kana, { with: /\A[ァ-ヶー－]+\z/ }
+  validates :first_name_kana, :last_name_kana, format: { with: /\A[ァ-ヶー－]+\z/ }
 
   # 一意性であること(ニックネーム、メールアドレス)
   validates :nickname, :email, uniqueness: true
