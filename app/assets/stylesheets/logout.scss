@@ -6,24 +6,23 @@
   float: right;
   padding-right: 7rem;
   &__content{
-    &__1{
-      padding: 85px;
-      background: white;
-      &--inner{
+    padding: 85px;
+    background: white;
+
+    &__container{
+      margin: 0 auto;
+      width: 320px;
+      height: 40px;
+  
+      &--btn{
+        display: inline-block;
+        width: 100%;
+        padding: 10px;
+        background: #3ccace; 
+        text-decoration: none;
+        text-align: center;
+        color: white;
       }
-    }
-  }
-  &__single--container{
-    margin: 0 auto;
-    width: 320px;
-  }
-  &__single--content{
-    padding: 10px;
-    background: #3ccace;
-    &--btn{
-      text-decoration: none;
-      text-align: center;
-      color: white;
     }
   }
 }

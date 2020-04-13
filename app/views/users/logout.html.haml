@@ -3,14 +3,13 @@
 .mypage-main-conent
   .mypage-main-index
     = render "users/leftbar"
+    
   .right-content
     .logout
       .logout__content
-        .logout__content__1
-          .logout__content__1__inner
-            %form.logout__single--container
-              .logout__single--content
-                = link_to "ログアウト", root_path, class: "logout__single--content--btn"
+        .logout__content__container
+          = link_to "ログアウト", destroy_user_session_path, method: :delete, class: "logout__content__container--btn"
+
 = render "items/banner"
 = render "items/exhibition-btn"
 = render "items/footer"
