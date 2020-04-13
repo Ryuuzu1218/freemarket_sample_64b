@@ -16,7 +16,13 @@
         %li.nav-left__content
           = link_to "ブランド", "#", class: "header-link"
       %ul.nav-right
-        %li.nav-right__content.nav-right__content--login
-          = link_to "ログイン", new_user_session_path, class: "header-link"
-        %li.nav-right__content.nav-right__content--new
-          = link_to "新規会員登録", new_user_registration_path, class: "header-link"
+        - if user_signed_in?
+          %li.nav-right__content.nav-right__content--in
+            = link_to user_path(current_user), class: "header-link mypage-link" do
+              = image_tag current_user.image, class: "mypage-link__image"
+              %p マイページ
+        - else
+          %li.nav-right__content.nav-right__content--out
+            = link_to "ログイン", new_user_session_path, class: "header-link"
+          %li.nav-right__content.nav-right__content--new
+            = link_to "新規会員登録", new_user_registration_path, class: "header-link"

@@ -1,6 +1,6 @@
 = render 'header'
 .wrapper-item
- .ex
+ .ex#form-name
   =form_with model:@item, url:items_path, local: true  do |exh|
    .ex__image
     .ex__image--title
@@ -15,7 +15,7 @@
       - @item.images.each_with_index do |image, i|
        = image_tag image.src.url, data: { index: i }, width: "100", height: '100'
     .ex__image--upload#image-box
-     =exh.fields_for :item_images do |img|
+     =exh.fields_for :item_images,class:"validate[required]" do |img|
       .js-file_group{"data-index": "#{img.index}"}
        = img.file_field :image, class: 'js-file'
        %span.js-remove 削除
@@ -31,13 +31,13 @@
      .ex__intro__name--must.must
       必須
     .ex__intro__exp
-     =exh.text_field :name,class:'text-form forms',placeholder:'商品名を入力してください'
+     =exh.text_field :name,class:'text-form forms validate[required] validate[maxSize] ',placeholder:'商品名を入力してください'
     .ex__intro__exp--exp
      說明
      .ex__intro__exp--must.must
       必須
     .ex__intro__duce
-     =exh.text_area :explanation,class:'text-duce forms',placeholder:'商品の說明を入力してください'
+     =exh.text_area :explanation,class:'text-duce forms validate[required]',placeholder:'商品の說明を入力してください'
     .ex__intro__strcount
      0/1,000
    .ex__detail
@@ -49,8 +49,8 @@
      .ex__detail__category--must.must
       必須
     .ex__detail__category--select.select
-     %select{name: "category",class:'select'}
-      %option{value: "初期"} 選択してください
+     %select{name: "category",class:'select validate[required]'}
+      %option{value: ""} 選択してください
       %option{value: "レディース"} レディース
       %option{value: "メンズ"} メンズ
       %option{value: "ベビー"} ベビー・キッズ
@@ -70,15 +70,15 @@
      .ex__detail__brand--free.free
       任意
     .ex__detail__brand--select
-     =exh.text_field :brand,class:'text-form',placeholder:'ブランド名を入力してください'
+     =exh.text_field :brand,class:'text-form ',placeholder:'ブランド名を入力してください'
     .ex__detail__status
      .ex__detail__status--in
       状態を選んでください
      .ex__detail__status--must.must
       必須
     .ex__detail__status--select
-     %select{name: "status",class:'select'}
-      %option{value: "初期"}選択してください 
+     %select{name: "status",class:'select validate[required]'}
+      %option{value: ""}選択してください 
       %option{value: "新品"} 新品、未使用
       %option{value: "未使用に近い"} 未使用に近い
       %option{value: "目立った傷なし"} 目立った傷や汚れなし
@@ -94,8 +94,8 @@
      .ex__deliver__fee--must.must
       必須
     .ex__deliver__fee--select
-     %select{name: "delivery_charge",class:'select'}
-      %option{value: "初期"} 選択してください
+     %select{name: "delivery_charge",class:'select validate[required]'}
+      %option{value: ""} 選択してください
       %option{value: "送料込"} 送料込み（出品者負担）
       %option{value: "着払い"} 着払い（購入者負担）
     .ex__deliver__land
@@ -104,8 +104,8 @@
      .ex__deliver__land--must.must
       必須
     .ex__deliver__land--select
-     %select{name: "prefecture",class:'select'}
-      %option{value: "初期"}選択してください 
+     %select{name: "prefecture",class:'select validate[required]'}
+      %option{value: ""}選択してください 
       %option{value: "北海道"} 北海道
       %option{value: "青森"} 青森県
       %option{value: "岩手"} 岩手県
@@ -160,8 +160,8 @@
      .ex__deliver__date--must.must
       必須
     .ex__deliver__date--select
-     %select{name: "date",class:'select'}
-      %option{value: "初期"}選択してください 
+     %select{name: "date",class:'select validate[required]'}
+      %option{value: ""}選択してください 
       %option{value: "1~2日"} 1~2日で発送
       %option{value: "2~3日"} 2~3日で発送
       %option{value: "4~7日"} 4~7日で発送
@@ -178,7 +178,7 @@
       .ex__price__money--pay--mark
        ¥
       .ex__price__money--pay--form
-       =exh.text_field :price,class:'text-money money_form',placeholder:'希望金額を入力してください',type:"number"
+       =exh.text_field :price,class:'text-money money_form validate[required]',placeholder:'希望金額を入力してください',type:"number"
     .ex__price__fee
      .ex__price__fee--string
       手数料
