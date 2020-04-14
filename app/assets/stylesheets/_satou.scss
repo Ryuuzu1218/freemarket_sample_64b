@@ -23,9 +23,8 @@
     &--upload--area{
       background-color: #dedede;
       height: 150px;
-      width: 620px;
+      width: 150px;
       margin: 0 auto;
-      line-height: 150px;
       text-align: center;
       border: 1px dashed;
     }
@@ -457,4 +456,10 @@ td{
 .select{
 height: 48px;
 width: 100%;
+}
+
+.js-file{
+ width: 110px;
+ height: 25px;
+ background-color: red;
 }

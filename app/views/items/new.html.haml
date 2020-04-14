@@ -17,13 +17,14 @@
     .ex__image--upload#image-box
      =exh.fields_for :item_images,class:"validate[required]" do |img|
       .js-file_group{"data-index": "#{img.index}"}
-       = img.file_field :image, class: 'js-file'
-       %span.js-remove 削除
-      -if @item.persisted?
-       = img.check_box :_destroy, data:{ index: img.index }, class: 'hidden-destroy'
-      -if @item.persisted?
-       .js-file_group{"data-index" => "#{@item.item_images.count}"}
-       = file_field_tag :image, name: "product[images_attributes][#{@item.item_images.count}][image]", class: 'js-file'
+       =img.label :item_images,class:'input-box'  do
+        =img.file_field :item_images, class: 'js-file none'
+        画像を追加する
+       -if @item.persisted?
+        =img.check_box :_destroy, data:{ index: img.index }, class: 'hidden-destroy'
+       -if @item.persisted?
+        .js-file_group{"data-index" => "#{@item.item_images.count}"}
+        = file_field_tag :image, name: "product[images_attributes][#{@item.item_images.count}][image]", class: 'js-file'
    .ex__intro
     .ex__intro__name
      .ex__intro__name--exp
