@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_13_151003) do
+ActiveRecord::Schema.define(version: 2020_04_14_141640) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "prefecture", null: false
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 2020_04_13_151003) do
     t.string "sending_last_name_kana", null: false
     t.integer "postal_code", null: false
     t.integer "phone"
+    t.integer "prefecture_id", null: false
     t.index ["user_id"], name: "index_addresses_on_user_id"
   end
 
@@ -52,13 +53,13 @@ ActiveRecord::Schema.define(version: 2020_04_13_151003) do
     t.integer "price", null: false
     t.text "explanation"
     t.string "brand"
-    t.string "condition", null: false
-    t.string "delivery_charge", null: false
-    t.string "shipping_origin", null: false
-    t.integer "sending_days", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "transaction_status", default: 1
+    t.integer "sending_days_id", null: false
+    t.integer "shipping_origin_id", null: false
+    t.integer "delivary_charge_id", null: false
+    t.integer "condition_id", null: false
     t.index ["category_id"], name: "index_items_on_category_id"
     t.index ["name"], name: "index_items_on_name"
     t.index ["user_id"], name: "index_items_on_user_id"
