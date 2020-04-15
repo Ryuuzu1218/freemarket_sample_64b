@@ -10,10 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_08_130125) do
+ActiveRecord::Schema.define(version: 2020_04_15_114151) do
 
-  create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "prefecture", null: false
+  create_table "Addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "city", null: false
     t.string "town", null: false
     t.string "building"
@@ -25,7 +24,8 @@ ActiveRecord::Schema.define(version: 2020_04_08_130125) do
     t.string "sending_first_name_kana", null: false
     t.string "sending_last_name_kana", null: false
     t.integer "postal_code", null: false
-    t.integer "phone"
+    t.string "phone"
+    t.integer "prefecture_id", null: false
     t.index ["user_id"], name: "index_addresses_on_user_id"
   end
 
@@ -52,12 +52,13 @@ ActiveRecord::Schema.define(version: 2020_04_08_130125) do
     t.integer "price", null: false
     t.text "explanation"
     t.string "brand"
-    t.string "condition", null: false
-    t.string "delivery_charge", null: false
-    t.string "shipping_origin", null: false
-    t.integer "sending_days", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "transaction_status", default: 1
+    t.integer "sending_days_id", null: false
+    t.integer "shipping_origin_id", null: false
+    t.integer "delivary_charge_id", null: false
+    t.integer "condition_id", null: false
     t.index ["category_id"], name: "index_items_on_category_id"
     t.index ["name"], name: "index_items_on_name"
     t.index ["user_id"], name: "index_items_on_user_id"
@@ -84,7 +85,7 @@ ActiveRecord::Schema.define(version: 2020_04_08_130125) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "addresses", "users"
+  add_foreign_key "Addresses", "users"
   add_foreign_key "item_images", "items"
   add_foreign_key "items", "categories"
   add_foreign_key "items", "users"

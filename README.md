@@ -102,10 +102,11 @@
 |price|integer|null: false|
 |explanation|text||
 |brand|string||
-|condition|string|null: false|
-|delivery_charge|string|null: false|
-|shipping_origin|string|null: false|
-|sending_days|integer|null: false|
+
+|condition_id|integer|null: false|
+|delivery_charge_id|integer|null: false|
+|shipping_origin_id|integer|null: false|
+|sending_days_id|integer|null: false|
 
 ### Association
 - has_many :evaluation, dependent: :destroy
@@ -138,7 +139,7 @@
 |Column|Type|Options|
 | ------------ | ------------ | ------------ |
 |postal_code|integer|null: false|
-|prefecture|string|null: false|
+|prefecture_id|integer|null: false|
 |city|string|null: false|
 |town|string|null: false|
 |building|string||
