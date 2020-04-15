@@ -5,37 +5,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
-  def new
-    @user=User.new
-  end
+  # def new
+  #   super
+  # end
 
-  def create
-    @user = User.new(sign_up_params)
-    unless @user.valid?
-      render :new and return
-    end
-    binding.pry
-    session["devise.regist_data"] = {user: @user.attributes}
-    session["devise.regist_data"][:user]["password"] = params[:user][:password]
-    @address = @user.build_address
-    binding.pry
-    render :new2
-  end
-
-  def new3
-    @user = User.new(session["devise.regist_data"]["user"])
-    @address = Address.new(address_params)
-    binding.pry
-    unless @address.valid?
-      flash.now[:alert] = @address.errors.full_messages
-      render :new_address and return
-    end
-    @user.build_address(@address.attributes)
-    @user.save
-    session["devise.regist_data"]["user"].clear
-    sign_in(:user, @user)
-  end
-
+  # POST /resource
+  # def create
+  #   super
+  # end
 
   # GET /resource/edit
   # def edit
@@ -82,9 +59,15 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
-  protected
+  def new1
+    
+  end
 
-  def address_params
-    params.require(:address).permit(:sending_first_name, :sending_last_name, :sending_first_name_kana, :sending_last_name_kana, :postal_code, :prefecture, :city, :town, :building, :phone)
+  def new2
+    
+  end
+
+  def new3
+    
   end
 end

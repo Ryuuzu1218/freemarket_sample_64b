@@ -19,8 +19,10 @@
         - if user_signed_in?
           %li.nav-right__content.nav-right__content--in
             = link_to user_path(current_user), class: "header-link mypage-link" do
-              = image_tag current_user.image.url, class: "mypage-link__image" if current_user.image.present?
-              %p #{current_user.nickname}
+              -# %img{src: "current_user.image",class: "mypage-link__image"}
+
+              = image_tag current_user.image, class: "mypage-link__image" if current_user.image.present?
+              %p マイページ
         - else
           %li.nav-right__content.nav-right__content--out
             = link_to "ログイン", new_user_session_path, class: "header-link"
