@@ -102,6 +102,7 @@
 |price|integer|null: false|
 |explanation|text||
 |brand|string||
+
 |condition_id|integer|null: false|
 |delivery_charge_id|integer|null: false|
 |shipping_origin_id|integer|null: false|
