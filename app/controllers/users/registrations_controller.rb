@@ -83,6 +83,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super(resource)
   # end
   protected
+  # def sign_up_params
+  #   params.require(:user).permit(:first_name, :last_name, :first_name_kana, :last_name_kana, :nickname, :birthday, :money, :image, :point)
+  # end
 
   def address_params
     params.require(:address).permit(:sending_first_name, :sending_last_name, :sending_first_name_kana, :sending_last_name_kana, :postal_code, :prefecture, :city, :town, :building, :phone)
