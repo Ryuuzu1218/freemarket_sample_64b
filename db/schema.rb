@@ -52,6 +52,8 @@ ActiveRecord::Schema.define(version: 2020_04_15_114151) do
     t.integer "price", null: false
     t.text "explanation"
     t.string "brand"
+    t.string "shipping_origin", null: false
+    t.integer "sending_days", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "transaction_status", default: 1

@@ -44,7 +44,7 @@
             .main__top__form__1__content
               = f.label :"都道府県"
               %span.main__top__form__1__content__reqire 必須
-              = f.text_field :prefecture, class: "main__top__form__1__content__text-box validate[required]", placeholder: "例)愛知県"
+              = f.collection_select :prefecture_id, Prefecture.all, :id, :name, prompt: "--"
             .main__top__form__1__content
               = f.label :"市区町村"
               %span.main__top__form__1__content__reqire 必須
