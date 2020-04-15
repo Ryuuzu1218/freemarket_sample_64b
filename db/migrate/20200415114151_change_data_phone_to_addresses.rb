@@ -1,5 +1,5 @@
 class ChangeDataPhoneToAddresses < ActiveRecord::Migration[5.2]
   def change
-    change_column :Addresses, :phone, :string
+    change_column :addresses, :phone, :string
   end
 end
