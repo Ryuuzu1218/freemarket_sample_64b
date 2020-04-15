@@ -14,15 +14,18 @@ class Users::RegistrationsController < Devise::RegistrationsController
     unless @user.valid?
       render :new and return
     end
+    binding.pry
     session["devise.regist_data"] = {user: @user.attributes}
     session["devise.regist_data"][:user]["password"] = params[:user][:password]
     @address = @user.build_address
+    binding.pry
     render :new2
   end
 
   def new3
     @user = User.new(session["devise.regist_data"]["user"])
     @address = Address.new(address_params)
+    binding.pry
     unless @address.valid?
       flash.now[:alert] = @address.errors.full_messages
       render :new_address and return
@@ -80,6 +83,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super(resource)
   # end
   protected
+  # def sign_up_params
+  #   params.require(:user).permit(:first_name, :last_name, :first_name_kana, :last_name_kana, :nickname, :birthday, :money, :image, :point)
+  # end
 
   def address_params
     params.require(:address).permit(:sending_first_name, :sending_last_name, :sending_first_name_kana, :sending_last_name_kana, :postal_code, :prefecture, :city, :town, :building, :phone)
