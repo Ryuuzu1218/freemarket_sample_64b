@@ -26,20 +26,20 @@
                 = f.label :"お名前"
                 %span.main__top__form__1__content__reqire 必須
               .main__top__form__1__content__box-name__last
-                = f.text_field :first_name, class: "main__top__form__1__content__text-box--1 validate[required]", placeholder: "例)栄"
-                = f.text_field :last_name, class: "main__top__form__1__content__text-box--2 validate[required]", placeholder: "例)太郎"
+                = f.text_field :sending_first_name, class: "main__top__form__1__content__text-box--1 validate[required]", placeholder: "例)栄"
+                = f.text_field :sending_last_name, class: "main__top__form__1__content__text-box--2 validate[required]", placeholder: "例)太郎"
             .main__top__form__1__content
               .main__top__form__1__content__box-name
                 = f.label :"お名前(カナ)"
                 %span.main__top__form__1__content__reqire 必須
               .main__top__form__1__content__box-name__last
-                = f.text_field :first_name_kana, class: "main__top__form__1__content__text-box--1 validate[required]", placeholder: "例)サカエ"
-                = f.text_field :last_name_kana, class: "main__top__form__1__content__text-box--2 validate[required]", placeholder: "例)タロウ"
+                = f.text_field :sending_first_name_kana, class: "main__top__form__1__content__text-box--1 validate[required]", placeholder: "例)サカエ"
+                = f.text_field :sending_last_name_kana, class: "main__top__form__1__content__text-box--2 validate[required]", placeholder: "例)タロウ"
 
             .main__top__form__1__content
               = f.label :"郵便番号"
               %span.main__top__form__1__content__reqire 必須
-              = f.text_field :zipcode, class: "main__top__form__1__content__text-box validate[required]", placeholder: "例)５１０８０２２"
+              = f.text_field :postal_code, class: "main__top__form__1__content__text-box validate[required]", placeholder: "例)５１０８０２２"
             .main__top__form__1__content
               = f.label :"都道府県"
               %span.main__top__form__1__content__reqire 必須
@@ -51,7 +51,7 @@
             .main__top__form__1__content
               = f.label :"番地"
               %span.main__top__form__1__content__reqire 必須
-              = f.password_field :address, class: "main__top__form__1__content__text-box validate[required]", placeholder: "例)3-2"
+              = f.password_field :town, class: "main__top__form__1__content__text-box validate[required]", placeholder: "例)3-2"
             .main__top__form__1__content
               = f.label :"建物名"
               %span.main__top__form__1__content__reqire--1 任意
