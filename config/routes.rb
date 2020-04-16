@@ -13,7 +13,14 @@ Rails.application.routes.draw do
   #   get 'users/new2', to: "devise/registrations#new2"
   #   get 'users/new3', to: "devise/registrations#new3"
   # end
-  resources :items
+
+  # itemコントローラーrouting
+  resources :items do
+    collection do
+      get 'category_search'
+    end
+  end
+
   resources :users, only: [:show] do
     collection do
       get :logout
