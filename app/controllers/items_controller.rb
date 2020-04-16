@@ -34,6 +34,18 @@ end
       render :edit
     end
   end
+
+  def category_search
+    respond_to do |format|
+      format.html
+      format.json do
+        @children = Category.find([:parent_id]).children
+        @grandchildren = Category.find([:children_id]).children
+      end
+  end
+
+
+
   private
 
   def item_params
