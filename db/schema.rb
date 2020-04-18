@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2020_04_15_114151) do
 
-  create_table "Addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "city", null: false
     t.string "town", null: false
     t.string "building"
@@ -79,13 +79,13 @@ ActiveRecord::Schema.define(version: 2020_04_15_114151) do
     t.string "last_name_kana", null: false
     t.date "birthday", null: false
     t.integer "money", default: 0
-    t.string "image"
+    t.text "image"
     t.integer "point", default: 0
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "Addresses", "users"
+  add_foreign_key "addresses", "users"
   add_foreign_key "item_images", "items"
   add_foreign_key "items", "categories"
   add_foreign_key "items", "users"

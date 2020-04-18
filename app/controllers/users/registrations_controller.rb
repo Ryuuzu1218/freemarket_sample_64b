@@ -10,7 +10,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def create
-    @user = User.new(sign_up_params)
+    @user = User.new(user_params)
     unless @user.valid?
       render :new and return
     end
@@ -27,6 +27,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       flash.now[:alert] = @address.errors.full_messages
       render :new_address and return
     end
+  
     @user.build_address(@address.attributes)
     @user.save
     session["devise.regist_data"]["user"].clear
@@ -83,5 +84,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def address_params
     params.require(:address).permit(:sending_first_name, :sending_last_name, :sending_first_name_kana, :sending_last_name_kana, :postal_code, :prefecture_id, :city, :town, :building, :phone)
+  end
+  def user_params
+    params.require(:user).permit(:nickname, :email, :password, :password_confirmation, :first_name, :last_name, :first_name_kana, :last_name_kana,:image, :birthday)
   end
 end

@@ -1,7 +1,7 @@
 .right-main
   .right-main__block#back-image.in-main
-    = image_tag 'pict/cat-111793_640.jpg', height: '60', width: '60', alt: 'user-icon', class: 'user-icon'
-    .right-main__block__user-name cat
+    = image_tag current_user.image.url, height: '60', width: '60', alt: 'user-icon', class: 'user-icon'
+    .right-main__block__user-name #{current_user.nickname}
     .right-main__block__user-about
       .right-main__block__review 評価
       .right-main__block__exhibit 出品数
