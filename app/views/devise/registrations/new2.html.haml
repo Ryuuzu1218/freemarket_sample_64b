@@ -44,7 +44,7 @@
             .main__top__form__1__content
               = f.label :"都道府県"
               %span.main__top__form__1__content__reqire 必須
-              = f.collection_select :prefecture_id, Prefecture.all, :id, :name, prompt: "--"
+              = f.collection_select :prefecture_id, Prefecture.all, :id, :name, {prompt: "--"},{class:"  select validate[required]"}
             .main__top__form__1__content
               = f.label :"市区町村"
               %span.main__top__form__1__content__reqire 必須
