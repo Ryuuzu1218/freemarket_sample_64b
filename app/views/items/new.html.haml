@@ -77,14 +77,7 @@
      .ex__detail__status--must.must
       必須
     .ex__detail__status--select
-     %select{name: "status",class:'select validate[required]'}
-      %option{value: ""}選択してください 
-      %option{value: "新品"} 新品、未使用
-      %option{value: "未使用に近い"} 未使用に近い
-      %option{value: "目立った傷なし"} 目立った傷や汚れなし
-      %option{value: "やや傷あり"} やや傷や汚れあり
-      %option{value: "傷汚れあり"} 傷や汚れあり
-      %option{value: "汚い"} 全体的に状態が悪い
+     = exh.collection_select :condition_id, Condition.all, :id, :name, {prompt: "--"},{class:"  select validate[required]"}
    .ex__deliver
     .ex__deliver--first
      配送について
@@ -94,77 +87,21 @@
      .ex__deliver__fee--must.must
       必須
     .ex__deliver__fee--select
-     %select{name: "delivery_charge",class:'select validate[required]'}
-      %option{value: ""} 選択してください
-      %option{value: "送料込"} 送料込み（出品者負担）
-      %option{value: "着払い"} 着払い（購入者負担）
+     = exh.collection_select :delivery_charge_id, DeliveryCharge.all, :id, :name, {prompt: "--"},{class:"  select validate[required]"}
     .ex__deliver__land
      .ex__deliver__land--in
       配送先
      .ex__deliver__land--must.must
       必須
     .ex__deliver__land--select
-     %select{name: "prefecture",class:'select validate[required]'}
-      %option{value: ""}選択してください 
-      %option{value: "北海道"} 北海道
-      %option{value: "青森"} 青森県
-      %option{value: "岩手"} 岩手県
-      %option{value: "宮城"} 宮城県
-      %option{value: "秋田"} 秋田県
-      %option{value: "山形"} 山形県
-      %option{value: "福島"} 福島県
-      %option{value: "茨城"} 茨城県
-      %option{value: "栃木"} 栃木県
-      %option{value: "群馬"} 群馬県
-      %option{value: "埼玉"} 埼玉県
-      %option{value: "千葉"} 千葉県
-      %option{value: "東京"} 東京都
-      %option{value: "神奈川"} 神奈川県
-      %option{value: "新潟"} 新潟県
-      %option{value: "富山"} 富山県
-      %option{value: "石川"} 石川県
-      %option{value: "福井"} 福井県
-      %option{value: "山梨"} 山梨県
-      %option{value: "長野"} 長野県
-      %option{value: "岐阜"} 岐阜県
-      %option{value: "静岡"} 静岡県
-      %option{value: "愛知"} 愛知県
-      %option{value: "三重"} 三重県
-      %option{value: "滋賀"} 滋賀県
-      %option{value: "京都"} 京都府
-      %option{value: "大阪"} 大阪府
-      %option{value: "兵庫"} 兵庫県
-      %option{value: "奈良"} 奈良県
-      %option{value: "和歌山"} 和歌山県
-      %option{value: "鳥取"} 鳥取県
-      %option{value: "島根"} 島根県
-      %option{value: "岡山"} 岡山県
-      %option{value: "広島"} 広島県
-      %option{value: "山口"} 山口県
-      %option{value: "徳島"} 徳島県
-      %option{value: "香川"} 香川県
-      %option{value: "愛媛"} 愛媛県
-      %option{value: "高知"} 高知県
-      %option{value: "福岡"} 福岡県
-      %option{value: "佐賀"} 佐賀県
-      %option{value: "長崎"} 長崎県
-      %option{value: "熊本"} 熊本県
-      %option{value: "大分"} 大分県
-      %option{value: "宮崎"} 宮崎県
-      %option{value: "鹿児島"} 鹿児島県
-      %option{value: "沖縄"} 沖縄県
-      %option{value: "未定"} 未定
+     = exh.collection_select :shipping_origin_id, Prefecture.all, :id, :name, {prompt: "--"},{class:"  select validate[required]"}
     .ex__deliver__date
      .ex__deliver__date--in
       日数
      .ex__deliver__date--must.must
       必須
     .ex__deliver__date--select
-     %select{name: "date",class:'select validate[required]'}
-      %option{value: ""}選択してください 
-      %option{value: "1~2日"} 1~2日で発送
-      %option{value: "2~3日"} 2~3日で発送
-      %option{value: "4~7日"} 4~7日で発送
+     = exh.collection_select :sending_days_id, SendingDays.all, :id, :name, {prompt: "--"},{class:"  select validate[required]"}
    .ex__price
     .ex__price--in
      価格　(¥300~¥10,000,000)
