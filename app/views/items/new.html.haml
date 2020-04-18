@@ -43,19 +43,22 @@
    .ex__detail
     .ex__detail--first
      商品詳細
+     // カテゴリ
     .ex__detail__category
      .ex__detail__category--in
       カテゴリを選択してください
      .ex__detail__category--must.must
       必須
-    = exh.collection_select :category_ids, @parents, :id, :name,{prompt: "選択してください"}, class: "ex__detail__category--select select", id: "parent-form", name: 'item[category_ids][]'
+      .ex__detail__ctegory__box
+      = exh.select :category, @category_parent_array, {}, {class: 'ex__detail__category__box--select select', id: 'parent-form'}
+    // ブランド
     .ex__detail__brand
      .ex__detail__brand--in
       ブランドを選択してください
      .ex__detail__brand--free.free
       任意
     .ex__detail__brand--select
-     =exh.text_field :brand,class:'text-form ',placeholder:'ブランド名を入力してください'
+     =exh.text_field :brand,class:'text-form',placeholder:'ブランド名を入力してください'
     .ex__detail__status
      .ex__detail__status--in
       状態を選んでください
