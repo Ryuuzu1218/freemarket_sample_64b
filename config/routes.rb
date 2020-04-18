@@ -17,7 +17,8 @@ Rails.application.routes.draw do
   # itemコントローラーrouting
   resources :items do
     collection do
-      get 'category_search'
+      get 'category_children', defaults: { format: 'json' }
+      get 'category_grandchildren', defaults: { format: 'json' }
     end
   end
 
