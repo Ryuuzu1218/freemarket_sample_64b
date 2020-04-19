@@ -16,7 +16,7 @@ $(function() {
   function grandchildrenBox(buildHTML){
     let grandchildSelectHtml = '';
     grandchildSelectHtml = `<select class='ex__detail__category__box--select select' id='grandchild-form' name = 'category_id'>
-                              <option value="選択してください" data-category="選択してください">"選択してください"</option>
+                              <option value="選択してください" data-category="選択してください">選択してください</option>
                                 ${buildHTML}
                               <select>`;
     $('.ex__detail__category__box').append(grandchildSelectHtml);
