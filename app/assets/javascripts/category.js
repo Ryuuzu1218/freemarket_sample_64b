@@ -1,3 +1,7 @@
+// グローバルスコープ
+childSelcector = $('#child-form')
+grandchildSelector = $('#grandchild-form')
+
 $(function() {
   function options(category){ // option生成
     let html = `<option value="${category.name}" data-category="${category.id}">${category.name}</option>`;
@@ -37,8 +41,8 @@ $(function() {
       })
       //成功時
       .done(function(children){
-        $('#child-form').remove(); // 子を削除
-        $('#grandchild-form').remove(); // 孫を削除
+        childSelcector.remove(); // 子を削除
+        grandchildSelector.remove(); // 孫を削除
         let buildHTML = '';
         children.forEach(function(child){
           buildHTML += options(child);
@@ -49,8 +53,8 @@ $(function() {
         alert('カテゴリー取得に失敗しました');
       })
     }else{ // 親が初期値の時
-      $('#child-form').remove(); 
-      $('#grandchild-form').remove();
+      childSelcector.remove(); 
+      grandchildSelector.remove();
     }
   });
 
@@ -66,7 +70,7 @@ $(function() {
       })
       .done(function(grandchildren){
         if (grandchildren.length != 0) {
-          $('#grandchild-form').remove();
+          grandchildSelector.remove();
           let buildHTML = '';
           grandchildren.forEach(function(grandchild){
             buildHTML += options(grandchild);
@@ -78,7 +82,7 @@ $(function() {
         alert('カテゴリー取得に失敗しました');
       })
     }else{
-      $('#grandchild-form').remove();
+      grandchildSelector.remove();
     }
   });
 });
