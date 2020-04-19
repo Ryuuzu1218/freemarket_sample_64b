@@ -63,6 +63,13 @@
     &__category{
       display: flex;
       margin: 20px 0 10px 0;
+
+      &__box{
+        
+        &--select{
+          margin-bottom: 10px;
+        }
+      }
     }
     &__brand{
       display: flex;
