@@ -51,7 +51,7 @@ end
     respond_to do |format|
       format.html
       format.json do
-        @category_grandchildren = Category.find("#{params[:child_id]}").children
+        @category_grandchildren = Category.find(params[:child_id]).children
       end
     end
   end
