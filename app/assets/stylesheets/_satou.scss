@@ -209,6 +209,16 @@
     font-size: 14px;
     border-collapse: collapse;
     padding-bottom: 30px;
+
+    .table__category--td {
+      
+      a {
+        text-decoration: none;
+        color:#0000ee;
+      }
+    }
+
+
   }
   &__good--button{
     width: 120px;
