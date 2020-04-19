@@ -21,7 +21,7 @@
         %h2 会員情報入力
       .main__top__form
         .main__top__form__1#form-name
-          = form_for(@user, url: user_registration_path) do |f|
+          = form_for(@user, url: user_registration_path,:multipart => true) do |f|
             = render "devise/shared/error_messages", resource: @user
             .main__top__form__1__content
               = f.label :nickname, "ニックネーム"
@@ -61,7 +61,7 @@
                 = f.date_select :birthday, use_month_numbers: true,start_year: 1930, end_year: (Time.now.year - 10), default: Date.new(1989, 1, 1)
                 .main__top__form__1__content
               .main__top__form__1__content__image
-                = f.label :"プロフィール画像"
+                = f.label :"image"
               .main__top__form__1__content__image__1
                 = f.file_field :image, class: "main__top__form__1__content__text-box"
             .main__top__form__1__content__text
