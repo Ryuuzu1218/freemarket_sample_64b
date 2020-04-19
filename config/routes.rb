@@ -8,12 +8,6 @@ Rails.application.routes.draw do
   end
   root 'items#index'
 
-  # devise_scope :user do
-  #   get 'users/new1', to: "devise/registrations#new1"
-  #   get 'users/new2', to: "devise/registrations#new2"
-  #   get 'users/new3', to: "devise/registrations#new3"
-  # end
-
   # itemコントローラーrouting
   resources :items do
     collection do
