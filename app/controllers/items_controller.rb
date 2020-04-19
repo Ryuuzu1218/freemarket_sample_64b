@@ -6,7 +6,10 @@ before_action :move_to_index, except: [:index, :show]
   end
 
   def new
-    @parents = Category.all.where(ancestry:nil).order("id ASC").limit(13)
+    @category_parent_array = ["選択してください"]
+    Category.where(ancestry: nil).each do |parent|
+      @category_parent_array << parent.name
+    end
     @item = Item.new
     @item.item_images.new
   end
@@ -36,6 +39,26 @@ end
       render :edit
     end
   end
+
+  def category_children
+    respond_to do |format|
+      format.html
+      format.json do
+        @category_children = Category.find_by(name: "#{params[:parent_name]}", ancestry: nil).children
+      end
+    end
+  end
+
+  def category_grandchildren
+    respond_to do |format|
+      format.html
+      format.json do
+        @category_grandchildren = Category.find(params[:child_id]).children
+      end
+    end
+  end
+
+
   private
 
   def item_params
