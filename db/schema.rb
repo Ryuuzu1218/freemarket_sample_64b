@@ -45,11 +45,11 @@ ActiveRecord::Schema.define(version: 2020_04_18_110930) do
   end
 
   create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name", null: false
+    t.string "name", default: ""
     t.integer "likes", default: 0, null: false
-    t.bigint "category_id", null: false
-    t.bigint "user_id", null: false
-    t.integer "price", null: false
+    t.bigint "category_id"
+    t.bigint "user_id"
+    t.integer "price"
     t.text "explanation"
     t.string "brand", default: ""
     t.datetime "created_at"
