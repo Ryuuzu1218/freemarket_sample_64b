@@ -16,7 +16,6 @@ before_action :move_to_index, except: [:index, :show]
 
   def create
     @item= Item.new(item_params)
-    binding.pry
     if @item.save
      redirect_to root_path
     else

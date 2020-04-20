@@ -19,7 +19,7 @@
         - if user_signed_in?
           %li.nav-right__content.nav-right__content--in
             = link_to user_path(current_user), class: "header-link mypage-link" do
-              -# = image_tag current_user.image.url, class: "mypage-link__image" if current_user.image.present?
+              = image_tag current_user.image.url, class: "mypage-link__image" 
               %p #{current_user.nickname}
         - else
           %li.nav-right__content.nav-right__content--out
