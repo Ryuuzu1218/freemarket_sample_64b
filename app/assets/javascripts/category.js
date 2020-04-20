@@ -1,5 +1,8 @@
+$(document).on('turbolinks:load', function() {
+
+
 // グローバルスコープ
-childSelcector = $('#child-form')
+childSelector = $('#child-form')
 grandchildSelector = $('#grandchild-form')
 
 $(function() {
@@ -41,7 +44,7 @@ $(function() {
       })
       //成功時
       .done(function(children){
-        childSelcector.remove(); // 子を削除
+        childSelector.remove(); // 子を削除
         grandchildSelector.remove(); // 孫を削除
         let buildHTML = '';
         children.forEach(function(child){
@@ -53,7 +56,7 @@ $(function() {
         alert('カテゴリー取得に失敗しました');
       })
     }else{ // 親が初期値の時
-      childSelcector.remove(); 
+      childSelector.remove(); 
       grandchildSelector.remove();
     }
   });
@@ -86,3 +89,4 @@ $(function() {
     }
   });
 });
+})
