@@ -69,10 +69,10 @@
 ## Transaction
 |Column|Type|Options|
 | ------------ | ------------ | ------------ |
-|status|string|null: false|
+|status|integer|default: 0|
 |item|reference|null: false, foreign_key: true|
-|saler_id|integer|null: false, foreign_key: true|
 |buyer_id|integer|null: false, foreign_key: true|
+|saler_id|integer|null: false, foreign_key: true|
 |total_fee|integer|null: false|
 
 ### Association
