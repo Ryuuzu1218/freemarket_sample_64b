@@ -9,18 +9,18 @@ describe Users::RegistrationsController do
     end
   end
 
-  describe 'POST #create' do
-    it 'a' do
-      request.env["devise.mapping"] = Devise.mappings[:user]
-      post :new2
-      expect(response).to render_template :new
-    end
-  end
+  # describe 'POST #create' do
+  #   it 'a' do
+  #     request.env["devise.mapping"] = Devise.mappings[:user]
+  #     post :create
+  #     expect(response).to render_template :new
+  #   end
+  # end
 
   describe 'POST #create' do
-      before do
-        request.env["devise.mapping"] = Devise.mappings[:user]
-      end
+    before do
+      request.env["devise.mapping"] = Devise.mappings[:user]
+    end
       context '有効なデータの場合' do
         subject{
           user_params = attributes_for(:user)
@@ -37,16 +37,40 @@ describe Users::RegistrationsController do
                                     birthday: "19900101"
                                   }
         }
+        it "" do
+          subject
+          expect(response).to render_template :new2
+        end
     end
   end
 
-  # describe 'POST #new3' do
-  #   it 'new3に遷移すること' do
-  #     # request.env["devise.mapping"] = Devise.mappings[:user]
-  #     post :new3
-  #     expect(response).to have_http_status :new3
-  #   end
-  # end
+  describe 'POST #new3' do
+    before do
+      request.env["devise.mapping"] = Devise.mappings[:user]
+      session["devise.regist_data"] == {user: @user}.clear
+      binding.pry
+    end
+      context '有効なデータの場合' do
+        subject{
+          address_params = attributes_for(:address)
+          post :new3, params: { address: address_params},
+                                  session: {
+                                    sending_first_name:             "栄",
+                                    sending_last_name:              "太郎",
+                                    sending_first_name_kana:        "サカエ",
+                                    sending_last_name_kana:         "タロウ",
+                                    postal_code:                    "1234567",
+                                    prefecture_id:                  "23",
+                                    city:                           "名古屋市中区",
+                                    town:                           "3-2",
+                                  }
+        }
+        it "" do
+          subject
+          expect(response).to render_template :new_address
+        end
+    end
+  end
 
   describe 'POST #create' do
     it '' do
