@@ -1,10 +1,10 @@
 # DB設計
-## Credit card
+## Card
 |Column|Type|Options|
 |------------|------------|------------|
-|user|reference|null: false, foreign_key: true|
-|costomer|references|null: false, foreign_key: true|
-|card|reference|null: false, foreign_key: true|
+|user|references|null: false, foreign_key: true|
+|customer|references|null: false, foreign_key: true|
+|card|references|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :user
@@ -69,9 +69,10 @@
 ## Transaction
 |Column|Type|Options|
 | ------------ | ------------ | ------------ |
-|status|string|null: false|
+|status|integer|default: 0|
 |item|reference|null: false, foreign_key: true|
-|user|reference|null: false, foreign_key: true|
+|buyer_id|integer|null: false, foreign_key: true|
+|saler_id|integer|null: false, foreign_key: true|
 |total_fee|integer|null: false|
 
 ### Association
