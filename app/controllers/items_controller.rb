@@ -5,15 +5,13 @@ class ItemsController < ApplicationController
   end
 
   def new
-    @category_parent_array = ["選択してください"]
-    Category.where(ancestry: nil).each do |parent|
-      @category_parent_array << parent.name
-    end
+    @parent = Category.where(ancestry: nil)
     @item = Item.new
     @item.item_images.new
   end
 
   def create
+    @parent = Category.where(ancestry: nil)
     @item= Item.new(item_params)
     if @item.save
      redirect_to root_path
@@ -43,7 +41,7 @@ end
     respond_to do |format|
       format.html
       format.json do
-        @category_children = Category.find_by(name: "#{params[:parent_name]}", ancestry: nil).children
+        @category_children = Category.find(params[:parent_id]).children
       end
     end
   end
@@ -61,6 +59,6 @@ end
   private
 
   def item_params
-    params.require(:item).permit(:name, :price, :explanation,:condition_id,:delivery_charge_id,:shipping_origin_id,:sending_days_id,item_images_attributes: [:image,:_destroy, :id]).merge(user_id:current_user.id)
+    params.require(:item).permit(:name, :price, :explanation,:condition_id,:delivery_charge_id,:shipping_origin_id,:sending_days_id, :category_id, :brand, item_images_attributes: [:image,:_destroy, :id]).merge(user_id:current_user.id)
   end
 end
