@@ -49,7 +49,7 @@
       カテゴリを選択してください
      .ex__detail__category--must.must 必須
     .ex__detail__category__box
-     = exh.select :category, @category_parent_array, {}, {class: 'ex__detail__category__box--select select', id: 'parent-form'}
+     = exh.collection_select :category_id, @parent, :id, :name, { prompt: "選択してください" }, { class: "ex__detail__category__box--select select validate[required]", id: "parent-form" }
     // ブランド
     .ex__detail__brand
      .ex__detail__brand--in
