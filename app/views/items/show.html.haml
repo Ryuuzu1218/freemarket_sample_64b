@@ -22,9 +22,18 @@
     .de__price__money--deliver
      送料込み
   .de__parchase
-   %button.gobuy
-    =link_to '',"#"
-    購入画面へ
+   -if @item.user_id ==current_user.id
+    %button.goedit
+     =link_to '',"/items/#{@item.id}/edit"
+     編集する
+    %button.godelete
+     =link_to '',"#"
+     削除する
+   -else
+    %button.gobuy
+     =link_to '',"#"
+     購入画面へ
+
   .de__exp
    ここに商品説明
   .de__table
