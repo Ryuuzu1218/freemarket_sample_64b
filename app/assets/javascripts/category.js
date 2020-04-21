@@ -20,7 +20,6 @@ $(document).on('turbolinks:load', function() {
                                 ${buildHTML}
                               <select>`;
     $('.ex__detail__category__box').append(grandchildSelectHtml);
-    console.log(grandchildSelectHtml);
   }
 
   //親カテゴリー選択時イベント
