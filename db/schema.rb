@@ -14,7 +14,7 @@
 ActiveRecord::Schema.define(version: 2020_04_21_125741) do
 
 
-  create_table "Addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "city", null: false
     t.string "town", null: false
     t.string "building"
@@ -56,16 +56,16 @@ ActiveRecord::Schema.define(version: 2020_04_21_125741) do
   end
 
   create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name", null: false
+    t.string "name", default: ""
     t.integer "likes", default: 0, null: false
-    t.bigint "category_id", null: false
-    t.bigint "user_id", null: false
-    t.integer "price", null: false
-    t.text "explanation", null: false
-    t.string "brand", default: "", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "transaction_status", default: 1, null: false
+    t.bigint "category_id"
+    t.bigint "user_id"
+    t.integer "price"
+    t.text "explanation"
+    t.string "brand", default: ""
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer "transaction_status", default: 1
     t.integer "sending_days_id", null: false
     t.integer "shipping_origin_id", null: false
     t.integer "delivery_charge_id", null: false
@@ -111,11 +111,12 @@ ActiveRecord::Schema.define(version: 2020_04_21_125741) do
     t.string "last_name_kana", null: false
     t.date "birthday", null: false
     t.integer "money", default: 0
-    t.string "image"
+    t.text "image"
     t.integer "point", default: 0
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
+
 
   add_foreign_key "Addresses", "users"
   add_foreign_key "cards", "users"
