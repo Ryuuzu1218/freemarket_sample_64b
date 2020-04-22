@@ -42,7 +42,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.5'
   gem 'factory_bot_rails'
   gem 'rails-controller-testing'
-  gem 'capistrano'
+  gem 'capistrano', '3.12.1'
   gem 'capistrano-rbenv'
   gem 'capistrano-bundler'
   gem 'capistrano-rails'
