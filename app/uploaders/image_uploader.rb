@@ -6,9 +6,9 @@ class ImageUploader < CarrierWave::Uploader::Base
   # Choose what kind of storage to use for this uploader:
   if Rails.env.development? || Rails.env.test? 
     storage = :file
-     elsif Rails.env.production?
+   elsif Rails.env.production?
     storage = :fog
-     end
+  end
 
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
@@ -32,9 +32,9 @@ class ImageUploader < CarrierWave::Uploader::Base
   # end
 
   # Create different versions of your uploaded files:
-  # version :thumb do
+  version :thumb do
      process resize_to_fit: [30, 30]
-  # end
+  end
 
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
