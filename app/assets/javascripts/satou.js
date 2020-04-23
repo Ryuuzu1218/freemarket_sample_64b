@@ -159,7 +159,7 @@ $(document).on('turbolinks:load', function() {
 
   //画像投稿で画像を入れたら次のフォームが出現する
   const buildFileField = (index)=> {
-    const html = `<div data-index="${index}" class="js-file_group">
+    const html = `<div data-index="${index}" class="js-file_group sub-image">
                     <input class="js-file" type="file"
                     name="item[item_images_attributes][${index}][image]"
                     id="item_images_attributes_${index}_image">
@@ -168,7 +168,7 @@ $(document).on('turbolinks:load', function() {
     return html;}
     const buildImg = (index, url)=> {
       const html = `<img data-index="${index}" src="${url}" width="100px" height="100px">
-      <span class="js-remove">削除</span>`;
+     `;
       return html;}
   // file_fieldのnameに動的なindexをつける為の配列
   let fileIndex = [1,2,3,4,5,6,7,8,9,10];
@@ -200,6 +200,7 @@ $(document).on('turbolinks:load', function() {
     // もしチェックボックスが存在すればチェックを入れる
     if (hiddenCheck) hiddenCheck.prop('checked', true);
     $(this).parent().remove();
+    $(this).remove();
     // 画像入力欄が0個にならないようにしておく
     if ($('.js-file').length == 0) $('#image-box').append(buildFileField(fileIndex[0]));
     $(`img[data-index="${targetIndex}"]`).remove();
@@ -207,7 +208,5 @@ $(document).on('turbolinks:load', function() {
   $(document).ready(function () {
     $("#form-name").validationEngine();
   });
-  //カテゴリ１を選択したらカテゴリ２のフォームが出現する。
-  
 });
 
