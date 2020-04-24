@@ -2,7 +2,10 @@ class ItemsController < ApplicationController
 before_action :move_to_index, except: [:index, :show]
   def index
     @parents = Category.all.where(ancestry:nil).order("id ASC").limit(13)
-    @items = Item.includes(:item_images).order('created_at DESC').limit(6).where.not(transaction_status: 0).where(transaction_status: 1)
+    @items = Item.includes(:item_images).order('created_at DESC').limit(3).where.not(transaction_status: 0).where(transaction_status: 1)
+    @ladies_items = @items.where(category_id: @parents.find(1).indirects).limit(6)
+    @mens_items   = @items.where(category_id: @parents.find(2).indirects).limit(6)
+    @babies_items = @items.where(category_id: @parents.find(3).indirects).limit(6)
   end
 
   def new
