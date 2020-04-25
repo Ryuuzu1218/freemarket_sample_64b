@@ -163,7 +163,7 @@ $(document).on('turbolinks:load', function() {
                     <input class="js-file" type="file"
                     name="item[item_images_attributes][${index}][image]"
                     id="item_images_attributes_${index}_image">
-                    <span class="js-remove">削除</span>
+                    <div class="js-remove-${index} add none">削除</div>
                   </div>`;
     return html;}
     const buildImg = (index, url)=> {
@@ -189,11 +189,14 @@ $(document).on('turbolinks:load', function() {
     // fileIndexの先頭の数字を使ってinputを作る
     $('#image-box').append(buildFileField(fileIndex[0]));
     fileIndex.shift();
+    $('sub-image').removeclass()
     // 末尾の数に1足した数を追加する
-    fileIndex.push(fileIndex[fileIndex.length - 1] + 1)}
+    fileIndex.push(fileIndex[fileIndex.length - 1] + 1);
+    console.log('これが'+'枚目です')
+  }
   });
 
-  $('#image-box').on('click', '.js-remove', function() {
+  $('#image-box').on('click', '.js-remove-${index}', function() {
     const targetIndex = $(this).parent().data('index')
     // 該当indexを振られているチェックボックスを取得する
     const hiddenCheck = $(`input[data-index="${targetIndex}"].hidden-destroy`);

@@ -478,7 +478,7 @@ width: 100%;
 
 .main-image{
 height:30px;
-width: 150px;
+width: 360px;
 line-height: 30px;
 font-size: 1rem;
 text-align: center;
@@ -489,7 +489,7 @@ border-radius: 5px;
 }
 .sub-image{
 height:30px;
-width: 150px;
+width: 330px;
 line-height: 30px;
 font-size: 1rem;
 text-align: center;
@@ -497,4 +497,11 @@ background-color:#b4436f;
 color: white;
 cursor: pointer;
 border-radius: 5px;
+display: -webkit-box;
+}
+
+.add{
+  padding-right:5px;
+  background-color: #ccffff;
+  color: black;
 }
