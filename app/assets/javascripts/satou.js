@@ -186,7 +186,6 @@ $(document).on('turbolinks:load', function() {
     // 該当indexを持つimgタグがあれば取得して変数imgに入れる(画像変更の処理)
     if (img = $(`div[data-index="${targetIndex}"]`).children()[0]) {
       img.setAttribute('src', blobUrl);
-    console.log("入れ替え")
     } else {  // 新規画像追加の処理
       // if ($('.image-menu').length<10)
       $('#previews').append(buildImg(targetIndex, blobUrl));
@@ -194,9 +193,6 @@ $(document).on('turbolinks:load', function() {
     if($('.sub-image').length <10 )
     $('#image-box').append(buildFileField(fileIndex[0]));
     fileIndex.shift();
-    console.log($('.sub-image').length)
-    console.log($('.image-menu').length)
-    console.log("追加")
     // 末尾の数に1足した数を追加する
     fileIndex.push(fileIndex[fileIndex.length - 1] + 1)
   }
@@ -204,7 +200,6 @@ $(document).on('turbolinks:load', function() {
    //入力フォーム側の削除ボタンを推すと紐付いている画像も消える。こちらは正常に動く
   $('#image-box').on('click', '.js-remove', function() {
     const targetIndex = $(this).parent().data('index')
-    console.log(targetIndex)
     // 該当indexを振られているチェックボックスを取得する
     const hiddenCheck = $(`input[data-index="${targetIndex}"].hidden-destroy`);
     // もしチェックボックスが存在すればチェックを入れる
@@ -218,7 +213,6 @@ $(document).on('turbolinks:load', function() {
   //画像側の削除ボタンを推すと紐付いている入力フォームも消える。
   $('#previews').on('click', '.js-remove',function(){
   const deleteIndex = $(this).parent().data('index');
-  console.log(deleteIndex)
   const imgObj = $(this).parent() 
   imgObj.remove();
   $(this).remove();
