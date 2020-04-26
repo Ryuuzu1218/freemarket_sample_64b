@@ -155,15 +155,13 @@ $(document).on('turbolinks:load', function() {
       $(this).closest('.forms').removeClass("arround_red")
   }}
   })
-
-
   //画像投稿で画像を入れたら次のフォームが出現する
   const buildFileField = (index)=> {
     const html = `<label data-index="${index}" class="js-file_group sub-image">
                     <input class="js-file none" type="file" 
                     name="item[item_images_attributes][${index}][image]"
                     id="item_images_attributes_${index}_image">
-                    <div>画像を追加する</div>
+                    <div>画像を設定する</div>
                   </label>`;
     return html;}
     const buildImg = (index, url)=> {
@@ -175,7 +173,7 @@ $(document).on('turbolinks:load', function() {
      `;
       return html;}
   // file_fieldのnameに動的なindexをつける為の配列
-  let fileIndex = [1,2,3,4,5,6,7,8,9,10,11];
+  let fileIndex = [1,2,3,4,5,6,7,8,9,10,11,12,13,14];
   // 既に使われているindexを除外
   lastIndex = $('.js-file_group:last').data('index');
   fileIndex.splice(0, lastIndex);
@@ -186,10 +184,11 @@ $(document).on('turbolinks:load', function() {
     const file = e.target.files[0];
     const blobUrl = window.URL.createObjectURL(file);
     // 該当indexを持つimgタグがあれば取得して変数imgに入れる(画像変更の処理)
-    if (img = $(`img[data-index="${targetIndex}"]`)[0]) {
+    if (img = $(`div[data-index="${targetIndex}"]`).children()[0]) {
       img.setAttribute('src', blobUrl);
+    console.log("入れ替え")
     } else {  // 新規画像追加の処理
-      if ($('.image-menu').length<10)
+      // if ($('.image-menu').length<10)
       $('#previews').append(buildImg(targetIndex, blobUrl));
     // fileIndexの先頭の数字を使ってinputを作る
     if($('.sub-image').length <10 )
@@ -197,11 +196,11 @@ $(document).on('turbolinks:load', function() {
     fileIndex.shift();
     console.log($('.sub-image').length)
     console.log($('.image-menu').length)
+    console.log("追加")
     // 末尾の数に1足した数を追加する
     fileIndex.push(fileIndex[fileIndex.length - 1] + 1)
   }
   });
-
    //入力フォーム側の削除ボタンを推すと紐付いている画像も消える。こちらは正常に動く
   $('#image-box').on('click', '.js-remove', function() {
     const targetIndex = $(this).parent().data('index')
@@ -225,23 +224,10 @@ $(document).on('turbolinks:load', function() {
   $(this).remove();
   $(`label[data-index='${deleteIndex}']`).remove();
   if ($('.js-file').length == 0) $('#image-box').append(buildFileField(fileIndex[0]));
-  if ($('.js-file').length == 9) $('#image-box').append(buildFileField(fileIndex[0]));
-
+  if ($('.js-file').length == 9 && $('.image-menu').length ==9) $('#image-box').append(buildFileField(fileIndex[0]));
 })
-
-
-
-  $(document).ready(function () {
-    $("#form-name").validationEngine();
-  });
+ $(document).ready(function () {
+  $("#form-name").validationEngine();
+ });
 });
-
-
-
-// $(document).on('click', '.js-remove',function(){
-  // let deleteIndex = $(this).data(index);
-  // let imgObj = $(this).prev();siblings() 同列にあるイメージたぐの取得
-  // imgObj.remove();
-  // $(`#item_images_attributes_${deleteIndex}_image`).remove();
-// })
 
