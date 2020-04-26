@@ -189,12 +189,14 @@ $(document).on('turbolinks:load', function() {
     if (img = $(`img[data-index="${targetIndex}"]`)[0]) {
       img.setAttribute('src', blobUrl);
     } else {  // 新規画像追加の処理
-      if ($('#previews').length<10)
+      if ($('.image-menu').length<10)
       $('#previews').append(buildImg(targetIndex, blobUrl));
     // fileIndexの先頭の数字を使ってinputを作る
-    if($('#image-box').length <10 )
+    if($('.sub-image').length <10 )
     $('#image-box').append(buildFileField(fileIndex[0]));
     fileIndex.shift();
+    console.log($('.sub-image').length)
+    console.log($('.image-menu').length)
     // 末尾の数に1足した数を追加する
     fileIndex.push(fileIndex[fileIndex.length - 1] + 1)
   }
@@ -223,7 +225,7 @@ $(document).on('turbolinks:load', function() {
   $(this).remove();
   $(`label[data-index='${deleteIndex}']`).remove();
   if ($('.js-file').length == 0) $('#image-box').append(buildFileField(fileIndex[0]));
-  if ($('.js-file').length == 9 && ('.image-menu').length == 9) $('#image-box').append(buildFileField(fileIndex[0]));
+  if ($('.js-file').length == 9) $('#image-box').append(buildFileField(fileIndex[0]));
 
 })
 
