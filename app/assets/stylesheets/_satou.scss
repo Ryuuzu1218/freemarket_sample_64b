@@ -20,14 +20,9 @@
     &--photo{
       margin: 16px 0;
     }
-    &--upload--area{
-      background-color: #dedede;
-      height: 150px;
-      width: 620px;
-      margin: 0 auto;
-      line-height: 150px;
-      text-align: center;
-      border: 1px dashed;
+    &--upload{
+      display: -webkit-box;
+      flex-wrap: wrap;
     }
   }
   &__intro{
@@ -488,20 +483,26 @@ cursor: pointer;
 border-radius: 5px;
 }
 .sub-image{
-height:30px;
-width: 330px;
-line-height: 30px;
-font-size: 1rem;
-text-align: center;
-background-color:#b4436f;
-color: white;
-cursor: pointer;
-border-radius: 5px;
-display: -webkit-box;
-}
+  height: 30px;
+  width: 120px;
+  line-height: 30px;
+  font-size: 1rem;
+  text-align: center;
+  background-color: #d9e5ff;
+  cursor: pointer;
+  border-radius: 5px;
+  display: -webkit-box;
+  margin-top: 10px;}
 
 .add{
-  padding-right:5px;
+  padding-right: 5px;
   background-color: #ccffff;
   color: black;
+  font-size: 15px;
+  border-radius: 5px;
+}
+
+.image-menu{
+  width: 120px;
+  flex-wrap: wrap;
 }

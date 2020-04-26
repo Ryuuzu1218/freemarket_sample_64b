@@ -19,8 +19,8 @@
       .js-file_group{"data-index": "#{img.index}"}
        =img.label :image ,class:'label js-file' do
         =img.file_field :image, class: 'none'
-        .main-image
-         メイン画像
+        .sub-image
+         画像を設定する
 
        
       -if @item.persisted?
