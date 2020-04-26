@@ -3,9 +3,9 @@ before_action :move_to_index, except: [:index, :show]
   def index
     @parents = Category.all.where(ancestry:nil).order("id ASC").limit(13)
     @items = Item.includes(:item_images).order('created_at DESC').limit(3).where.not(transaction_status: 0).where(transaction_status: 1)
-    @ladies_items = @items.where(category_id: @parents.find(1).indirects).limit(6)
-    @mens_items   = @items.where(category_id: @parents.find(2).indirects).limit(6)
-    @babies_items = @items.where(category_id: @parents.find(3).indirects).limit(6)
+    @ladies_items = @items.get_category(1)
+    @mens_items   = @items.get_category(2)
+    @babies_items = @items.get_category(3)
   end
 
   def new
@@ -34,7 +34,7 @@ end
 
   def update
     if @item.update(item_params)
-      redirect_to root_path
+      redirect_to root_pathn
     else
       render :edit
     end
