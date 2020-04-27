@@ -15,7 +15,3 @@ FactoryBot.define do
   end
 end 
 
-# item.item_images = [Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec/factories/test.jpg'))]
-# item.item_images = [itemimage,itemimage,itemimage...]
-
-# item_images.image = rack.--
