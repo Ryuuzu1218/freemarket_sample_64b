@@ -4,12 +4,12 @@
   .de__name
    = @item.name
   .de__image
-   = image_tag "#{@item_image.first.image}", width: "560", height: "350"
+   = image_tag "#{@item.item_images.first.image}", width: "560", height: "350"
   -#  - unless @item.transaction_status
   .de__image-list
    .de__image-list__box
     .de__image-list__box--img
-     = image_tag "#{@item_image.first.image}", width: "100", height: "80"
+     = image_tag "#{@item.item_images.first.image}", width: "100", height: "80"
     .de__image-list__box--img
      = image_tag item_path, width: "100", height: "80"
     .de__image-list__box--img
