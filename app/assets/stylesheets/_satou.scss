@@ -168,7 +168,6 @@
   }
   &__image-list{
     margin: 0 auto;
-    justify-content: center;
     display: flex;
 
     &__box{
@@ -192,6 +191,10 @@
     height: 60px;
     color: white;
     text-align: center;
+    a{
+      text-decoration: none;
+      color: white;
+    }
 
   }
   &__exp{
@@ -242,6 +245,21 @@
   &__go{
     margin: 0 175px;
     padding-bottom: 20px;
+  }
+}
+
+.item-front-and-back{
+  list-style: none;
+  width: 700px;
+  margin: 0 auto 20px;
+  display: flex;
+  color: #3ccace;
+  justify-content: space-between;
+  .fas.fa-chevron-left{
+    color: #3ccace;
+  }
+  .fas.fa-chevron-right{
+    color: #3ccace;
   }
 }
 
@@ -450,12 +468,13 @@ td{
   font-size: 16px;
 }
 .commentbutton{
-  background-color: #86f9c5;
+  background-color: #3ccace;
   width: 350px;
   height: 50px;
   font-size:18px;
   color:white;
   border-radius: 8px;
+  border: #3ccace;
 }
 .arround_red{
   border-color: red;
