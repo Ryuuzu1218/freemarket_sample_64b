@@ -1,7 +1,7 @@
 FactoryBot.define do
 
   factory :item do
-    item_images              { Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec/factories/test.jpg')) }
+    item_images              {[build(:item_image)]}
     user_id                  {"1"}
     name                     {"柑橘"}
     explanation              {"酸っぱいのを好むか甘いのを好むかで評価が分かれる"}
@@ -14,3 +14,8 @@ FactoryBot.define do
     price                    {"3000"}
   end
 end 
+
+# item.item_images = [Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec/factories/test.jpg'))]
+# item.item_images = [itemimage,itemimage,itemimage...]
+
+# item_images.image = rack.--
