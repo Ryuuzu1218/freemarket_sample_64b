@@ -20,14 +20,9 @@
     &--photo{
       margin: 16px 0;
     }
-    &--upload--area{
-      background-color: #dedede;
-      height: 150px;
-      width: 620px;
-      margin: 0 auto;
-      line-height: 150px;
-      text-align: center;
-      border: 1px dashed;
+    &--upload{
+      display: -webkit-box;
+      flex-wrap: wrap;
     }
   }
   &__intro{
@@ -173,7 +168,6 @@
   }
   &__image-list{
     margin: 0 auto;
-    justify-content: center;
     display: flex;
 
     &__box{
@@ -197,6 +191,10 @@
     min-height: 60px;
     color: white;
     text-align: center;
+    a{
+      text-decoration: none;
+      color: white;
+    }
 
   }
   &__exp{
@@ -247,6 +245,21 @@
   &__go{
     margin: 0 175px;
     padding-bottom: 20px;
+  }
+}
+
+.item-front-and-back{
+  list-style: none;
+  width: 700px;
+  margin: 0 auto 20px;
+  display: flex;
+  color: #3ccace;
+  justify-content: space-between;
+  .fas.fa-chevron-left{
+    color: #3ccace;
+  }
+  .fas.fa-chevron-right{
+    color: #3ccace;
   }
 }
 
@@ -471,12 +484,13 @@ td{
   font-size: 16px;
 }
 .commentbutton{
-  background-color: #86f9c5;
+  background-color: #3ccace;
   width: 350px;
   height: 50px;
   font-size:18px;
   color:white;
   border-radius: 8px;
+  border: #3ccace;
 }
 .arround_red{
   border-color: red;
@@ -490,4 +504,40 @@ td{
 .select{
 height: 48px;
 width: 100%;
+}
+
+.main-image{
+height:30px;
+width: 360px;
+line-height: 30px;
+font-size: 1rem;
+text-align: center;
+background-color:#0000ff;
+color: white;
+cursor: pointer;
+border-radius: 5px;
+}
+.sub-image{
+  height: 30px;
+  width: 120px;
+  line-height: 30px;
+  font-size: 1rem;
+  text-align: center;
+  background-color: #d9e5ff;
+  cursor: pointer;
+  border-radius: 5px;
+  display: -webkit-box;
+  margin-top: 10px;}
+
+.add{
+  padding-right: 5px;
+  background-color: #ccffff;
+  color: black;
+  font-size: 15px;
+  border-radius: 5px;
+}
+
+.image-menu{
+  width: 120px;
+  flex-wrap: wrap;
 }

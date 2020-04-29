@@ -1,12 +1,23 @@
 .top-item-list
   .top-item-container
+
     %h2.top-item-container__title
       レディース新着アイテム
     .top-item-container__contents
       %ul.top-items.top-items--login
-        = render 'top-item'
+        - @ladies_items.each do |item|
+          = render partial: "top-item", locals: { item: item}
+
     %h2.top-item-container__title
       メンズ新着アイテム
     .top-item-container__contents
       %ul.top-items.top-items--login
-        = render 'top-item'
+        - @mens_items.each do |item|
+          = render partial: "top-item", locals: { item: item}
+      
+    %h2.top-item-container__title
+      ベビー・キッズ新着アイテム
+    .top-item-container__contents
+      %ul.top-items.top-items--login
+        - @babies_items.each do |item|
+          = render partial: "top-item", locals: { item: item}
