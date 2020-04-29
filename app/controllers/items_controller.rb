@@ -12,7 +12,7 @@ before_action :authenticate_user!, only: [:show]
   def new
     @parent = Category.where(ancestry: nil)
     @item = Item.new
-    # @item.item_images.new
+    @item.item_images.new
   end
 
   def create
