@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-# before_action :move_to_index, except: [:index, :show]
+before_action :move_to_index, except: [:index, :show]
 before_action :authenticate_user!, only: [:show]
   def index
     @parents = Category.all.where(ancestry:nil).order("id ASC").limit(13)
