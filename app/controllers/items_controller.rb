@@ -32,6 +32,7 @@ end
 
   def edit
     @item = Item.find(params[:id])
+    @parent = Category.where(ancestry: nil)
   end
 
   def update

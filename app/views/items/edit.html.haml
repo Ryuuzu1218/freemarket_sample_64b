@@ -13,7 +13,7 @@
      画像は１０枚まで
     .ex__image--upload#previews
      - if @item.persisted?
-      - @item.images.each_with_index do |image, i|
+      - @item.item_images.each_with_index do |image, i|
        = image_tag image.src.url, data: { index: i }, width: "100", height: '100'
     .ex__image--upload#image-box
      =exh.fields_for :item_images,class:"validate[required]" do |img|
