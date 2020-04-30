@@ -1,4 +1,4 @@
-$(function () {
+$(document).on('turbolinks:load', function() {
   $(".de__image-list__box--img").first().addClass("active"); //1枚目の小さい画像をアクティブに変更
   $('.de__image-list__box--img--1').click(function(){ //小さい画像がクリックされたらイベント発火
     image_url = $(this).attr("src"); //クリックされた画像のパスを取得
