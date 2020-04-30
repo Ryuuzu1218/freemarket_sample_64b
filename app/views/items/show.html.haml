@@ -21,9 +21,9 @@
 
   - if user_signed_in? && current_user.id == @item.user_id
    .de__price__edit
-    = link_to "編集", edit_item_path(@item), method: :get
+    = link_to "編集", edit_item_path(@item), method: :get, class: "de__price__edit--btn"
    .de__price__delete
-    = link_to "削除", item_path(@item), method: :delete
+    = link_to "削除", item_path(@item), method: :delete, class: "de__price__detete--btn"
   - else
    - if user_signed_in?
     .de__parchase
