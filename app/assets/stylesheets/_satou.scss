@@ -167,14 +167,13 @@
     margin: 0 auto;
   }
   &__image-list{
-    margin: 0 auto;
-    display: flex;
-
+    margin: 0 70px;
     &__box{
       display: flex;
-      height: 80px;
+      height: 90px;
       width: 100px;
-    }
+      display: contents;
+      }
   }
   &__price--price{
     font-size: 46px;
