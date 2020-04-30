@@ -16,6 +16,7 @@ before_action :authenticate_user!, only: [:show]
   end
 
   def create
+
     @parent = Category.where(ancestry: nil)
     @item= Item.new(item_params)
     if @item.save

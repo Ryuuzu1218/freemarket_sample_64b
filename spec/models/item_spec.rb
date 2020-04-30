@@ -4,7 +4,7 @@ describe Item do
   let(:image_path) { File.join(Rails.root, 'spec/factories/test.jpg') }
   let(:image) { Rack::Test::UploadedFile.new(image_path) }
     it "0.商品出品のバリデーションが機能しているか？" do
-      item = build(:item)
+      item = build(:item,item_images:image)
       expect(item).to be_valid
     end
 
