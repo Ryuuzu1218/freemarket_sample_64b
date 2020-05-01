@@ -64,7 +64,7 @@ end
   private
 
   def item_params
-    params.require(:item).permit(:name, :price, :category_id, :brand, :explanation,:condition_id,:delivery_charge_id,:shipping_origin_id,:sending_days_id,item_images_attributes: [:image,:_destroy, :id]).merge(user_id:current_user.id)
+    params.require(:item).permit(:name, :price, :category_id, :brand, :explanation,:condition_id,:delivery_charge_id,:shipping_origin_id,:sending_days_id)
   end
 
   def move_to_index

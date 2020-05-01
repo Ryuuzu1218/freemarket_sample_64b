@@ -4,7 +4,7 @@ FactoryBot.define do
     item_images              {[build(:item_image)]}
     user_id                  {"1"}
     name                     {"柑橘"}
-    explanation              {"酸っぱいのを好むか甘いのを好むかで評価が分かれる"}
+    explanation              {"酸っぱい"}
     category_id              {"365"}
     brand                    {"あきひめ"}
     condition_id             {"1"}

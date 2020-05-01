@@ -15,20 +15,35 @@ describe ItemsController, type: :controller  do
 
 
  describe 'POST #create' do
-      subject { post :create, params }
-      let(:user) { create(:user) }
-        let(:params) do
-          (build(:item))
-        end
+  image= Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec/factories/test.jpg')) 
+  subject { post :create, params: { item: {
+    user_id:                  '1',
+    name:                     "柑橘",
+    explanation:              "酸っぱい",
+    category_id:              '365',
+    brand:                    "あきひめ",
+    condition_id:             '1',
+    delivery_charge_id:       '1',
+    shipping_origin_id:       '24',
+    sending_days_id:          '2',
+    price:                    '3000',
+    # item_images_attributes:   [image,image]
+    item_images_attributes: [item_image: image]
+   }}
+  }
+
+
+  let(:user) { create(:user) }
+    let(:params) do
+      (build(:item))
+    end
   context 'ログインしている場合' do
     before do
       login user
     end
     context '保存に成功した場合' do
       it 'itemを保存すること' do
-        item = build(:item)
-        binding.pry
-        expect{post :create, params: params}.to change(Item, :count).by(1)
+        expect (subject).to change(Item, :count).by(1)
       end
         it '入力が不適切の場合、:newに飛ぶ' do
           expect(post :create).to redirect_to(new_item_path)
