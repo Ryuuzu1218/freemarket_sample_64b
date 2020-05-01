@@ -41,6 +41,14 @@ end
     end
   end
 
+  def destroy
+  #   if @item.destroy
+  #     render :destroy
+  #   else
+  #     redirect_to item_path(@item.id)
+  #   end
+  end
+
   def category_children
     respond_to do |format|
       format.html
