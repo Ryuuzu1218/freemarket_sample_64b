@@ -1,10 +1,10 @@
 require 'rails_helper'
 describe Item do
   describe '#create' do
-  let(:image_path) { File.join(Rails.root, 'spec/factories/test.jpg') }
+  let(:image_path) { File.join(Rails.root, 'spec/factories/image.jpg') }
   let(:image) { Rack::Test::UploadedFile.new(image_path) }
     it "0.商品出品のバリデーションが機能しているか？" do
-      item = build(:item,item_images:image)
+      item = build(:item)
       expect(item).to be_valid
     end
 
