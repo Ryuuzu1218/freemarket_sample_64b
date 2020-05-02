@@ -42,11 +42,12 @@ end
   end
 
   def destroy
-  #   if @item.destroy
-  #     render :destroy
-  #   else
-  #     redirect_to item_path(@item.id)
-  #   end
+    @item = Item.find(params[:id])
+    if @item.destroy
+      redirect_to root_path
+    else
+      redirect_to item_path(@item.id)
+    end
   end
 
   def category_children
