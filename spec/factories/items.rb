@@ -3,7 +3,7 @@ FactoryBot.define do
   factory :item do
     name                    {Faker::Name.last_name}
     likes                   {"0"}
-    category_id             {""}
+    category_id             { }
     user_id                 {""}
     price                   {"4000"}
     explanation             {"説明です"}
