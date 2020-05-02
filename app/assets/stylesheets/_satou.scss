@@ -20,14 +20,9 @@
     &--photo{
       margin: 16px 0;
     }
-    &--upload--area{
-      background-color: #dedede;
-      height: 150px;
-      width: 620px;
-      margin: 0 auto;
-      line-height: 150px;
-      text-align: center;
-      border: 1px dashed;
+    &--upload{
+      display: -webkit-box;
+      flex-wrap: wrap;
     }
   }
   &__intro{
@@ -172,15 +167,13 @@
     margin: 0 auto;
   }
   &__image-list{
-    margin: 0 auto;
-    justify-content: center;
-    display: flex;
-
+    margin: 0 70px;
     &__box{
       display: flex;
-      height: 80px;
+      height: 90px;
       width: 100px;
-    }
+      display: contents;
+      }
   }
   &__price--price{
     font-size: 46px;
@@ -191,12 +184,39 @@
     display: flex;
     font-size: 14px;
   }
+  &__price__edit{
+    text-align: center;
+    font-size: 20px;
+    padding-top: 20px;
+    a{
+      text-decoration: none;
+      color: white;
+      background-color: #3ccace;
+      padding: 10px 255px;
+    }
+  }
+  &__price__delete{
+    text-align: center;
+    font-size: 20px;
+    padding-top: 30px;
+    padding-bottom: 20px;
+    a{
+    text-decoration: none;
+    color: white;
+    background-color: lightgray;
+    padding: 10px 255px;
+    }
+  }
   &__parchase{
     text-decoration: none;
     font-size: 24px;
     height: 60px;
     color: white;
     text-align: center;
+    a{
+      text-decoration: none;
+      color: white;
+    }
 
   }
   &__exp{
@@ -247,6 +267,21 @@
   &__go{
     margin: 0 175px;
     padding-bottom: 20px;
+  }
+}
+
+.item-front-and-back{
+  list-style: none;
+  width: 700px;
+  margin: 0 auto 20px;
+  display: flex;
+  color: #3ccace;
+  justify-content: space-between;
+  .fas.fa-chevron-left{
+    color: #3ccace;
+  }
+  .fas.fa-chevron-right{
+    color: #3ccace;
   }
 }
 
@@ -455,12 +490,13 @@ td{
   font-size: 16px;
 }
 .commentbutton{
-  background-color: #86f9c5;
+  background-color: #3ccace;
   width: 350px;
   height: 50px;
   font-size:18px;
   color:white;
   border-radius: 8px;
+  border: #3ccace;
 }
 .arround_red{
   border-color: red;
@@ -474,4 +510,40 @@ td{
 .select{
 height: 48px;
 width: 100%;
+}
+
+.main-image{
+height:30px;
+width: 360px;
+line-height: 30px;
+font-size: 1rem;
+text-align: center;
+background-color:#0000ff;
+color: white;
+cursor: pointer;
+border-radius: 5px;
+}
+.sub-image{
+  height: 30px;
+  width: 120px;
+  line-height: 30px;
+  font-size: 1rem;
+  text-align: center;
+  background-color: #d9e5ff;
+  cursor: pointer;
+  border-radius: 5px;
+  display: -webkit-box;
+  margin-top: 10px;}
+
+.add{
+  padding-right: 5px;
+  background-color: #ccffff;
+  color: black;
+  font-size: 15px;
+  border-radius: 5px;
+}
+
+.image-menu{
+  width: 120px;
+  flex-wrap: wrap;
 }

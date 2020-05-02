@@ -94,11 +94,13 @@
     .top-pickup__subtitle
       新規投稿商品
     %ul.top-items
-      = render 'top-item'
+      - @items.each do |item|
+        = render partial: "top-item", locals: { item: item}
   %section.top-pickup
     %h2.top-pickup__title
       ピックアップブランド
     .top-pickup__subtitle
       アーカイバ
     %ul.top-items
-      = render 'top-item'
+      - @items.each do |item|
+        = render partial: "top-item", locals: { item: item}
