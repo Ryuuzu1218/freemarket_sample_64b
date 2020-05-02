@@ -32,6 +32,7 @@ describe Users::RegistrationsController do
         }
         it "" do
           subject
+          binding.pry
           expect(response).to render_template :new2
         end
     end

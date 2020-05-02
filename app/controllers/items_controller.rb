@@ -16,8 +16,10 @@ before_action :authenticate_user!, only: [:show]
   end
 
   def create
+
     @parent = Category.where(ancestry: nil)
     @item= Item.new(item_params)
+    binding.pry
     if @item.save
      redirect_to root_path
     else
@@ -35,7 +37,7 @@ end
 
   def update
     if @item.update(item_params)
-      redirect_to root_path
+      redirect_to root_pathn
     else
       render :edit
     end
@@ -70,3 +72,8 @@ end
     redirect_to new_user_session_path unless user_signed_in?
   end
 end
+
+
+
+#最初のbefore_action
+#newの@item=Item_images.new
