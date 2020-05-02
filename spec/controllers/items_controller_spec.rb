@@ -12,7 +12,7 @@ describe ItemsController, type: :controller do
       end
 
       it '@parentsに期待した値が入っていること' do
-        parents = build_list(:category, 10)
+        parents = Category.all.limit(13)
         get :index
         expect(assigns(:parents)).to match(parents.sort)
       end
