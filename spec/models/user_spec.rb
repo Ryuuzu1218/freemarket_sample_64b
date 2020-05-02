@@ -153,6 +153,33 @@ describe User do
       expect(user).to be_valid
     end
 
+    # 郵便番号が半角数字のみの場合登録できる
+    it "is vaild with a postal_code that has only 7 characters" do
+      user = build(:user, postal_code:)
+      user.valid?
+      expect(user).to be_valid
+    end
 
-end
+    # 郵便番号が7文字ではないとき登録できない
+    it "is invaild with a password that has less than 6 characters" do
+      user = build(:user, password: "10ako", password_confirmation: "10ako")
+      user.valid?
+      expect(user.errors[:password]).to include("is too short (minimum is 6 characters)", "is too short (minimum is 7 characters)")
+    end
+
+    # 郵便番号が7文字の時は登録できる
+    it "is valid with a password that contains letters and numbers" do
+      user = build(:user, password: "1t0okaa", password_confirmation: "1t0okaa")
+      user.valid?
+      expect(user).to be_valid
+    end
+
+    # 郵便番号が半角数字の時以外登録できない
+    it "is invalid without a point" do
+      user = build(:user, point: nil)
+      user.valid?
+      expect(user.errors[:point]).to include("can't be blank")
+    end
+
+  end
 end
