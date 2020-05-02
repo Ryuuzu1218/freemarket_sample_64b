@@ -27,7 +27,6 @@ describe ItemsController, type: :controller  do
     shipping_origin_id:       '24',
     sending_days_id:          '2',
     price:                    '3000',
-    # item_images_attributes:   [image,image]
     images_attributes: [item_image: image]
    }}
   }
@@ -44,11 +43,10 @@ describe ItemsController, type: :controller  do
     context '保存に成功した場合' do
       it 'itemを保存すること' do
         subject
-        binding.pry
-        expect(response).to change(Item, :count).by(1)
+        expect{subject}.to change(Item, :count).by(1)
       end
-        it '入力が不適切の場合、:newに飛ぶ' do
-          expect(post :create).to redirect_to(new_item_path)
+        it '入力が適切な場合、:indexに飛ぶ' do
+          expect{subject}.to redirect_to(root_path)
         end
     end
   end

@@ -19,6 +19,7 @@ before_action :authenticate_user!, only: [:show]
 
     @parent = Category.where(ancestry: nil)
     @item= Item.new(item_params)
+    binding.pry
     if @item.save
      redirect_to root_path
     else
