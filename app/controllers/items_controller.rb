@@ -31,11 +31,17 @@ end
   end
 
   def edit
+
     @item = Item.find(params[:id])
     @parent = Category.where(ancestry: nil)
+    @images_length = @item.item_images.length
+    binding.pry
   end
 
   def update
+    binding.pry
+    @parent = Category.where(ancestry: nil)
+    @item = Item.find(params[:id])
     if @item.update(item_params)
       redirect_to root_pathn
     else
