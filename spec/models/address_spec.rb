@@ -88,6 +88,5 @@ describe Address do
       address.valid?
       expect(address).to be_valid
     end
-
   end
 end 
