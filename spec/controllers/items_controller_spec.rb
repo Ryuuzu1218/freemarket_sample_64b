@@ -45,6 +45,10 @@ describe ItemsController, type: :controller do
   end
 
   describe '#show' do
+  before do
+    login user
+  end
+
     it '@itemに期待した値が入っていること' do
       item = create(:item, user_id: user.id, category_id: category.id)
       get :show, params: { id: item.id }
