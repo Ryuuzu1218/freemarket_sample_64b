@@ -41,7 +41,6 @@ end
   end
 
   def category_children
-    binding.pry
     respond_to do |format|
       format.html
       format.json do
