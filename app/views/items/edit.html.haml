@@ -1,65 +1,123 @@
+-# = render "items/exhibition"
 = render 'header'
 .wrapper-item
- .pa
-  .pa__confirm
-   .pa__confirm__box
-    購入内容の確認
-  .pa__item
-   .pa__item__box
-    .pa__item__box__left
-     ここに画像を載せる
-    .pa__item__box__right
-     .pa__item__box__right--name
+ .ex#form-name
+  =form_with model:@item, url:items_path, local: true  do |exh|
+   .ex__image
+    .ex__image--title
+     .ex__image--title--exp
+      画像
+     .ex__image--title--must.must
+      必須
+    .ex__image--photo
+     画像は１０枚まで
+    .ex__image--upload#previews
+    -#  - if @item.persisted?
+    -#   - @item.item_images.each_with_index do |image, i|
+    -#    = image_tag image data: { index: i }, width: "100", height: '100'
+    -# .ex__image--upload#image-box
+    -#  =exh.fields_for :item_images,class:"validate[required]" do |img|
+    -#   .js-file_group{"data-index": "#{img.index}"}
+    -#    = img.file_field :image, class: 'js-file'
+    -#    %span.js-remove 削除
+    -#   -if @item.persisted?
+    -#    = img.check_box :_destroy, data:{ index: img.index }, class: 'hidden-destroy'
+    -#   -if @item.persisted?
+    -#    .js-file_group{"data-index" => "#{@item.item_images.count}"}
+    -#    = file_field_tag :image, name: "product[images_attributes][#{@item.item_images.count}][image]", class: 'js-file'
+   .ex__intro
+    .ex__intro__name
+     .ex__intro__name--exp
       商品名
-     .pa__item__box__right__money
-      .pa__item__box__right__money--price
-       ¥1,500,000
-      .pa__item__box__right__money--tax
-       税込　送料込み
-  .pa__trade
-   .pa__trade__money
-    .pa__trade__money--in
-     金額
-    .pa__trade__money--total
-     ここに金額を表示
-   .pa__trade__pay
-    .pa__trade__pay__how
-     .pa__trade__pay__how--in
-      支払方法
-     .pa__trade__pay__how--select
-      =link_to 'カード選択','#'
-    .pa__trade__pay__card
-     .pa__trade__pay__card--in
-      使用するカード
-     .pa__trade__pay__card__credit
-      .pa__trade__pay__card__credit--number
-       .pa__trade__pay__card__credit--number--in
-        カード番号
-        .pa__trade__pay__card__credit--number--out
-         ここにカード番号を表示
-      .pa__trade__pay__card__credit--limit
-       .pa__trade__pay__card__credit--limit
-        有効期限
-       .pa__trade__pay__card__credit--limit
-        ここに有効期限を表示
-   .pa__trade__deliver
-    .pa__trade__deliver__box
-     .pa__trade__deliver__box__toward
-      .pa__trade__deliver__box__toward--in
-       配送先
-      .pa__trade__deliver__box__toward--change
-       変更する
-     .pa__trade__deliver__box--place1
-      住所1
-     .pa__trade__deliver__box--place2
-      住所2
-     .pa__trade__deliver__box--place3
-      住所3
-     .pa__trade__deliver__box--place4
-      住所4
-     .pa__trade__deliver__box--name
-      氏名
-  .pa__go
-   .pa__go--button
-    %button.gobutton 購入する
+     .ex__intro__name--must.must
+      必須
+    .ex__intro__exp
+     =exh.text_field :name,class:'text-form forms validate[required] validate[maxSize] ',placeholder:'商品名を入力してください'
+    .ex__intro__exp--exp
+     說明
+     .ex__intro__exp--must.must
+      必須
+    .ex__intro__duce
+     =exh.text_area :explanation,class:'text-duce forms validate[required]',placeholder:'商品の說明を入力してください'
+    .ex__intro__strcount
+     0/1,000
+   .ex__detail
+    .ex__detail--first
+     商品詳細
+     // カテゴリ
+    -# .ex__detail__category
+    -#  .ex__detail__category--in
+    -#   カテゴリを選択してください
+    -#  .ex__detail__category--must.must 必須
+    -# .ex__detail__category__box
+    -#  = exh.select :category, @category_parent_array, {}, {class: 'ex__detail__category__box--select select', id: 'parent-form'}
+    // ブランド
+    .ex__detail__brand
+     .ex__detail__brand--in
+      ブランドを選択してください
+     .ex__detail__brand--free.free
+      任意
+    .ex__detail__brand--select
+     =exh.text_field :brand,class:'text-form',placeholder:'ブランド名を入力してください'
+    .ex__detail__status
+     .ex__detail__status--in
+      状態を選んでください
+     .ex__detail__status--must.must
+      必須
+    .ex__detail__status--select
+     = exh.collection_select :condition_id, Condition.all, :id, :name, {prompt: "--"},{class:"  select validate[required]"}
+   .ex__deliver
+    .ex__deliver--first
+     配送について
+    .ex__deliver__fee
+     .ex__deliver__fee--in
+      配送料の負担
+     .ex__deliver__fee--must.must
+      必須
+    .ex__deliver__fee--select
+     = exh.collection_select :delivery_charge_id, DeliveryCharge.all, :id, :name, {prompt: "--"},{class:"  select validate[required]"}
+    .ex__deliver__land
+     .ex__deliver__land--in
+      配送先
+     .ex__deliver__land--must.must
+      必須
+    .ex__deliver__land--select
+     = exh.collection_select :shipping_origin_id, Prefecture.all, :id, :name, {prompt: "--"},{class:"  select validate[required]"}
+    .ex__deliver__date
+     .ex__deliver__date--in
+      日数
+     .ex__deliver__date--must.must
+      必須
+    .ex__deliver__date--select
+     = exh.collection_select :sending_days_id, SendingDays.all, :id, :name, {prompt: "--"},{class:"  select validate[required]"}
+   .ex__price
+    .ex__price--in
+     価格　(¥300~¥10,000,000)
+    .ex__price__money
+     .ex__price__money__left
+      .ex__price__money__left--string
+       値段
+      .ex__price__money__left--must.must
+       必須
+     .ex__price__money--pay
+      .ex__price__money--pay--mark
+       ¥
+      .ex__price__money--pay--form
+       =exh.text_field :price,class:'text-money money_form validate[required]',placeholder:'希望金額を入力してください',type:"number"
+    .ex__price__fee
+     .ex__price__fee--string
+      手数料
+     .ex__price__fee--real-fee
+      ここに手数料を表示
+    .ex__price__benefit
+     .ex__price__benefit--in
+      あなたの利益
+     .ex__price__benefit--mouke
+      ここに利益金額を表示
+   .ex__go
+    .ex__go__menu
+     .ex__go__menu--done
+      =exh.submit "出品する",class:"gobutton"
+     .ex__go__menu--back
+      =link_to 'トップページへ',items_path
 = render 'footer'
