@@ -40,6 +40,15 @@ end
     end
   end
 
+  def destroy
+    @item = Item.find(params[:id])
+    if @item.destroy
+      redirect_to root_path
+    else
+      redirect_to item_path(@item.id)
+    end
+  end
+
   def category_children
     respond_to do |format|
       format.html
