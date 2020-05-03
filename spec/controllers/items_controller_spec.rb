@@ -57,4 +57,13 @@ describe ItemsController, type: :controller do
       expect(response).to render_template :show
     end
   end
+
+  describe '#category_children' do
+    it '@category_childrenに期待した値が入っていること' do
+      item = create(:item, category_id: 1)
+      category_children = Category.find(item.category_id).children
+      get :category_children, params: {parent_id: 1},format: :json
+      expect(assigns(:category_children)).to match category_children
+    end
+  end
 end

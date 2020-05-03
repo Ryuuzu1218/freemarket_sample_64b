@@ -152,7 +152,5 @@ describe User do
       user.valid?
       expect(user).to be_valid
     end
-
-
-end
+  end
 end
