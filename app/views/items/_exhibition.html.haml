@@ -1,4 +1,3 @@
--# = render "items/exhibition"
 = render 'header'
 .wrapper-item
  .ex#form-name
@@ -12,19 +11,19 @@
     .ex__image--photo
      画像は１０枚まで
     .ex__image--upload#previews
-    -#  - if @item.persisted?
-    -#   - @item.item_images.each_with_index do |image, i|
-    -#    = image_tag image data: { index: i }, width: "100", height: '100'
-    -# .ex__image--upload#image-box
-    -#  =exh.fields_for :item_images,class:"validate[required]" do |img|
-    -#   .js-file_group{"data-index": "#{img.index}"}
-    -#    = img.file_field :image, class: 'js-file'
-    -#    %span.js-remove 削除
-    -#   -if @item.persisted?
-    -#    = img.check_box :_destroy, data:{ index: img.index }, class: 'hidden-destroy'
-    -#   -if @item.persisted?
-    -#    .js-file_group{"data-index" => "#{@item.item_images.count}"}
-    -#    = file_field_tag :image, name: "product[images_attributes][#{@item.item_images.count}][image]", class: 'js-file'
+     - if @item.persisted?
+      - @item.images.each_with_index do |image, i|
+       = image_tag image.src.url, data: { index: i }, width: "100", height: '100'
+    .ex__image--upload#image-box
+     =exh.fields_for :item_images,class:"validate[required]" do |img|
+      .js-file_group{"data-index": "#{img.index}"}
+       = img.file_field :image, class: 'js-file'
+       %span.js-remove 削除
+      -if @item.persisted?
+       = img.check_box :_destroy, data:{ index: img.index }, class: 'hidden-destroy'
+      -if @item.persisted?
+       .js-file_group{"data-index" => "#{@item.item_images.count}"}
+       = file_field_tag :image, name: "product[images_attributes][#{@item.item_images.count}][image]", class: 'js-file'
    .ex__intro
     .ex__intro__name
      .ex__intro__name--exp
@@ -45,12 +44,12 @@
     .ex__detail--first
      商品詳細
      // カテゴリ
-    -# .ex__detail__category
-    -#  .ex__detail__category--in
-    -#   カテゴリを選択してください
-    -#  .ex__detail__category--must.must 必須
-    -# .ex__detail__category__box
-    -#  = exh.select :category, @category_parent_array, {}, {class: 'ex__detail__category__box--select select', id: 'parent-form'}
+    .ex__detail__category
+     .ex__detail__category--in
+      カテゴリを選択してください
+     .ex__detail__category--must.must 必須
+    .ex__detail__category__box
+     = exh.select :category, @category_parent_array, {}, {class: 'ex__detail__category__box--select select', id: 'parent-form'}
     // ブランド
     .ex__detail__brand
      .ex__detail__brand--in
