@@ -2,42 +2,37 @@
 .wrapper-item
  .de
   .de__name
-   = @item.name
+   ここに商品名
   .de__image
-   = image_tag "#{@item.item_images.first.image}", width: "560", height: "350", class: "de__image__main"
+   ここに写真
   .de__image-list
    .de__image-list__box
     .de__image-list__box--img
-    - @item.item_images.each do |image|
-     = image_tag "#{image.image.url}", width: "108", height: "100", class: "de__image-list__box--img--1"
+     写真１
+    .de__image-list__box--img
+     写真２
+    .de__image-list__box--img
+     写真３
   .de__price
    .de__price--price
-    = "¥#{@item.price}"
+    値段
    .de__price__money
     .de__price__money--tax
      (税込み)
     .de__price__money--deliver
      送料込み
-
-  - if user_signed_in? && current_user.id == @item.user_id
-   .de__price__edit
-    = link_to "編集", edit_item_path(@item), method: :get, class: "de__price__edit--btn"
-   .de__price__delete
-    = link_to "削除", item_path(@item), method: :delete, class: "de__price__detete--btn"
-  - else
-   - if user_signed_in?
-    .de__parchase
-     %button.gobuy
-      =link_to '購入画面に進む',new_card_path
+  .de__parchase
+   %button.gobuy
+    =link_to '',"#"
+    購入画面へ
   .de__exp
-   = @item.explanation
+   ここに商品説明
   .de__table
    %table.table
     %tbody
      %tr
       %th 出品者
-      %td
-       = @item.user.nickname
+      %td ここに出品者
      %tr.table__category
       %th カテゴリー
       %td.table__category--td
@@ -48,27 +43,22 @@
        = link_to ">#{@item.category.name}", '#'
      %tr
       %th ブランド
-      %td
-       = @item.brand
+      %td ブランドを表示。複数ある場合も考慮
      %tr
       %th サイズ
       %td サイズを表示
      %tr
       %th 状態
-      %td
-       = @item.condition.name
+      %td 状態を表示
      %tr
       %th 負担
-      %td 
-       = @item.delivery_charge.name
+      %td 着払い？送料込み？
      %tr
       %th 地域
-      %td 
-       = @item.shipping_origin.name
+      %td #{@item.shipping_origin_id}
      %tr
       %th 目安
-      %td
-       = @item.sending_days.name
+      %td 何日でつく？
   .de__good
    %button.de__good--button いいね！
 
@@ -80,15 +70,4 @@
     マナーを守ってください!
    .comment__go
     =comment.submit 'コメントする',class: 'commentbutton'
-
- .item-front-and-back
-  %li
-   = link_to ""
-   %i.fas.fa-chevron-left
-    前の商品
-  %li
-   = link_to ""
-   後の商品
-   %i.fas.fa-chevron-right
-
 = render 'footer'
