@@ -69,6 +69,20 @@ describe Address do
       expect(address).to be_valid
     end
 
+    # 郵便番号が半角数字の時以外登録できない
+    it "郵便番号が半角数字の時以外登録できない" do
+      address = build(:address, postal_code: "ああああああ")
+      address.valid?
+      expect(address.errors[:postal_code]).to include("is not a number")
+    end
+    
+    # 郵便番号が半角数字のみの場合登録できる
+    it "郵便番号が半角数字のみの場合登録できる" do
+      address = build(:address, postal_code: "1111111")
+      address.valid?
+      expect(address).to be_valid
+    end
+
     # 都道府県は入力しているか
     it "it valid with a prefecture_id that has less than 48" do
       address = build(:address, prefecture_id: "48")
@@ -88,6 +102,5 @@ describe Address do
       address.valid?
       expect(address).to be_valid
     end
-
   end
 end 
