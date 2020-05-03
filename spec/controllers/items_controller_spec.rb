@@ -4,8 +4,8 @@ describe ItemsController, type: :controller do
   let(:user)      { create(:user) }
   let(:item)      { create(:item) }
   let(:category)  { create(:category)}
-  describe '#index' do
 
+  describe '#index' do
     context 'ログインしている場合' do
       before do
         login user
@@ -23,7 +23,7 @@ describe ItemsController, type: :controller do
         expect(assigns(:items)).to match(items.sort{ |a, b| b.created_at <=> a.created_at } )
       end
 
-      it 'index.html.erb に遷移すること' do
+      it 'index.html.haml に遷移すること' do
         get :index
         expect(response).to render_template :index
       end
@@ -37,10 +37,24 @@ describe ItemsController, type: :controller do
         expect(assigns(:items)).to match(items.sort{ |a, b| b.created_at <=> a.created_at } )
       end
 
-      it 'index.html.erb に遷移すること' do
+      it 'index.html.haml に遷移すること' do
         get :index
         expect(response).to render_template :index
       end
+    end
+  end
+
+  describe '#show' do
+    it '@itemに期待した値が入っていること' do
+      item = create(:item, user_id: user.id, category_id: category.id)
+      get :show, params: { id: item.id }
+      expect(assigns(:item)).to eq item
+    end
+
+    it 'show.html.hamlに遷移すること' do
+      item = create(:item, user_id: user.id, category_id: category.id)
+      get :show, params: { id: item.id }
+      expect(response).to render_template :show
     end
   end
 end
