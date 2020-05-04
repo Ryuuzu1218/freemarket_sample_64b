@@ -22,7 +22,7 @@ before_action :move_to_index, except: [:index, :show]
     else
      render :new
     end
-end
+  end
 
 
   def show
@@ -31,12 +31,14 @@ end
 
   def edit
     @item = Item.find(params[:id])
-    @parents = Category.all.where(ancestry:nil).order("id ASC").limit(13)
     @images_length = @item.item_images.length
+    @parent = Category.where(ancestry: nil)
+    @grandchildren = Category.where(ancestry: @item.category.ancestry)
+    @children = Category.where(ancestry: @item.category.parent.ancestry)
   end
 
   def update
-    @@parents = Category.all.where(ancestry:nil).order("id ASC").limit(13)
+    @parent = Category.where(ancestry: nil)
     @item = Item.find(params[:id])
     if @item.update(item_params)
       redirect_to root_path
