@@ -56,7 +56,6 @@ $(document).on('turbolinks:load', function() {
   // 子カテゴリー選択時
   $(document).on('change', '#child-form', function(){
     let childId = document.getElementById('child-form').value;
-    console.log(childId);
     if (childId != '選択してください'){ //子カテゴリーが初期値でない時
       $.ajax({
         url: '/items/:item_id/category_grandchildren',
