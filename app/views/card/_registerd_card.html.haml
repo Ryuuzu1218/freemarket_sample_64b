@@ -4,15 +4,15 @@
   .card-content__main
     .card-title
       %h2.card-title__letter クレジットカード
-    .payment-content__creditcards__list
-      %figure
-        = image_tag "#{@card_src}",alt: @card_brand, id: "card_image"
-      .payment-content__creditcards__list__number
-        = "**** **** **** " + @creditcard_information.last4
-      .payment-content__creditcards__list__number
-        - exp_month = @creditcard_information.exp_month.to_s
-        - exp_year = @creditcard_information.exp_year.to_s.slice(2,3)
-        = exp_month + " / " + exp_year
+    -# .card-content__creditcards__list
+    -#   %figure
+    -#     = image_tag "#{@card_src}",alt: @card_brand, id: "card_image"
+    -#   .payment-content__creditcards__list__number
+    -#     = "**** **** **** " + @creditcard_information.last4
+    -#   .payment-content__creditcards__list__number
+    -#     - exp_month = @creditcard_information.exp_month.to_s
+    -#     - exp_year = @creditcard_information.exp_year.to_s.slice(2,3)
+    -#     = exp_month + " / " + exp_year
 =render "home/footer"
 
 
