@@ -1,4 +1,7 @@
 @import "./reset";
+.field_with_errors {
+  display: contents;
+}
 @import "font-awesome-sprockets";
 @import "./font-awesome";
 @import "box-sizing.scss";
