@@ -173,7 +173,7 @@ $(document).on('turbolinks:load', function() {
      `;
       return html;}
     //editの時、最初に画像投稿フォームを一個付け足す
-    $(".editform").append(buildFileField(('.js-file_group'.length)/2));
+    // $(".editform").append(buildFileField(('.js-file_group'.length)/2));
   // file_fieldのnameに動的なindexをつける為の配列
   let fileIndex = [1,2,3,4,5,6,7,8,9,10,11,12,13,14];
   // 既に使われているindexを除外
@@ -225,7 +225,13 @@ $(document).on('turbolinks:load', function() {
  
 
  $(document).ready(function () {
+   let imagecount=$('.js-file_group').length
   $("#form-name").validationEngine();
+  if($('.sub-image').length <10 )
+    $(".editform").append(buildFileField(imagecount));
+    fileIndex.shift();
+    // 末尾の数に1足した数を追加する
+    fileIndex.push(fileIndex[fileIndex.length - 1] + 1)
  });
 
 });
