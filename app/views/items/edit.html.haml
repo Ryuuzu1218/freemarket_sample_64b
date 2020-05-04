@@ -45,12 +45,12 @@
     .ex__detail--first
      商品詳細
      // カテゴリ
-    -# .ex__detail__category
-    -#  .ex__detail__category--in
-    -#   カテゴリを選択してください
-    -#  .ex__detail__category--must.must 必須
-    -# .ex__detail__category__box
-    -#  = exh.select :category, @category_parent_array, {}, {class: 'ex__detail__category__box--select select', id: 'parent-form'}
+    .ex__detail__category
+     .ex__detail__category--in
+      カテゴリを選択してください
+     .ex__detail__category--must.must 必須
+    .ex__detail__category__box
+     = exh.select :category, @category_parent_array, {}, {class: 'ex__detail__category__box--select select', id: 'parent-form'}
     // ブランド
     .ex__detail__brand
      .ex__detail__brand--in

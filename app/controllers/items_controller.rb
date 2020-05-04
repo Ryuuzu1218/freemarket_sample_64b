@@ -30,14 +30,13 @@ end
   end
 
   def edit
-
     @item = Item.find(params[:id])
-    @parent = Category.where(ancestry: nil)
+    @parents = Category.all.where(ancestry:nil).order("id ASC").limit(13)
     @images_length = @item.item_images.length
   end
 
   def update
-    @parent = Category.where(ancestry: nil)
+    @@parents = Category.all.where(ancestry:nil).order("id ASC").limit(13)
     @item = Item.find(params[:id])
     if @item.update(item_params)
       redirect_to root_path
