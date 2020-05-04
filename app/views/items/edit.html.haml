@@ -18,7 +18,7 @@
         = image_tag image.image_url ,data: { index: i }, width: "120px", height: '120px'
         %span.js-remove.add
          取り消す
-    .ex__image--upload#image-box
+    .ex__image--upload.editform#image-box
      =exh.fields_for :item_images,class:"validate[required]" do |img|
       %label.js-file_group{"data-index": "#{img.index}"}
        =img.label :image ,class:'label js-file' do

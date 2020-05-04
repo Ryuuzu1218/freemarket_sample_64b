@@ -172,6 +172,8 @@ $(document).on('turbolinks:load', function() {
                     </div>
      `;
       return html;}
+    //editの時、最初に画像投稿フォームを一個付け足す
+    $(".editform").append(buildFileField(('.js-file_group'.length)/2));
   // file_fieldのnameに動的なindexをつける為の配列
   let fileIndex = [1,2,3,4,5,6,7,8,9,10,11,12,13,14];
   // 既に使われているindexを除外
@@ -220,8 +222,11 @@ $(document).on('turbolinks:load', function() {
   if ($('.js-file').length == 0) $('#image-box').append(buildFileField(fileIndex[0]));
   if ($('.js-file').length == 9 && $('.image-menu').length ==9) $('#image-box').append(buildFileField(fileIndex[0]));
 })
+ 
+
  $(document).ready(function () {
   $("#form-name").validationEngine();
  });
+
 });
 
