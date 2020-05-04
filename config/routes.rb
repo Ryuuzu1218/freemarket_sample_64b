@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   # itemコントローラーrouting
   resources :items do
-    collection do
+    member do
       get 'category_children', defaults: { format: 'json' }
       get 'category_grandchildren', defaults: { format: 'json' }
     end

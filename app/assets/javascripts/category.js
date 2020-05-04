@@ -27,7 +27,7 @@ $(document).on('turbolinks:load', function() {
     let parentId = document.getElementById('parent-form').value;
     if (parentId != '選択してください') { //親の値が初期値でない時
       $.ajax({ //ajax通信
-        url: 'category_children',
+        url: '/items/:item_id/category_children',
         type: 'GET',
         data: {
           parent_id: parentId
@@ -56,9 +56,10 @@ $(document).on('turbolinks:load', function() {
   // 子カテゴリー選択時
   $(document).on('change', '#child-form', function(){
     let childId = document.getElementById('child-form').value;
+    console.log(childId);
     if (childId != '選択してください'){ //子カテゴリーが初期値でない時
       $.ajax({
-        url: 'category_grandchildren',
+        url: '/items/:item_id/category_grandchildren',
         type: 'GET',
         data: { child_id: childId },
         dataType: 'json'
