@@ -1,8 +1,9 @@
 class ItemsController < ApplicationController
-before_action :move_to_index, except: [:index, :show]
-before_action :authenticate_user!, only: [:show]
+  before_action :move_to_index, except: [:index, :show]
+  before_action :set_item, only: [:show, :edit, :update, :destroy]
+  before_action :set_parent_category, only: [:new, :create, :edit, :update]
+  
   def index
-    @parents = Category.all.where(ancestry:nil).order("id ASC").limit(13)
     @items = Item.includes(:item_images).order('created_at DESC').limit(3).where.not(transaction_status: 0).where(transaction_status: 1)
     @ladies_items = @items.get_category(1)
     @mens_items   = @items.get_category(2)
@@ -23,21 +24,33 @@ before_action :authenticate_user!, only: [:show]
     else
      render :new
     end
-end
+  end
 
 
   def show
-    @item = Item.find(params[:id])
   end
 
   def edit
+    @images_length = @item.item_images.length
+    @parent = Category.where(ancestry: nil)
+    @grandchildren = Category.where(ancestry: @item.category.ancestry)
+    @children = Category.where(ancestry: @item.category.parent.ancestry)
   end
 
   def update
+    @parent = Category.where(ancestry: nil)
     if @item.update(item_params)
-      redirect_to root_pathn
+      redirect_to root_path
     else
       render :edit
+    end
+  end
+
+  def destroy
+    if @item.destroy
+      redirect_to root_path
+    else
+      redirect_to item_path(@item.id)
     end
   end
 
@@ -68,5 +81,13 @@ end
 
   def move_to_index
     redirect_to new_user_session_path unless user_signed_in?
+  end
+
+  def set_item
+    @item = Item.find(params[:id])
+  end
+
+  def set_parent_category
+    @parent = Category.where(ancestry: nil)
   end
 end

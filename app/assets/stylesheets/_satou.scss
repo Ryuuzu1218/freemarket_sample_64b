@@ -167,14 +167,13 @@
     margin: 0 auto;
   }
   &__image-list{
-    margin: 0 auto;
-    display: flex;
-
+    margin: 0 70px;
     &__box{
       display: flex;
-      height: 80px;
+      height: 90px;
       width: 100px;
-    }
+      display: contents;
+      }
   }
   &__price--price{
     font-size: 46px;
@@ -184,6 +183,29 @@
     justify-content: center;
     display: flex;
     font-size: 14px;
+  }
+  &__price__edit{
+    text-align: center;
+    font-size: 20px;
+    padding-top: 20px;
+    a{
+      text-decoration: none;
+      color: white;
+      background-color: #3ccace;
+      padding: 10px 255px;
+    }
+  }
+  &__price__delete{
+    text-align: center;
+    font-size: 20px;
+    padding-top: 30px;
+    padding-bottom: 20px;
+    a{
+    text-decoration: none;
+    color: white;
+    background-color: lightgray;
+    padding: 10px 255px;
+    }
   }
   &__parchase{
     text-decoration: none;
