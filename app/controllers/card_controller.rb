@@ -15,7 +15,7 @@ class CardController < ApplicationController
         email: current_user.email,
         card: params["payjp-token"]
       )
-      @card = Card.new(user_id: current_user.id, customer_id: customer.id, card_id: costomer.default_card)
+      @card = Card.new(user_id: current_user.id, customer_id: customer.id, card_id: customer.default_card)
       if @card.save
         redirect_to action: "show"
       else
