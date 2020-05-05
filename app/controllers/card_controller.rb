@@ -8,12 +8,12 @@ class CardController < ApplicationController
 
   def create
     Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
-    if params["payjp-token"].blank?
+    if params["payjp_token"].blank?
       redirect_to action: "new"
     else
       customer = Payjp::Customer.create(
         email: current_user.email,
-        card: params["payjp-token"]
+        card: params["payjp_token"]
       )
       @card = Card.new(user_id: current_user.id, customer_id: customer.id, card_id: customer.default_card)
       if @card.save
