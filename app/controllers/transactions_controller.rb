@@ -1,14 +1,10 @@
 class TransactionsController < ApplicationController
-  def buy
-    Payjp.api_key = "PAYJP_SECRET_KEY"
-    Payjp::Charge.create(
-      amount: 800
-      card: params['payjp-token'],
-      currency: 'jpy'
-    )
+  def confirm
+    # 購入確認
   end
 
-  def transaciton_end
+  def transacte
+    # 購入
   end
 
 end
