@@ -4,11 +4,11 @@ window.addEventListener('DOMContentLoaded', function(){
     submit.addEventListener('click', function(e){
     e.preventDefault();
 
-    let card = { //カード入力フォームから情報を取得
-      number: document.getElementById("").Value,
-      cvc: document.getElementById("").vlalue,
-      exp_month: document.getElementById("").vlalue,
-      exp_year: document.getElementById("").vlalue
+    let card = { //カード入力フォームから情報を取得, フォームのidを記載する
+      number: document.getElementById("card_number").Value,
+      cvc: document.getElementById("card_cvc").vlalue,
+      exp_month: document.getElementById("card_exp_month").vlalue,
+      exp_year: document.getElementById("card_exp_year").vlalue
     };
 
     Payjp.createToken(card, function(status, response){
