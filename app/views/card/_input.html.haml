@@ -1,7 +1,7 @@
 .card-content
   %h2.card-content__title
     クレジットカード情報入力
-  = form_with(model: @card, url: '#', local: true, class: "card-content__form", id: "charge-form") do |f|
+  = form_with(url: new_card_path, local: true, class: "card-content__form", id: "charge-form") do |f|
     .card-content__form__body
       .card-form.card-form--1
         = f.label :number, "カード番号", class: "card-form__label"
