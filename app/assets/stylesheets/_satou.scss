@@ -21,8 +21,8 @@
       margin: 16px 0;
     }
     &--upload{
-      display: -webkit-box;
       flex-wrap: wrap;
+      display: flex;
     }
   }
   &__intro{
