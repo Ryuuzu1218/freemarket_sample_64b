@@ -1,10 +1,7 @@
 class CardController < ApplicationController
   require "payjp"
-  before_action :set_card
 
   def new
-    card = Card.where(user_id: current_user.id).first
-    redirect_to action: "index" if card.present? 
   end
 
   def create
