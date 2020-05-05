@@ -192,8 +192,8 @@ $(document).on('turbolinks:load', function() {
       // if ($('.image-menu').length<10)
       $('#previews').append(buildImg(targetIndex, blobUrl));
     // fileIndexの先頭の数字を使ってinputを作る
-    if($('.sub-image').length <10 )
-    $('#image-box').append(buildFileField(fileIndex[0]));
+    if($('.sub-image').length <10 )(
+    $('#image-box').append(buildFileField(fileIndex[0])));
     fileIndex.shift();
     // 末尾の数に1足した数を追加する
     fileIndex.push(fileIndex[fileIndex.length - 1] + 1)
@@ -209,7 +209,11 @@ $(document).on('turbolinks:load', function() {
     $(this).parent().remove();
     $(this).remove();
     // 画像入力欄が0個にならないようにしておく
-    if ($('.js-file').length == 0) $('#image-box').append(buildFileField(fileIndex[0]));
+    if ($('.js-file').length == 0) ($('#image-box').append(buildFileField(fileIndex[0])));
+    fileIndex.shift();
+    // 末尾の数に1足した数を追加する
+    fileIndex.push(fileIndex[fileIndex.length - 1] + 1)
+
   });
 
   //画像側の削除ボタンを推すと紐付いている入力フォームも消える。
@@ -221,6 +225,10 @@ $(document).on('turbolinks:load', function() {
   $(`label[data-index='${deleteIndex}']`).remove();
   if ($('.js-file').length == 0) $('#image-box').append(buildFileField(fileIndex[0]));
   if ($('.js-file').length == 9 && $('.image-menu').length ==9) $('#image-box').append(buildFileField(fileIndex[0]));
+  fileIndex.shift();
+  // 末尾の数に1足した数を追加する
+  fileIndex.push(fileIndex[fileIndex.length - 1] + 1)
+
 })
  
 
