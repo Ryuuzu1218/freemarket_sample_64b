@@ -1,2 +1,9 @@
-%h1 Card#show
-%p Find me in app/views/card/show.html.haml
+= render "items/header"
+= render "users/breadcrumb"
+.mypage-main-conent
+  .mypage-main-index
+    = render "users/leftbar"
+  .right-content
+    = render "card/registerd_card"
+
+= render "items/footer"
