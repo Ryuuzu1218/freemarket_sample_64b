@@ -7,8 +7,8 @@ window.addEventListener('DOMContentLoaded', function(){
     let card = { //カード入力フォームから情報を取得, フォームのidを記載する
       number: document.getElementById("number").value,
       cvc: document.getElementById("cvc").value,
-      exp_month: document.getElementById("card_month").value,
-      exp_year: document.getElementById("card_year").value
+      exp_month: document.getElementById("exp_month").value,
+      exp_year: document.getElementById("exp_year").value
     };
 
     Payjp.createToken(card, function(status, response){
@@ -18,7 +18,7 @@ window.addEventListener('DOMContentLoaded', function(){
         $(".exp_month").removeAttr("name");
         $(".exp_year").removeAttr("name");
         $("#charge-form").append(
-          $('<input type="hidden" name="payjp_token>').val(response.id)
+          $('<input type="hidden" name="payjp_token">').val(response.id)
         );
         document.inputForm.submit();
         alert("登録が完了しました");
