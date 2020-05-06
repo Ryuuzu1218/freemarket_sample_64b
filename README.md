@@ -39,10 +39,9 @@
 - has_many :informations, dependent: :destroy
 - has_many :items
 - has_many :comments
-- has_many :transactions, through: :user_transactions
-- has_many :user_transactions
+- has_many :transactions
 - has_many :messages
-- has_one :address, dependent: :destroy
+- has_one  :address, dependent: :destroy
 
 ## Message
 |Column|Type|Options|
@@ -69,16 +68,15 @@
 ## Transaction
 |Column|Type|Options|
 | ------------ | ------------ | ------------ |
-|status|string|null: false|
 |item|reference|null: false, foreign_key: true|
-|user|reference|null: false, foreign_key: true|
-|total_fee|integer|null: false|
+|buyer|reference|null: false, foreign_key: true|
+|seller|reference|null: false, foreign_key: true|
 
 ### Association
 - has_many :messages
 - belongs_to :item
-- has_many :users, through: :user_transaction
-- has_many :user_transactions
+- has_many :buyer, class_name: Users
+- has_many :saller, class_name: Users
 
 
 ## Evaluation
@@ -115,12 +113,6 @@
 - has_many :comments, dependent: :destroy
 - belongs_to :user
 - belongs_to :category
-
-## User_transaction
-|Column|Type|Options|
-| ------------ | ------------ | ------------ |
-|user|reference|null: false, foreign_key: true|
-|transaction|reference|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :user
