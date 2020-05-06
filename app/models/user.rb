@@ -12,8 +12,7 @@ class User < ApplicationRecord
   has_many :informations, dependent: :destroy
   has_many :items
   has_many :comments
-  has_many :transactions, through: :user_transactions
-  has_many :user_transactions
+  has_many :transactions
   has_many :messages
   has_one :address,        dependent: :destroy
 
