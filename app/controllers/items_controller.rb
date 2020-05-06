@@ -39,11 +39,12 @@ class ItemsController < ApplicationController
   end
 
   def update
+
     @item = Item.find(params[:id])
-    @parent = Category.where(ancestry: nil)
     @parent = Category.where(ancestry: nil)
     if @item.user_id == current_user.id
       @item.update(item_params)
+      binding.pry
       redirect_to root_path
     else
       render :edit
