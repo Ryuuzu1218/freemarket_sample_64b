@@ -3,7 +3,17 @@
     支払い方法
   .card-content__main
     .card-title
-      %h2.card-title__letter クレジットカード
-=render "home/footer"
+      %h3.card-title__letter クレジットカード
+    .card-body
+      .card-body__left
+        .card-image
+          = image_tag 'cards/visa.svg', width:'49px', height: '20px', class: 'visa'
+        .card-number
+          **** **** **** 1111
+        .card-deadline
+          10 / 23
+      .card-body__right
+        = link_to card_path, method: :delete, class: "card-remove" do
+          削除する
 
 
