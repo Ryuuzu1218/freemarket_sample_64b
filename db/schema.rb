@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_21_125741) do
+ActiveRecord::Schema.define(version: 2020_05_06_024145) do
 
   create_table "Addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "city", null: false
@@ -74,24 +74,14 @@ ActiveRecord::Schema.define(version: 2020_04_21_125741) do
   end
 
   create_table "transactions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "status", default: 0
-    t.integer "item_id", null: false
-    t.integer "buyer_id", null: false
-    t.integer "saler_id", null: false
-    t.integer "total_fee", null: false
+    t.bigint "item_id", null: false
+    t.bigint "buyer_id", null: false
+    t.bigint "seller_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "user_transactions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "buyer_id"
-    t.bigint "saler_id"
-    t.bigint "transaction_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["buyer_id"], name: "index_user_transactions_on_buyer_id"
-    t.index ["saler_id"], name: "index_user_transactions_on_saler_id"
-    t.index ["transaction_id"], name: "index_user_transactions_on_transaction_id"
+    t.index ["buyer_id"], name: "index_transactions_on_buyer_id"
+    t.index ["item_id"], name: "index_transactions_on_item_id"
+    t.index ["seller_id"], name: "index_transactions_on_seller_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -120,4 +110,7 @@ ActiveRecord::Schema.define(version: 2020_04_21_125741) do
   add_foreign_key "item_images", "items"
   add_foreign_key "items", "categories"
   add_foreign_key "items", "users"
+  add_foreign_key "transactions", "items"
+  add_foreign_key "transactions", "users", column: "buyer_id"
+  add_foreign_key "transactions", "users", column: "seller_id"
 end
