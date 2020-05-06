@@ -8,13 +8,13 @@ class User < ApplicationRecord
 
   # アソシエーション
   has_many :evaluations,  dependent: :destroy
-  has_one :credit_card,   dependent: :destroy
+  has_one  :card,         dependent: :destroy
   has_many :informations, dependent: :destroy
   has_many :items
   has_many :comments
   has_many :transactions
   has_many :messages
-  has_one :address,        dependent: :destroy
+  has_one  :address,        dependent: :destroy
 
   # 以下バリデーション
   # 空ではないこと
