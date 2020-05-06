@@ -3,7 +3,7 @@ class CardController < ApplicationController
 
   def new
     @card = Card.where(user_id: current_user.id)
-    redirect_to card_path(curresnt_user.id) if @card.exists? 
+    redirect_to card_path(current_user.id) if @card.exists? 
   end
 
   def create
@@ -29,7 +29,7 @@ class CardController < ApplicationController
     if @card.blank?
       redirect_to action: "new"
     else
-      Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+      Payjp.api_key = ENV[PAYJP_PRIVATE_KEY]
       customer = Payjp::Customoer.retrieve(@card.customer_id)
       @customer_card = custmoer.cards.retrieve(@card.card.id)
       @card_brand = @customer_card.brand
@@ -49,6 +49,8 @@ class CardController < ApplicationController
       when "Discover"
         @card_src = "cards/discover.svg"
       end
+
+      @exp_month = @customer_card.exp_month
     end
   end
 
