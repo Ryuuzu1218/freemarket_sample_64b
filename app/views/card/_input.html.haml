@@ -27,11 +27,11 @@
         %span.must 必須
         .card-form__select
           .card-form__select__half
-            = f.select :exp_month, ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'], id: 'card_month'
+            = f.select :exp_month, ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'], id: 'exp_month'
             %i.fas.fa-angle-down
             %span 月
           .card-form__select__half
-            = f.select :exp_year, ['20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30'], id: 'card_year'
+            = f.select :exp_year, ['20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30'], id: 'exp_year'
             %i.fas.fa-angle-down
             %span 年
 
