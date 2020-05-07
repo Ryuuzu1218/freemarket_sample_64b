@@ -1,3 +1,4 @@
+= render 'header'
 .wrapper-item
  .de
   .de__name
@@ -7,7 +8,7 @@
   .de__image-list
    .de__image-list__box
     .de__image-list__box--img
-    - @item.item_images
+    - @item.item_images.each do |image|
      = image_tag "#{image.image.url}", width: "108", height: "100", class: "de__image-list__box--img--1"
   .de__price
    .de__price--price

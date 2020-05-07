@@ -7,7 +7,8 @@ class CardController < ApplicationController
   end
 
   def create
-    Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
+    # Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
+    Payjp.api_key = Rails.application.credentials.dig[:payjp,:PAYJP_SECRET_KEY]
     if params["payjp_token"].blank?
       redirect_to action: "new"
     else
@@ -29,7 +30,8 @@ class CardController < ApplicationController
     if @card.blank?
       redirect_to action: "new"
     else
-      Payjp.api_key = ENV[PAYJP_PRIVATE_KEY]
+      # Payjp.api_key = ENV[PAYJP_PRIVATE_KEY]
+      Payjp.api_key = Rails.application.credentials.dig[:payjp,:PAYJP_SECRET_KEY]
       customer = Payjp::Customoer.retrieve(@card.customer_id)
       @customer_card = custmoer.cards.retrieve(@card.card.id)
       @card_brand = @customer_card.brand

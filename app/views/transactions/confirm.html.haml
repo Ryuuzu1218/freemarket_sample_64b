@@ -7,7 +7,7 @@
   .pa__item
    .pa__item__box
     .pa__item__box__left
-     = image_tag "#{@item.item_images.first.image}"
+     = image_tag "#{@item.item_images.first.image}", width: "90", height: "90"
     .pa__item__box__right
      .pa__item__box__right--name
       =@item.name
@@ -50,7 +50,7 @@
       .pa__trade__deliver__box__toward--change
        変更する
      .pa__trade__deliver__box--place1
-      =current_user.address.prefecture_id
+      =current_user.address.prefecture.name
      .pa__trade__deliver__box--place2
       =current_user.address.city
      .pa__trade__deliver__box--place3
