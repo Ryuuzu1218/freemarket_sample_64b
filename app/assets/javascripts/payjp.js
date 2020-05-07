@@ -1,6 +1,6 @@
 window.addEventListener('DOMContentLoaded', function(){
   let submit = document.getElementById("payment_card_submit-button");
-  Payjp.setPublicKey('pk_test_11a1cbafd4b6f03d6a6e018b');
+  Payjp.setPublicKey('pk_test_11a1cbafd4b6f03d6a6e018b');//間違ってないよね？
     submit.addEventListener('click', function(e){
     e.preventDefault();
 
@@ -23,6 +23,7 @@ window.addEventListener('DOMContentLoaded', function(){
         document.inputForm.submit();
         alert("登録が完了しました");
       } else {
+        console.log(card)
         alert("カード情報が正しくありません。");
       }
     });

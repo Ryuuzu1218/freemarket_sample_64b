@@ -27,4 +27,12 @@ Rails.application.routes.draw do
       post 'show', to: 'card#show'
     end
   end
+
+  resources :transactions do
+    member do
+      get :confirm
+    end
+  end
+
+
 end
