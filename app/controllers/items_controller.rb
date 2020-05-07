@@ -1,8 +1,8 @@
 class ItemsController < ApplicationController
   before_action :move_to_index, except: [:index, :show]
   before_action :set_item, only: [:show, :edit, :update, :destroy]
-  before_action :set_parent_category, only: [:new, :create, :edit]
-  before_action :find_item, only: [:edit, :update]
+  before_action :set_parent_category, only: [:new, :create, :edit, :update]
+
 
   
   def index
@@ -86,11 +86,6 @@ class ItemsController < ApplicationController
   def set_item
     @item = Item.find(params[:id])
   end
-
-  def find_item
-    @parent = Category.where(ancestry: nil)
-  end
-
 
   def set_parent_category
     @parent = Category.where(ancestry: nil)
