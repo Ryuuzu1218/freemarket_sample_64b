@@ -1,7 +1,7 @@
 = render 'header'
 .wrapper-item
  .ex#form-name
-  =form_with model:@item, url:items_path, local: true  do |exh|
+  =form_with model:@item, url:item_path, local: true  do |exh|
    .ex__image
     .ex__image--title
      .ex__image--title--exp
@@ -23,8 +23,10 @@
       %label.js-file_group{"data-index": "#{img.index}"}
        =img.label :image ,class:'label js-file' do
         = img.file_field :image, class: 'none'
+        = img.check_box :_destroy, data:{ index: img.index }, class: 'hidden-destroy'
         .sub-image
          画像を設定する
+
    .ex__intro
     .ex__intro__name
      .ex__intro__name--exp
@@ -119,7 +121,7 @@
    .ex__go
     .ex__go__menu
      .ex__go__menu--done
-      =exh.submit "出品する",class:"gobutton"
+      =exh.submit "更新する",class:"gobutton"
      .ex__go__menu--back
       =link_to 'トップページへ',items_path
 = render 'footer'

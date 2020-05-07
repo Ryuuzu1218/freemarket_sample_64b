@@ -2,6 +2,8 @@ class ItemsController < ApplicationController
   before_action :move_to_index, except: [:index, :show]
   before_action :set_item, only: [:show, :edit, :update, :destroy]
   before_action :set_parent_category, only: [:new, :create, :edit, :update]
+
+
   
   def index
     @items = Item.includes(:item_images).order('created_at DESC').limit(3).where.not(transaction_status: 0).where(transaction_status: 1)
@@ -32,14 +34,12 @@ class ItemsController < ApplicationController
 
   def edit
     @images_length = @item.item_images.length
-    @parent = Category.where(ancestry: nil)
     @grandchildren = Category.where(ancestry: @item.category.ancestry)
     @children = Category.where(ancestry: @item.category.parent.ancestry)
   end
 
   def update
-    @parent = Category.where(ancestry: nil)
-    if @item.update(item_params)
+      if @item.user_id == current_user.id && @item.update(item_params)
       redirect_to root_path
     else
       render :edit
