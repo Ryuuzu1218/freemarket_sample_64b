@@ -7,13 +7,14 @@
     .card-body
       .card-body__left
         .card-image
-          = image_tag 'cards/visa.svg', width:'49px', height: '20px', class: 'visa'
+          = image_tag @card_src, width:'49px', height: '20px', class: 'visa'
         .card-number
-          **** **** **** 1111
+          **** **** **** #{@customer_card.last4}
         .card-deadline
-          10 / 23
+          #{@customer_card.exp_month.to_s} / #{@customer_card.exp_year.to_s.slice(2,3)}
       .card-body__right
         = link_to card_path, method: :delete, class: "card-remove" do
           削除する
+
 
 
