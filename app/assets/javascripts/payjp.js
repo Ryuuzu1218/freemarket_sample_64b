@@ -1,7 +1,6 @@
 $(document).on('turbolinks:load', function() {
-  let submit = document.getElementById("payment_card_submit-button");
   Payjp.setPublicKey('pk_test_861be3c0878f019aa1b048f4');
-    submit.addEventListener('click', function(e){
+    $('#payment_card_submit-button').on('click', function(e){
     e.preventDefault();
 
     let card = { //カード入力フォームから情報を取得, フォームのidを記載する
