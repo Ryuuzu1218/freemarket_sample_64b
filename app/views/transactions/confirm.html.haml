@@ -1,4 +1,4 @@
-= render 'header'
+= render 'items/header'
 .wrapper-item
  .pa
   .pa__confirm
@@ -7,13 +7,13 @@
   .pa__item
    .pa__item__box
     .pa__item__box__left
-     ここに画像を載せる
+     = image_tag "#{@item.item_images.first.image}", width: "90", height: "90"
     .pa__item__box__right
      .pa__item__box__right--name
-      商品名
+      =@item.name
      .pa__item__box__right__money
       .pa__item__box__right__money--price
-       ¥1,500,000
+       = "¥#{@item.price}"
       .pa__item__box__right__money--tax
        税込　送料込み
   .pa__trade
@@ -21,7 +21,7 @@
     .pa__trade__money--in
      金額
     .pa__trade__money--total
-     ここに金額を表示
+     = "¥#{@item.price}"
    .pa__trade__pay
     .pa__trade__pay__how
      .pa__trade__pay__how--in
@@ -50,16 +50,16 @@
       .pa__trade__deliver__box__toward--change
        変更する
      .pa__trade__deliver__box--place1
-      住所1
+      =current_user.address.prefecture.name
      .pa__trade__deliver__box--place2
-      住所2
+      =current_user.address.city
      .pa__trade__deliver__box--place3
-      住所3
+      =current_user.address.town
      .pa__trade__deliver__box--place4
-      住所4
+      =current_user.address.building
      .pa__trade__deliver__box--name
-      氏名
+      =current_user.nickname
   .pa__go
    .pa__go--button
     %button.gobutton 購入する
-= render 'footer'
+= render 'items/footer'

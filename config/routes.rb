@@ -22,5 +22,13 @@ Rails.application.routes.draw do
     end
   end 
 
-  resources :card, only: [:new, :show, :create, :destroy]
+  resources :card, only: [:new, :create, :show, :destroy]
+
+  resources :transactions do
+    member do
+      get :confirm
+    end
+  end
+
+
 end
