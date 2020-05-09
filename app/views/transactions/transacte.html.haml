@@ -1,0 +1,14 @@
+= render 'items/header'
+.buy
+  .buy-content
+    購入が完了しました
+  .buy-item
+    .buy-item
+      .buy-item__image
+        = image_tag "#{image.image.url}", class: "buy-item__image__images"
+
+
+
+.back-page
+  .back-page__top
+    = link_to "トップページに戻る", root_path, class: "back-page__top__btn"
