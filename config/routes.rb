@@ -22,11 +22,7 @@ Rails.application.routes.draw do
     end
   end 
 
-  resources :card, only: [:new, :create, :show, :destroy] do
-    collection do
-      post 'show', to: 'card#show'
-    end
-  end
+  resources :card, only: [:new, :create, :show, :destroy]
 
   resources :transactions do
     member do
