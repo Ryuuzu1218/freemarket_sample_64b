@@ -199,7 +199,7 @@ $(document).on('turbolinks:load', function() {
     fileIndex.push(fileIndex[fileIndex.length - 1] + 1)
   }
   });
-   //入力フォーム側の削除ボタンを推すと紐付いている画像も消える。こちらは正常に動く
+   //入力フォーム側の削除ボタンを推すと紐付いている画像も消える。
   $('#image-box').on('click', '.js-remove', function() {
     const targetIndex = $(this).parent().data('index')
     // 該当indexを振られているチェックボックスを取得する
@@ -220,19 +220,21 @@ $(document).on('turbolinks:load', function() {
   $('#previews').on('click', '.js-remove',function(){
   const deleteIndex = $(this).parent().data('index');
   const imgObj = $(this).parent() 
+  // 該当indexを振られているチェックボックスを取得する
+  const hiddenCheck = $(`input[data-index="${deleteIndex}"]`);
+  // もしチェックボックスが存在すればチェックを入れる
+  if (hiddenCheck) hiddenCheck.prop('checked', true);
   imgObj.remove();
   $(this).remove();
-  $(`label[data-index='${deleteIndex}']`).remove();
+  $(`label[data-index='${deleteIndex}']`).hide();
+  $(`input#item_item_images_attributes_${deleteIndex}_id`).hide()
   if ($('.js-file').length == 0) $('#image-box').append(buildFileField(fileIndex[0]));
   if ($('.js-file').length == 9 && $('.image-menu').length ==9) $('#image-box').append(buildFileField(fileIndex[0]));
   fileIndex.shift();
   // 末尾の数に1足した数を追加する
   fileIndex.push(fileIndex[fileIndex.length - 1] + 1)
-
 })
- 
-
- $(document).ready(function () {
+  $(document).ready(function () {
    let imagecount=$('.js-file_group').length
   $("#form-name").validationEngine();
   if($('.sub-image').length <10 )

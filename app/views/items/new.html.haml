@@ -21,8 +21,6 @@
         =img.file_field :image, class: 'none'
         .sub-image
          画像を設定する
-
-       
       -if @item.persisted?
        = img.check_box :_destroy, data:{ index: img.index }, class: 'hidden-destroy'
       -if @item.persisted?
