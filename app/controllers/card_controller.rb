@@ -2,14 +2,16 @@ class CardController < ApplicationController
   require "payjp"
 
   def new
-    @card = Card.where(user_id: current_user.id)
-    redirect_to card_path(current_user.id) if @card.exists? 
+    @card = Card.find_by(user_id: current_user.id)
+    if @card
+      redirect_to action: :show, id: @card.id
+    end
   end
 
   def create
     Payjp.api_key = Rails.application.credentials.PAYJP_SECRET_KEY
     if params["payjp_token"].blank?
-      redirect_to action: "new"
+      redirect_to action: :new
     else
       customer = Payjp::Customer.create(
         email: current_user.email,
@@ -17,9 +19,9 @@ class CardController < ApplicationController
       )
       @card = Card.new(user_id: current_user.id, customer_id: customer.id, card_id: customer.default_card)
       if @card.save
-        redirect_to action: "show"
+        redirect_to action: :show, id: @card.id
       else
-        redirect_to action: "new"
+        redirect_to action: :new
       end
     end
   end
@@ -27,7 +29,7 @@ class CardController < ApplicationController
   def show
     @card = Card.find_by(user_id: current_user.id)
     if @card.blank?
-      redirect_to action: "new"
+      redirect_to action: :new
     else
       Payjp.api_key = Rails.application.credentials.PAYJP_SECRET_KEY
       customer = Payjp::Customer.retrieve(@card.customer_id)
