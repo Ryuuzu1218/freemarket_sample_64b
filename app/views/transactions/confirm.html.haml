@@ -26,29 +26,28 @@
     .pa__trade__pay__how
      .pa__trade__pay__how--in
       支払方法
-     .pa__trade__pay__how--select
-      =link_to 'カード選択','#'
+
     .pa__trade__pay__card
      .pa__trade__pay__card--in
-      使用するカード
+      クレジットカード
      .pa__trade__pay__card__credit
       .pa__trade__pay__card__credit--number
        .pa__trade__pay__card__credit--number--in
         カード番号
         .pa__trade__pay__card__credit--number--out
-         ここにカード番号を表示
+         **** **** **** #{@customer_card.last4}
       .pa__trade__pay__card__credit--limit
        .pa__trade__pay__card__credit--limit
         有効期限
        .pa__trade__pay__card__credit--limit
-        ここに有効期限を表示
+        #{@customer_card.exp_month.to_s} / #{@customer_card.exp_year.to_s.slice(2,3)}
+       .pa__trade__pay__card__credit--logo
+        = image_tag @card_src, width:'49px', height: '20px', class: 'visa'
    .pa__trade__deliver
     .pa__trade__deliver__box
      .pa__trade__deliver__box__toward
       .pa__trade__deliver__box__toward--in
        配送先
-      .pa__trade__deliver__box__toward--change
-       変更する
      .pa__trade__deliver__box--place1
       =current_user.address.prefecture.name
      .pa__trade__deliver__box--place2
