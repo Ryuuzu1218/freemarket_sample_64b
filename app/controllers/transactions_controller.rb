@@ -30,8 +30,7 @@ class TransactionsController < ApplicationController
 
   def transacte
     @item = Item.find(params[:id])
-    # @customer = confirm.create_tx(buyer_id: current_user.id, seller_id: current_user.id, item_id: params[:id])
-    if @item.transaction.present?
+    if @item.tx.present?
       redirect_to item_path(@item.id)
     else
       @item.with_lock do
@@ -43,7 +42,7 @@ class TransactionsController < ApplicationController
           currency: 'jpy'
         )
       end
-      @transacte = Transaction.create(buyer_id: current_user.id, item_id: params[:item_id])
+      @transacte = Transaction.create(buyer_id: current_user.id, item_id: params[:item_id], seller_id: @item.user_id)
     end
   end
 end

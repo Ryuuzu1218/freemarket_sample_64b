@@ -63,7 +63,8 @@
   .pa__go
    .pa__go--button
     - if @card.present?
-     %button.gobutton 購入する
+     = link_to transacte_item_transaction_path, method: :post, class: "gobutton" do
+      購入する
     - else
      .pa__go--button.cantgobutton カード登録をしてください
 
