@@ -1,8 +1,8 @@
 class CardController < ApplicationController
   require "payjp"
+  before_action :set_card, only:[:new, :show, :destroy]
 
   def new
-    @card = Card.find_by(user_id: current_user.id)
     if @card
       redirect_to action: :show, id: @card.id
     end
@@ -27,7 +27,6 @@ class CardController < ApplicationController
   end
 
   def show
-    @card = Card.find_by(user_id: current_user.id)
     if @card.blank?
       redirect_to action: :new
     else
@@ -54,8 +53,17 @@ class CardController < ApplicationController
     end
   end
 
-  def destory
-    # 登録したクレジットカードの削除
+  def destroy
+    if @card.destroy
+      redirect_to new_card_path
+    else
+      redirect_to card_path(@card.id)
+    end
   end
 
+  private
+
+  def set_card
+    @card = Card.find_by(user_id: current_user.id)
+  end
 end
