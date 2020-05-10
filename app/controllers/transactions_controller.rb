@@ -30,22 +30,20 @@ class TransactionsController < ApplicationController
 
   def transacte
     @item = Item.find(params[:id])
-    @customer = confirm.create_tx(buyer_id: current_user.id, seller_id: current_user.id, item_id: params[:id])
+    # @customer = confirm.create_tx(buyer_id: current_user.id, seller_id: current_user.id, item_id: params[:id])
     if @item.transaction.present?
       redirect_to item_path(@item.id)
     else
       @item.with_lock do
-        if current_user.card.present?
-          @card = Card.find_by(user_id: current_user.id)
-          Payjp.api_key = Rails.application.credentials.PAYJP_SECRET_KEY
-          charge = Payjp::Charge.create(
-            amount: @item.price,
-            customer: Payjp::Customer.retrieve(@card.customer_id),
-            currency: 'jpy'
-          )
-       end
+        @card = Card.find_by(user_id: current_user.id)
+        Payjp.api_key = Rails.application.credentials.PAYJP_SECRET_KEY
+        charge = Payjp::Charge.create(
+          amount: @item.price,
+          customer: Payjp::Customer.retrieve(@card.customer_id),
+          currency: 'jpy'
+        )
       end
+      @transacte = Transaction.create(buyer_id: current_user.id, item_id: params[:item_id])
     end
   end
-
 end
