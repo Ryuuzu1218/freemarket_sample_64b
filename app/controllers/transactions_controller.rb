@@ -43,6 +43,7 @@ class TransactionsController < ApplicationController
         )
       end
       @transacte = Transaction.create(buyer_id: current_user.id, item_id: params[:item_id], seller_id: @item.user_id)
+      @item.update(transaction_status: 0)
     end
   end
 end
