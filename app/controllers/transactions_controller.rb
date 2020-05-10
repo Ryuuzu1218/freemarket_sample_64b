@@ -23,12 +23,33 @@ class TransactionsController < ApplicationController
     when "Discover"
       @card_src = "cards/discover.svg"
     end
-
+    
     @item=Item.find(params[:id])
   end
 
   def transacte
-    # 購入
+    @item = Item.find(params[:id])
+    # if @item.present?
+    #   redirect_to item_path(@item.id)
+    # else
+    #   @item.with_lock do
+    #     if current_user.card.present?
+    #       @card = Card.find_by(user_id: current_user.id)
+    #       Payjp.api_key = Rails.application.credentials.PAYJP_SECRET_KEY
+    #       charge = Payjp::charge.create(
+    #         amout: @item.price,
+    #         customer: Payjp::Customer.retrive(@card.customer_id),
+    #         currency: 'jpy'
+    #       )
+    #     else
+    #       Payjp::Charge.create(
+    #         amount: @item.price,
+    #         card: params['payjp_token'],
+    #         currency: 'jpy'
+    #       )
+    #     end
+    #    end
+    # end
   end
 
 end
