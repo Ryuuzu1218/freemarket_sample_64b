@@ -27,6 +27,7 @@ Rails.application.routes.draw do
   resources :transactions do
     member do
       get :confirm
+      get :transacte
     end
   end
 
