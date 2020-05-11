@@ -14,6 +14,14 @@ Rails.application.routes.draw do
       get 'category_children', defaults: { format: 'json' }
       get 'category_grandchildren', defaults: { format: 'json' }
     end
+
+    resources :transactions do
+      member do
+        get  :confirm
+        post :transacte
+      end
+    end
+    
   end
 
   resources :users, only: [:show] do
@@ -23,12 +31,4 @@ Rails.application.routes.draw do
   end 
 
   resources :card, only: [:new, :create, :show, :destroy]
-
-  resources :transactions do
-    member do
-      get :confirm
-    end
-  end
-
-
 end

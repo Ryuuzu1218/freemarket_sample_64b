@@ -1,0 +1,30 @@
+= render 'items/header'
+.wrapper-item
+ .pa
+  .pa__confirm
+   .pa__confirm__box
+    購入が完了しました
+  .pa__item
+   .pa__item__box
+    .pa__item__box__left
+     = image_tag "#{@item.item_images.first.image}", width: "90", height: "90"
+    .pa__item__box__right
+     .pa__item__box__right--name
+      =@item.name
+     .pa__item__box__right__money
+      .pa__item__box__right__money--price
+       = "¥#{@item.price}"
+      .pa__item__box__right__money--tax
+       税込  送料込み
+  .pa__trade
+   .pa__trade__money
+    .pa__trade__money--in
+     金額
+    .pa__trade__money--total
+     = "¥#{@item.price}"
+  .pa__bottom
+   = link_to "トップページへ戻る", root_path, class:"pa__bottom__button"
+
+= render 'items/banner'
+= render 'items/footer'
+= render 'items/exhibition-btn'
