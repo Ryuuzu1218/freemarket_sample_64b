@@ -32,27 +32,24 @@ class TransactionsController < ApplicationController
     if @item.tx.present?
       redirect_to item_path(@item.id)
     else
-      @item.with_lock do
+      ActiveRecord::Base.transaction do
+        @item.with_lock do
+        @transacte = Transaction.create(buyer_id: current_user.id, item_id: params[:item_id], seller_id: @item.user_id)
+        @item.update(transaction_status: 0)
         Payjp.api_key = Rails.application.credentials.PAYJP_SECRET_KEY
         charge = Payjp::Charge.create(
           amount: @item.price,
           customer: Payjp::Customer.retrieve(@card.customer_id),
           currency: 'jpy'
         )
-      end
-      if @transacte = Transaction.create(buyer_id: current_user.id, item_id: params[:item_id], seller_id: @item.user_id)
-        if @item.update(transaction_status: 0)
-        else 
-          render :confirm
         end
-      else
-        render :confirm
+      #失敗したときの処理
+      rescue => e
+        redirect_to card_path(@card.id),:notice => "カード情報が不正です"
       end
     end
   end
-
   private
-
   def set_item
     @item = Item.find(params[:id])
   end
