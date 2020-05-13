@@ -1,0 +1,15 @@
+= render 'items/header'
+.wrapper-item
+ .pa
+  .pa__confirm
+   .pa__confirm__ngbox
+    取引に失敗しました。
+  .pa__item__errorintro
+   通信環境の良いところで再度お試しください。
+  .pa__item__errorintro
+   もしくは、カード情報に問題がある可能性があります。
+  .pa__bottom
+   = link_to "カード設定画面へ", card_path(@card.id), class:"pa__bottom__errorbutton"
+= render 'items/banner'
+= render 'items/footer'
+= render 'items/exhibition-btn'
