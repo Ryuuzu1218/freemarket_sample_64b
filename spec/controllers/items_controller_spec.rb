@@ -68,8 +68,8 @@ describe ItemsController, type: :controller do
     end
     context '検索ワードが入力されていない場合' do
       it'index.html.hamlに移行する事' do
-        get :search,params:{keyword:""}
-        expect(response).to render_template :index
+        get :search
+        expect(response).to redirect_to root_path
       end
     end
   end

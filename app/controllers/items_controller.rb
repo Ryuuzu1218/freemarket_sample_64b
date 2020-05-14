@@ -74,7 +74,7 @@ class ItemsController < ApplicationController
 
   def search
     if params[:keyword].present?
-    @items_search = Item.search(params[:keyword]).order(updated_at:"DESC")
+    @items_search = Item.search(params[:keyword]).order(updated_at:"DESC").where(transaction_status: "1")
     @keyword=params[:keyword]
     else
       redirect_to  root_path
