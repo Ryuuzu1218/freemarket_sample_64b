@@ -18,4 +18,9 @@ class Item < ApplicationRecord
   validates :name, :user_id, :item_images, :category_id,  :transaction_status, :sending_days_id, :shipping_origin_id, :delivery_charge_id, :condition_id, presence: true
   validates :price, presence: true, numericality: {only_integer: true, greater_than: 299, less_than: 9999999}
   validates :explanation, presence: true, length: { maximum: 1000 }
+  def self.search(search)
+    return Item.all unless search
+    query = [(['name LIKE ?'] * search.split(/[[:blank:]]+/).length).join(' AND ')] + search.split(/[[:blank:]]+/).map { |name| "%#{name}%" }
+    Item.where(*query) 
+  end
 end

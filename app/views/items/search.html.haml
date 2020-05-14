@@ -1,0 +1,16 @@
+= render 'header'
+.top-item-list
+  .top-item-container
+    %h2.top-item-container__title
+      "#{@keyword}"で検索した結果
+    - if @items_search.present?
+      .top-item-container__contents
+        %ul.top-items.top-items--login
+          - @items_search.each do |item|
+            = render partial: "top-item", locals: { item: item}
+    - else
+      .top-item-container__contents.nothing
+        条件に一致する商品はありませんでした。
+= render 'banner'
+= render 'exhibition-btn'
+= render 'footer'

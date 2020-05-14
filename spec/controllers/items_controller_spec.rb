@@ -59,12 +59,19 @@ describe ItemsController, type: :controller do
     end
   end
 
-  # describe '#category_children' do
-  #   it '@category_childrenに期待した値が入っていること' do
-  #     item = create(:item, category_id: 1)
-  #     category_children = Category.find(item.category_id).children
-  #     get :category_children, params: {parent_id: 1},format: :json
-  #     expect(assigns(:category_children)).to match category_children
-  #   end
-  # end
+  describe '#search' do
+    context '検索ワードが入力されている場合' do
+      it'search.html.hamlに移行する事' do
+      get :search,params:{keyword:"キーワード"}
+      expect(response).to render_template :search
+      end
+    end
+    context '検索ワードが入力されていない場合' do
+      it'index.html.hamlに移行する事' do
+        get :search,params:{keyword:""}
+        expect(response).to render_template :index
+      end
+    end
+  end
+
 end
