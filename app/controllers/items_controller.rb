@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :move_to_index, except: [:index, :show]
+  before_action :move_to_index, except: [:index, :show, :search]
   before_action :set_item, only: [:show, :edit, :update, :destroy]
   before_action :set_parent_category, only: [:new, :create, :edit, :update]
 
@@ -72,6 +72,14 @@ class ItemsController < ApplicationController
     end
   end
 
+  def search
+    if params[:keyword].present?
+    @items_search = Item.search(params[:keyword]).order(updated_at:"DESC").where(transaction_status: "1")
+    @keyword=params[:keyword]
+    else
+      redirect_to  root_path
+    end
+  end
 
   private
 

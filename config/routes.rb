@@ -22,7 +22,10 @@ Rails.application.routes.draw do
         get :carderror
       end
     end
-
+    collection do
+      get 'search'
+    end
+   
     
   end
 

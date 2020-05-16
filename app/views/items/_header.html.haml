@@ -4,7 +4,7 @@
       .header__body__main__icon-area
         = link_to image_tag("logo/logo.png", class: "header__body__main__icon-area__icon"), root_path
       .header__body__main__search
-        = form_with(url: "#", local: true, method: :get, class: "header__body__main__search__form") do |f|
+        = form_with(url: search_items_path, local: true, method: :get, class: "header__body__main__search__form") do |f|
           = f.text_field :keyword, placeholder: "キーワードから探す", class: "header__body__main__search__form__input"
           %label.header__body__main__search__form__submit
             = f.submit "", class:"header__body__main__search__form__submit__btn"
