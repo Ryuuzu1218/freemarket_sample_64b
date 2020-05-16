@@ -1,4 +1,6 @@
 = render 'header'
+- breadcrumb :item
+= render "users/breadcrumb"
 .wrapper-item
  .ex#form-name
   =form_with model:@item, url:items_path, local: true  do |exh|
