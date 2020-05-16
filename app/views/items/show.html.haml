@@ -27,8 +27,7 @@
   - else
    - if user_signed_in?
     .de__parchase
-     %button.gobuy
-      =link_to '購入画面に進む',confirm_item_transaction_path(item_id: @item.id)
+     =link_to '購入画面に進む',confirm_item_transaction_path(item_id: @item.id),class:'btn gobuy'
   .de__exp
    = @item.explanation
   .de__table
